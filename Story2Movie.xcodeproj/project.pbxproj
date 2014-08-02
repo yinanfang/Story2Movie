@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A78B21EC316E49589E7FDED0 /* libPods-Story2Movie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */; };
+		D4C59FBE198C9401000FD7E8 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FBD198C9401000FD7E8 /* AppUtility.m */; };
+		D4C59FC1198C9413000FD7E8 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC0198C9413000FD7E8 /* AppConfig.m */; };
+		D4C59FC4198C9422000FD7E8 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC3198C9422000FD7E8 /* Constant.m */; };
+		D4C59FC7198C9434000FD7E8 /* CustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC6198C9434000FD7E8 /* CustomLogFormatters.m */; };
+		D4C59FCA198C9683000FD7E8 /* GuidedTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */; };
+		D4C59FCD198C96D8000FD7E8 /* TourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */; };
+		D4C59FD0198C970C000FD7E8 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */; };
 		D4FD9B7D198C8D4600927FDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7C198C8D4600927FDC /* Foundation.framework */; };
 		D4FD9B7F198C8D4600927FDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */; };
 		D4FD9B81198C8D4600927FDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B80198C8D4600927FDC /* UIKit.framework */; };
@@ -32,6 +40,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Story2Movie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story2Movie.xcconfig"; path = "Pods/Pods-Story2Movie.xcconfig"; sourceTree = "<group>"; };
+		D4C59FBC198C9401000FD7E8 /* AppUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppUtility.h; path = AppUtility/AppUtility.h; sourceTree = "<group>"; };
+		D4C59FBD198C9401000FD7E8 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppUtility.m; path = AppUtility/AppUtility.m; sourceTree = "<group>"; };
+		D4C59FBF198C9413000FD7E8 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = AppUtility/AppConfig.h; sourceTree = "<group>"; };
+		D4C59FC0198C9413000FD7E8 /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppConfig.m; path = AppUtility/AppConfig.m; sourceTree = "<group>"; };
+		D4C59FC2198C9422000FD7E8 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constant.h; path = AppUtility/Constant.h; sourceTree = "<group>"; };
+		D4C59FC3198C9422000FD7E8 /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constant.m; path = AppUtility/Constant.m; sourceTree = "<group>"; };
+		D4C59FC5198C9434000FD7E8 /* CustomLogFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomLogFormatters.h; path = AppUtility/CustomLogFormatters.h; sourceTree = "<group>"; };
+		D4C59FC6198C9434000FD7E8 /* CustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomLogFormatters.m; path = AppUtility/CustomLogFormatters.m; sourceTree = "<group>"; };
+		D4C59FC8198C9683000FD7E8 /* GuidedTourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuidedTourViewController.h; path = GuidedTour/GuidedTourViewController.h; sourceTree = "<group>"; };
+		D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuidedTourViewController.m; path = GuidedTour/GuidedTourViewController.m; sourceTree = "<group>"; };
+		D4C59FCB198C96D8000FD7E8 /* TourScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TourScrollView.h; path = GuidedTour/TourScrollView.h; sourceTree = "<group>"; };
+		D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TourScrollView.m; path = GuidedTour/TourScrollView.m; sourceTree = "<group>"; };
+		D4C59FCE198C970C000FD7E8 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryViewController.h; path = Gallery/GalleryViewController.h; sourceTree = "<group>"; };
+		D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryViewController.m; path = Gallery/GalleryViewController.m; sourceTree = "<group>"; };
 		D4FD9B79198C8D4600927FDC /* Story2Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Story2Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FD9B7C198C8D4600927FDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +82,7 @@
 				D4FD9B7F198C8D4600927FDC /* CoreGraphics.framework in Frameworks */,
 				D4FD9B81198C8D4600927FDC /* UIKit.framework in Frameworks */,
 				D4FD9B7D198C8D4600927FDC /* Foundation.framework in Frameworks */,
+				A78B21EC316E49589E7FDED0 /* libPods-Story2Movie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +99,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4C59FB8198C92E2000FD7E8 /* AppImages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AppImages;
+			sourceTree = "<group>";
+		};
+		D4C59FB9198C92F1000FD7E8 /* AppUtility */ = {
+			isa = PBXGroup;
+			children = (
+				D4C59FBC198C9401000FD7E8 /* AppUtility.h */,
+				D4C59FBD198C9401000FD7E8 /* AppUtility.m */,
+				D4C59FBF198C9413000FD7E8 /* AppConfig.h */,
+				D4C59FC0198C9413000FD7E8 /* AppConfig.m */,
+				D4C59FC2198C9422000FD7E8 /* Constant.h */,
+				D4C59FC3198C9422000FD7E8 /* Constant.m */,
+				D4C59FC5198C9434000FD7E8 /* CustomLogFormatters.h */,
+				D4C59FC6198C9434000FD7E8 /* CustomLogFormatters.m */,
+			);
+			name = AppUtility;
+			sourceTree = "<group>";
+		};
+		D4C59FBA198C92FA000FD7E8 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				D4C59FCE198C970C000FD7E8 /* GalleryViewController.h */,
+				D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */,
+			);
+			name = Gallery;
+			sourceTree = "<group>";
+		};
+		D4C59FBB198C9307000FD7E8 /* GuidedTour */ = {
+			isa = PBXGroup;
+			children = (
+				D4C59FC8198C9683000FD7E8 /* GuidedTourViewController.h */,
+				D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */,
+				D4C59FCB198C96D8000FD7E8 /* TourScrollView.h */,
+				D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */,
+			);
+			name = GuidedTour;
+			sourceTree = "<group>";
+		};
 		D4FD9B70198C8D4600927FDC = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +148,7 @@
 				D4FD9B9B198C8D4600927FDC /* Story2MovieTests */,
 				D4FD9B7B198C8D4600927FDC /* Frameworks */,
 				D4FD9B7A198C8D4600927FDC /* Products */,
+				BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +168,7 @@
 				D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */,
 				D4FD9B80198C8D4600927FDC /* UIKit.framework */,
 				D4FD9B95198C8D4600927FDC /* XCTest.framework */,
+				90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,6 +178,10 @@
 			children = (
 				D4FD9B8B198C8D4600927FDC /* AppDelegate.h */,
 				D4FD9B8C198C8D4600927FDC /* AppDelegate.m */,
+				D4C59FBB198C9307000FD7E8 /* GuidedTour */,
+				D4C59FBA198C92FA000FD7E8 /* Gallery */,
+				D4C59FB9198C92F1000FD7E8 /* AppUtility */,
+				D4C59FB8198C92E2000FD7E8 /* AppImages */,
 				D4FD9B8E198C8D4600927FDC /* Images.xcassets */,
 				D4FD9B83198C8D4600927FDC /* Supporting Files */,
 			);
@@ -151,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4FD9BA5198C8D4600927FDC /* Build configuration list for PBXNativeTarget "Story2Movie" */;
 			buildPhases = (
+				06B22F05EBE840A4A284BCB4 /* Check Pods Manifest.lock */,
 				D4FD9B75198C8D4600927FDC /* Sources */,
 				D4FD9B76198C8D4600927FDC /* Frameworks */,
 				D4FD9B77198C8D4600927FDC /* Resources */,
+				E9D7BD11D1C94BF69F1E41CC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,6 +266,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Golden Compass";
 				TargetAttributes = {
+					D4FD9B78198C8D4600927FDC = {
+						DevelopmentTeam = AU55AR8N9R;
+					};
 					D4FD9B93198C8D4600927FDC = {
 						TestTargetID = D4FD9B78198C8D4600927FDC;
 					};
@@ -234,13 +312,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06B22F05EBE840A4A284BCB4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E9D7BD11D1C94BF69F1E41CC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Story2Movie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D4FD9B75198C8D4600927FDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C59FC7198C9434000FD7E8 /* CustomLogFormatters.m in Sources */,
+				D4C59FBE198C9401000FD7E8 /* AppUtility.m in Sources */,
+				D4C59FC1198C9413000FD7E8 /* AppConfig.m in Sources */,
 				D4FD9B8D198C8D4600927FDC /* AppDelegate.m in Sources */,
+				D4C59FC4198C9422000FD7E8 /* Constant.m in Sources */,
 				D4FD9B89198C8D4600927FDC /* main.m in Sources */,
+				D4C59FCA198C9683000FD7E8 /* GuidedTourViewController.m in Sources */,
+				D4C59FCD198C96D8000FD7E8 /* TourScrollView.m in Sources */,
+				D4C59FD0198C970C000FD7E8 /* GalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,26 +472,34 @@
 		};
 		D4FD9BA6198C8D4600927FDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Story2Movie/Story2Movie-Prefix.pch";
 				INFOPLIST_FILE = "Story2Movie/Story2Movie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		D4FD9BA7198C8D4600927FDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Story2Movie/Story2Movie-Prefix.pch";
 				INFOPLIST_FILE = "Story2Movie/Story2Movie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -437,6 +563,7 @@
 				D4FD9BA7198C8D4600927FDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4FD9BA8198C8D4600927FDC /* Build configuration list for PBXNativeTarget "Story2MovieTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +572,7 @@
 				D4FD9BAA198C8D4600927FDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

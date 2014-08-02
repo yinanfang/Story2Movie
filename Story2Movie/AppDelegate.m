@@ -9,13 +9,38 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize utility;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Initialize Utility object
+    utility = [[AppUtility alloc] init];
+    [utility ApplicationSetupWithProductionMode:NO];
+    
+    // Initialize window and set background
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor clearColor];
+    
+    // Check First Launch
+//    [utility setHasShownTour:NO];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:HasShownTour])
+    {
+        DDLogVerbose(@"It's NOT First Launch...");
+        // Set root view controller
+        self.window.rootViewController = [[GalleryViewController alloc] init];
+    }else{
+        DDLogVerbose(@"It's First Launch...");
+        // Set the First Launch BOOL
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HasShownTour];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        // Set root view controller
+        self.window.rootViewController = [[GuidedTourViewController alloc] init];
+        DDLogVerbose(@"Showing Guided Tour...");
+    }
+    
+    // Display view
     [self.window makeKeyAndVisible];
+    DDLogVerbose(@"========== End of AppDelegate ==========");
     return YES;
 }
 
