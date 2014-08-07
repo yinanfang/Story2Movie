@@ -22,25 +22,24 @@
     self.window.backgroundColor = [UIColor clearColor];
     
     // Check First Launch
-//    [utility setHasShownTour:NO];
+    [utility setHasShownTour:NO];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:HasShownTour])
     {
-        DDLogVerbose(@"It's NOT First Launch...");
+        DDLogVerbose(@"It's NOT First Launch. Presenting Gallery...");
         // Set root view controller
         self.window.rootViewController = [[GalleryViewController alloc] init];
     }else{
-        DDLogVerbose(@"It's First Launch...");
+        DDLogVerbose(@"It's First Launch. Presenting Guided Tour...");
         // Set the First Launch BOOL
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HasShownTour];
         [[NSUserDefaults standardUserDefaults] synchronize];
         // Set root view controller
         self.window.rootViewController = [[GuidedTourViewController alloc] init];
-        DDLogVerbose(@"Showing Guided Tour...");
     }
     
     // Display view
     [self.window makeKeyAndVisible];
-    DDLogVerbose(@"========== End of AppDelegate ==========");
+    DDLogInfo(@"========== End of AppDelegate ==========");
     return YES;
 }
 

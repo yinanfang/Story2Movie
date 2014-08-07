@@ -18,12 +18,14 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (mode) {
-        DDLogDebug(@"In PRODUCTION mode with domain: %@", ProductionDomain);
+        DDLogInfo(@"In PRODUCTION mode with domain: %@", ProductionDomain);
         [defaults setObject:ProductionDomain forKey:@"current_domain"];
     }else {
-        DDLogDebug(@"In DEBUG mode with domain: %@", DevelopmentDomain);
+        DDLogInfo(@"In Development mode with domain: %@", DevelopmentDomain);
         [defaults setObject:DevelopmentDomain forKey:@"current_domain"];
     }
+    [AppConfig setUpAppConfig];
+    [Constant setUpConstant];
 }
 
 -(void)setCachePolicy
@@ -67,7 +69,7 @@
     [fileLogger setLogFormatter:[[CustomLogFormatters alloc] init]];
     
     [DDLog addLogger:fileLogger];
-    DDLogDebug(@"Logging is setup (\"%@\")", [fileLogger.logFileManager logsDirectory]);
+    DDLogInfo(@"Logging is setup (\"%@\")", [fileLogger.logFileManager logsDirectory]);
     
 }
 
@@ -185,5 +187,26 @@
     [[NSUserDefaults standardUserDefaults] setBool:mode forKey:HasShownTour];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+-(UIImageView *)getFullScreenImageView:(NSString *)name
+{
+    UIImage *image;
+    if (IS_IPHONE4S) {
+        image = [UIImage imageNamed:[NSString stringWithFormat:@"%@@2x.png", name]];
+    }else if (IS_IPHONE5S){
+        image = [UIImage imageNamed:[NSString stringWithFormat:@"%@@R4.png", name]];
+    }
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    return imageView;
+}
+
+
+
+
+
+
+
+
+
 
 @end

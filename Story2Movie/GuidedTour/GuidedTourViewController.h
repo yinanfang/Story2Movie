@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TourScrollView.h"
+#import "TourPageControl.h"
 
 @interface GuidedTourViewController : UIViewController
+
+#pragma mark - AppUtility
+@property AppUtility *utility;
+
+@property NSMutableArray *tourImages_array;
+@property TourScrollView *tourScrollView;
+@property TourPageControl *tourPageControl;
 
 @end

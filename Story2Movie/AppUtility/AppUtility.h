@@ -35,5 +35,6 @@
 -(CGRect)getAvailableFrameUnderNormalView:(UIViewController *)controller;
 -(void)addTitleinForNavViewWithString:(NSString *)str Font:(NSString *)font Size:(float)size Color:(UIColor *)color viewController:(UIViewController *)controller;
 -(void)setHasShownTour:(BOOL)mode;
+-(UIImageView *)getFullScreenImageView:(NSString *)name;
 
 @end

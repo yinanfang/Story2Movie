@@ -8,26 +8,43 @@
 
 #import <Foundation/Foundation.h>
 
+
+#pragma mark - Device Type
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE5S ([[UIScreen mainScreen] bounds].size.height == 568)
+#define IS_IPHONE4S ([[UIScreen mainScreen] bounds].size.height == 480)
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
-#define ScreenWidth 320
-#define ScreenHeight 568
 
-#define SWIPE_UP_THRESHOLD -400.0f
-#define SWIPE_DOWN_THRESHOLD 400.0f
-#define SWIPE_LEFT_THRESHOLD -400.0f
-#define SWIPE_RIGHT_THRESHOLD 400.0f
+#pragma mark - Screen width and height
+// iPhone4S@2x: W*H = 320*480
+// iPhone5S@R4: W*H = 320*568
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 
-#define SWIPE_VELOCITY_THRESHOLD 0.278F
 
+
+#pragma mark - Gesture Recognizer
+FOUNDATION_EXPORT CGFloat const SWIPE_VELOCITY_THRESHOLD;
+
+
+#pragma mark - Others
 FOUNDATION_EXPORT NSString *const HasShownTour;
 
 
 
 
+typedef NS_ENUM(NSInteger, testEnum) {
+    testEnum1,
+    testEnum2,
+    testEnum3,
+    testEnum4
+};
+
 
 
 @interface Constant : NSObject
+
++(void)setUpConstant;
 
 @end

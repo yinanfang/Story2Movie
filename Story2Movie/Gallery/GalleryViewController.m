@@ -27,6 +27,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
+//    DDLogVerbose(@"testing enums: %i", testEnum1);
+
+//    self.view.frame = CGRectMake((CGFloat), <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

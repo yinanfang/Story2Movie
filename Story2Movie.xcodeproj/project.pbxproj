@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		A78B21EC316E49589E7FDED0 /* libPods-Story2Movie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */; };
+		D487BE1C1990735B006498A8 /* SectionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE1B1990735B006498A8 /* SectionScrollView.m */; };
+		D487BE1F19907386006498A8 /* SectionImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE1E19907386006498A8 /* SectionImageView.m */; };
+		D487BE2E199073C1006498A8 /* GalleryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE2D199073C1006498A8 /* GalleryScrollView.m */; };
+		D487BE31199073E6006498A8 /* GalleryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE30199073E6006498A8 /* GalleryImageView.m */; };
+		D487BE3419907404006498A8 /* GalleryPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE3319907404006498A8 /* GalleryPageControl.m */; };
+		D487BE3719909264006498A8 /* TourPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE3619909264006498A8 /* TourPageControl.m */; };
+		D487BE3E199096EF006498A8 /* tour_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE38199096EF006498A8 /* tour_0@2x.png */; };
+		D487BE3F199096EF006498A8 /* tour_0@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE39199096EF006498A8 /* tour_0@R4.png */; };
+		D487BE40199096EF006498A8 /* tour_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3A199096EF006498A8 /* tour_1@2x.png */; };
+		D487BE41199096EF006498A8 /* tour_1@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3B199096EF006498A8 /* tour_1@R4.png */; };
+		D487BE42199096EF006498A8 /* tour_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3C199096EF006498A8 /* tour_2@2x.png */; };
+		D487BE43199096EF006498A8 /* tour_2@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3D199096EF006498A8 /* tour_2@R4.png */; };
 		D4C59FBE198C9401000FD7E8 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FBD198C9401000FD7E8 /* AppUtility.m */; };
 		D4C59FC1198C9413000FD7E8 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC0198C9413000FD7E8 /* AppConfig.m */; };
 		D4C59FC4198C9422000FD7E8 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC3198C9422000FD7E8 /* Constant.m */; };
@@ -42,6 +54,24 @@
 /* Begin PBXFileReference section */
 		90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Story2Movie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story2Movie.xcconfig"; path = "Pods/Pods-Story2Movie.xcconfig"; sourceTree = "<group>"; };
+		D487BE1A1990735B006498A8 /* SectionScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionScrollView.h; path = Gallery/SectionScrollView.h; sourceTree = "<group>"; };
+		D487BE1B1990735B006498A8 /* SectionScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionScrollView.m; path = Gallery/SectionScrollView.m; sourceTree = "<group>"; };
+		D487BE1D19907386006498A8 /* SectionImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionImageView.h; path = Gallery/SectionImageView.h; sourceTree = "<group>"; };
+		D487BE1E19907386006498A8 /* SectionImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionImageView.m; path = Gallery/SectionImageView.m; sourceTree = "<group>"; };
+		D487BE2C199073C1006498A8 /* GalleryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryScrollView.h; path = Gallery/GalleryScrollView.h; sourceTree = "<group>"; };
+		D487BE2D199073C1006498A8 /* GalleryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryScrollView.m; path = Gallery/GalleryScrollView.m; sourceTree = "<group>"; };
+		D487BE2F199073E6006498A8 /* GalleryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryImageView.h; path = Gallery/GalleryImageView.h; sourceTree = "<group>"; };
+		D487BE30199073E6006498A8 /* GalleryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryImageView.m; path = Gallery/GalleryImageView.m; sourceTree = "<group>"; };
+		D487BE3219907404006498A8 /* GalleryPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryPageControl.h; path = Gallery/GalleryPageControl.h; sourceTree = "<group>"; };
+		D487BE3319907404006498A8 /* GalleryPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryPageControl.m; path = Gallery/GalleryPageControl.m; sourceTree = "<group>"; };
+		D487BE3519909264006498A8 /* TourPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TourPageControl.h; path = GuidedTour/TourPageControl.h; sourceTree = "<group>"; };
+		D487BE3619909264006498A8 /* TourPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TourPageControl.m; path = GuidedTour/TourPageControl.m; sourceTree = "<group>"; };
+		D487BE38199096EF006498A8 /* tour_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_0@2x.png"; path = "AppImages/Tour/tour_0@2x.png"; sourceTree = "<group>"; };
+		D487BE39199096EF006498A8 /* tour_0@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_0@R4.png"; path = "AppImages/Tour/tour_0@R4.png"; sourceTree = "<group>"; };
+		D487BE3A199096EF006498A8 /* tour_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_1@2x.png"; path = "AppImages/Tour/tour_1@2x.png"; sourceTree = "<group>"; };
+		D487BE3B199096EF006498A8 /* tour_1@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_1@R4.png"; path = "AppImages/Tour/tour_1@R4.png"; sourceTree = "<group>"; };
+		D487BE3C199096EF006498A8 /* tour_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_2@2x.png"; path = "AppImages/Tour/tour_2@2x.png"; sourceTree = "<group>"; };
+		D487BE3D199096EF006498A8 /* tour_2@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_2@R4.png"; path = "AppImages/Tour/tour_2@R4.png"; sourceTree = "<group>"; };
 		D4C59FBC198C9401000FD7E8 /* AppUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppUtility.h; path = AppUtility/AppUtility.h; sourceTree = "<group>"; };
 		D4C59FBD198C9401000FD7E8 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppUtility.m; path = AppUtility/AppUtility.m; sourceTree = "<group>"; };
 		D4C59FBF198C9413000FD7E8 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = AppUtility/AppConfig.h; sourceTree = "<group>"; };
@@ -102,6 +132,7 @@
 		D4C59FB8198C92E2000FD7E8 /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				D4DCB4A0198ECEA10071F959 /* Tour */,
 			);
 			name = AppImages;
 			sourceTree = "<group>";
@@ -126,6 +157,16 @@
 			children = (
 				D4C59FCE198C970C000FD7E8 /* GalleryViewController.h */,
 				D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */,
+				D487BE1A1990735B006498A8 /* SectionScrollView.h */,
+				D487BE1B1990735B006498A8 /* SectionScrollView.m */,
+				D487BE1D19907386006498A8 /* SectionImageView.h */,
+				D487BE1E19907386006498A8 /* SectionImageView.m */,
+				D487BE2C199073C1006498A8 /* GalleryScrollView.h */,
+				D487BE2D199073C1006498A8 /* GalleryScrollView.m */,
+				D487BE2F199073E6006498A8 /* GalleryImageView.h */,
+				D487BE30199073E6006498A8 /* GalleryImageView.m */,
+				D487BE3219907404006498A8 /* GalleryPageControl.h */,
+				D487BE3319907404006498A8 /* GalleryPageControl.m */,
 			);
 			name = Gallery;
 			sourceTree = "<group>";
@@ -137,8 +178,23 @@
 				D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */,
 				D4C59FCB198C96D8000FD7E8 /* TourScrollView.h */,
 				D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */,
+				D487BE3519909264006498A8 /* TourPageControl.h */,
+				D487BE3619909264006498A8 /* TourPageControl.m */,
 			);
 			name = GuidedTour;
+			sourceTree = "<group>";
+		};
+		D4DCB4A0198ECEA10071F959 /* Tour */ = {
+			isa = PBXGroup;
+			children = (
+				D487BE38199096EF006498A8 /* tour_0@2x.png */,
+				D487BE39199096EF006498A8 /* tour_0@R4.png */,
+				D487BE3A199096EF006498A8 /* tour_1@2x.png */,
+				D487BE3B199096EF006498A8 /* tour_1@R4.png */,
+				D487BE3C199096EF006498A8 /* tour_2@2x.png */,
+				D487BE3D199096EF006498A8 /* tour_2@R4.png */,
+			);
+			name = Tour;
 			sourceTree = "<group>";
 		};
 		D4FD9B70198C8D4600927FDC = {
@@ -297,8 +353,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D487BE40199096EF006498A8 /* tour_1@2x.png in Resources */,
+				D487BE43199096EF006498A8 /* tour_2@R4.png in Resources */,
 				D4FD9B87198C8D4600927FDC /* InfoPlist.strings in Resources */,
+				D487BE3E199096EF006498A8 /* tour_0@2x.png in Resources */,
 				D4FD9B8F198C8D4600927FDC /* Images.xcassets in Resources */,
+				D487BE41199096EF006498A8 /* tour_1@R4.png in Resources */,
+				D487BE3F199096EF006498A8 /* tour_0@R4.png in Resources */,
+				D487BE42199096EF006498A8 /* tour_2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,12 +415,18 @@
 				D4C59FC7198C9434000FD7E8 /* CustomLogFormatters.m in Sources */,
 				D4C59FBE198C9401000FD7E8 /* AppUtility.m in Sources */,
 				D4C59FC1198C9413000FD7E8 /* AppConfig.m in Sources */,
+				D487BE1C1990735B006498A8 /* SectionScrollView.m in Sources */,
+				D487BE2E199073C1006498A8 /* GalleryScrollView.m in Sources */,
 				D4FD9B8D198C8D4600927FDC /* AppDelegate.m in Sources */,
 				D4C59FC4198C9422000FD7E8 /* Constant.m in Sources */,
 				D4FD9B89198C8D4600927FDC /* main.m in Sources */,
 				D4C59FCA198C9683000FD7E8 /* GuidedTourViewController.m in Sources */,
+				D487BE3719909264006498A8 /* TourPageControl.m in Sources */,
+				D487BE3419907404006498A8 /* GalleryPageControl.m in Sources */,
 				D4C59FCD198C96D8000FD7E8 /* TourScrollView.m in Sources */,
 				D4C59FD0198C970C000FD7E8 /* GalleryViewController.m in Sources */,
+				D487BE31199073E6006498A8 /* GalleryImageView.m in Sources */,
+				D487BE1F19907386006498A8 /* SectionImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
