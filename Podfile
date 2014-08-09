@@ -6,7 +6,7 @@ target "Story2Movie" do
     pod 'CocoaLumberjack', '~> 1.9'
     pod "AFNetworking", "~> 2.0"
     pod 'MWPhotoBrowser', '~> 1.4'
-
+    pod 'Masonry'
 
 end
 

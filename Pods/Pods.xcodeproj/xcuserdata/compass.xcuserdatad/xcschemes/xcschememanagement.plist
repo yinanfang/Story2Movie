@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Story2Movie-Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Story2Movie-PSTCollectionView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1CDE375EF6F44D34AA8A3016</key>
+		<key>12BD088E1F974BFEB31DFFDF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3EE3337AD49F45D0B1E9FD0F</key>
+		<key>33BF774FA9864E70A0C12A5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66A9ABD1C9AF4CA9BF2DA6AB</key>
+		<key>34F78A935107446A9276611C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7868F114889641AF8249884A</key>
+		<key>5CE4EB9CFF9C483D89705AA9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>854574D08DEB4B39AEC8F783</key>
+		<key>A0329CA8F96A4D669CE07C45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AAEEC059A8BF40D39561F494</key>
+		<key>B9367C518AB64C79A8DEDF4B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2602398B7184A73AC94E783</key>
+		<key>DA36B61C5BB84374B48FB998</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CEEC2779274B4E4480149ACA</key>
+		<key>F639B7A3BE2E4BB197728561</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F809AA3A703743C696A916CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

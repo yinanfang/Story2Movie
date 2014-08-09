@@ -19,9 +19,10 @@
 #pragma mark - Screen width and height
 // iPhone4S@2x: W*H = 320*480
 // iPhone5S@R4: W*H = 320*568
+#define ScreenRect [[UIScreen mainScreen] bounds]
+#define ScreenSize [[UIScreen mainScreen] bounds].size
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
-
 
 
 #pragma mark - Gesture Recognizer

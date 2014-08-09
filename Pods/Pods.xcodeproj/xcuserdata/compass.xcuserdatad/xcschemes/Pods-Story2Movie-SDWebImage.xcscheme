@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2602398B7184A73AC94E783"
+               BlueprintIdentifier = "F809AA3A703743C696A916CD"
                BuildableName = "libPods-Story2Movie-SDWebImage.a"
                BlueprintName = "Pods-Story2Movie-SDWebImage"
                ReferencedContainer = "container:Pods.xcodeproj">

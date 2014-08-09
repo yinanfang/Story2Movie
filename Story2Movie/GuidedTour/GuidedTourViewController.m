@@ -24,6 +24,13 @@
     // Initialize Utility object
     utility = [[AppUtility alloc] init];
         
+    [self fetchImages];
+    
+    tourScrollView = [[TourScrollView alloc] initWithImageArray:tourImages_array ParentController:self];
+    [self.view addSubview:tourScrollView];
+}
+- (void)fetchImages
+{
     tourImages_array = [[NSMutableArray alloc] init];
     for (int i = 0; i < count_tourPages; i++) {
         NSString *imageName = [NSString stringWithFormat:@"tour_%i", i];
@@ -31,32 +38,8 @@
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds = YES;
         [tourImages_array addObject:imageView];
-        
-        
-        
-//        UIImage *image =[utility getFullScreenImage:imageName];
-//        NSLog(@"size: %@", NSStringFromCGSize(image.size));
-//        CGFloat sdf = image.size.height;
-//        CGFloat fds = image.size.width;
-//        [tourImages_array addObject:[utility getFullScreenImage:imageName]];
-
     }
-    
-    
-    
-    
-    
-//    UIView *beeView = [[[NSBundle mainBundle] loadNibNamed:@"BeeView" owner:nil options:nil] firstObject];
-//    beeView.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.scrollView addSubview:beeView];
-//    
-//    NSDictionary *views = @{@"beeView":beeView};
-//    NSDictionary *metrics = @{@"height" : @600, @"width" : @900};
-//    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[beeView(height)]|" options:kNilOptions metrics:metrics views:views]];
-//    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[beeView(width)]|" options:kNilOptions metrics:metrics views:views]];
-    
 }
-
 
 // Hide the status bar on the tour page
 - (BOOL)prefersStatusBarHidden

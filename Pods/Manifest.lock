@@ -26,6 +26,7 @@ PODS:
   - CocoaLumberjack/Extensions (1.9.1):
     - CocoaLumberjack/Core
   - DACircularProgress (2.2.0)
+  - Masonry (0.5.3)
   - MBProgressHUD (0.8)
   - MWPhotoBrowser (1.4.0):
     - DACircularProgress
@@ -40,12 +41,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CocoaLumberjack (~> 1.9)
+  - Masonry
   - MWPhotoBrowser (~> 1.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   CocoaLumberjack: 94accd5749f5c5d15134c8d50f34a973aed8ef69
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   MWPhotoBrowser: 4efcdb9da34751f97992128a5356f3929d1af537
   PSTCollectionView: a63299550ad566b579479d07cb5e2bf61148686b
