@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "SectionScrollView.h"
+#import "GCSectionScrollView.h"
 
-@implementation SectionScrollView
+@implementation GCSectionScrollView
 
 - (id)initWithFrame:(CGRect)frame
 {

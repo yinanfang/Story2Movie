@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "CustomLogFormatters.h"
+#import "GCCustomLogFormatters.h"
 
 @implementation CustomLogFormatters
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "AppConfig.h"
+#import "GCAppConfig.h"
 
 @implementation AppConfig
 

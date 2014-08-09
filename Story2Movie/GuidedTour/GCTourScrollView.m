@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "TourScrollView.h"
+#import "GCTourScrollView.h"
 
-@implementation TourScrollView
+@implementation GCTourScrollView
 @synthesize tourImages_array, parentController, contentView;
 
 - (id)initWithFrame:(CGRect)frame

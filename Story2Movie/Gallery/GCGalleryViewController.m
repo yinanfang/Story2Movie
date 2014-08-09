@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "GalleryViewController.h"
+#import "GCGalleryViewController.h"
 
-@interface GalleryViewController ()
+@interface GCGalleryViewController ()
 
 @end
 
-@implementation GalleryViewController
+@implementation GCGalleryViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

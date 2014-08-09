@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GuidedTourViewController.h"
-#import "GalleryViewController.h"
+#import "GCGuidedTourViewController.h"
+#import "GCGalleryViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 #pragma mark - AppUtility
-@property AppUtility *utility;
+@property GCAppUtility *utility;
 
 
 @end

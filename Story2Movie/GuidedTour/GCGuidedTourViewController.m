@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "GuidedTourViewController.h"
+#import "GCGuidedTourViewController.h"
 
-@interface GuidedTourViewController ()
+@interface GCGuidedTourViewController ()
 
 @end
 
-@implementation GuidedTourViewController
+@implementation GCGuidedTourViewController
 @synthesize utility;
 @synthesize tourImages_array, tourScrollView, tourPageControl;
 
@@ -22,11 +22,11 @@
     // Do any additional setup after loading the view.
     DDLogInfo(@"====================  Entered tour page  ====================");
     // Initialize Utility object
-    utility = [[AppUtility alloc] init];
+    utility = [[GCAppUtility alloc] init];
         
     [self fetchImages];
     
-    tourScrollView = [[TourScrollView alloc] initWithImageArray:tourImages_array ParentController:self];
+    tourScrollView = [[GCTourScrollView alloc] initWithImageArray:tourImages_array ParentController:self];
     [self.view addSubview:tourScrollView];
 }
 - (void)fetchImages

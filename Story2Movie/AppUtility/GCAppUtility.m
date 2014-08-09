@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "AppUtility.h"
+#import "GCAppUtility.h"
 
-@implementation AppUtility
+@implementation GCAppUtility
 
 #pragma mark - Basic Setup
 -(void)ApplicationSetupWithProductionMode:(BOOL)mode

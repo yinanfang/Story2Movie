@@ -1,5 +1,5 @@
 //
-//  SectionImageView.h
+//  GalleryImageView.h
 //  Story2Movie
 //
 //  Created by Golden Compass on 8/4/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SectionImageView : UIImageView
+@interface GCGalleryImageView : UIImageView
 
 @end

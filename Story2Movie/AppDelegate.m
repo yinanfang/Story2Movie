@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Initialize Utility object
-    utility = [[AppUtility alloc] init];
+    utility = [[GCAppUtility alloc] init];
     [utility ApplicationSetupWithProductionMode:NO];
     
     // Initialize window and set background
@@ -27,14 +27,14 @@
     {
         DDLogVerbose(@"It's NOT First Launch. Presenting Gallery...");
         // Set root view controller
-        self.window.rootViewController = [[GalleryViewController alloc] init];
+        self.window.rootViewController = [[GCGalleryViewController alloc] init];
     }else{
         DDLogVerbose(@"It's First Launch. Presenting Guided Tour...");
         // Set the First Launch BOOL
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HasShownTour];
         [[NSUserDefaults standardUserDefaults] synchronize];
         // Set root view controller
-        self.window.rootViewController = [[GuidedTourViewController alloc] init];
+        self.window.rootViewController = [[GCGuidedTourViewController alloc] init];
     }
     
     // Display view

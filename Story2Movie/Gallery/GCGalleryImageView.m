@@ -1,14 +1,14 @@
 //
-//  TourPageControl.m
+//  GalleryImageView.m
 //  Story2Movie
 //
-//  Created by Golden Compass on 8/5/14.
+//  Created by Golden Compass on 8/4/14.
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "TourPageControl.h"
+#import "GCGalleryImageView.h"
 
-@implementation TourPageControl
+@implementation GCGalleryImageView
 
 - (id)initWithFrame:(CGRect)frame
 {

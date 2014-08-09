@@ -1,14 +1,14 @@
 //
-//  GalleryPageControl.m
+//  GalleryScrollView.m
 //  Story2Movie
 //
 //  Created by Golden Compass on 8/4/14.
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "GalleryPageControl.h"
+#import "GCGalleryScrollView.h"
 
-@implementation GalleryPageControl
+@implementation GCGalleryScrollView
 
 - (id)initWithFrame:(CGRect)frame
 {

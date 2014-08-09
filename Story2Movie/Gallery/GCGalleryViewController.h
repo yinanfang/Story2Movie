@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GalleryViewController : UIViewController
+@interface GCGalleryViewController : UIViewController
 
 @end

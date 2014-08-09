@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 
 // AppUtility
-#import "AppConfig.h"
-#import "Constant.h"
+#import "GCAppConfig.h"
+#import "GCConstant.h"
 
 // CocoaLumberjack
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
-#import "CustomLogFormatters.h"
+#import "GCCustomLogFormatters.h"
 
 // AFNetworking
 #import "AFNetworking.h"
@@ -25,7 +25,7 @@
 // Masonry
 #import "Masonry.h"
 
-@interface AppUtility : NSObject
+@interface GCAppUtility : NSObject
 
 #pragma mark - Basic Setup
 -(void)ApplicationSetupWithProductionMode:(BOOL)mode;

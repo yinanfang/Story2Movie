@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TourScrollView : UIScrollView
+@interface GCTourScrollView : UIScrollView
 
 @property NSMutableArray *tourImages_array;
 @property UIViewController *parentController;

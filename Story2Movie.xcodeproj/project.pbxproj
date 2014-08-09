@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		A78B21EC316E49589E7FDED0 /* libPods-Story2Movie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */; };
-		D487BE1C1990735B006498A8 /* SectionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE1B1990735B006498A8 /* SectionScrollView.m */; };
-		D487BE1F19907386006498A8 /* SectionImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE1E19907386006498A8 /* SectionImageView.m */; };
-		D487BE2E199073C1006498A8 /* GalleryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE2D199073C1006498A8 /* GalleryScrollView.m */; };
-		D487BE31199073E6006498A8 /* GalleryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE30199073E6006498A8 /* GalleryImageView.m */; };
-		D487BE3419907404006498A8 /* GalleryPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE3319907404006498A8 /* GalleryPageControl.m */; };
-		D487BE3719909264006498A8 /* TourPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE3619909264006498A8 /* TourPageControl.m */; };
+		D487BE1C1990735B006498A8 /* GCSectionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE1B1990735B006498A8 /* GCSectionScrollView.m */; };
+		D487BE1F19907386006498A8 /* GCSectionImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE1E19907386006498A8 /* GCSectionImageView.m */; };
+		D487BE2E199073C1006498A8 /* GCGalleryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE2D199073C1006498A8 /* GCGalleryScrollView.m */; };
+		D487BE31199073E6006498A8 /* GCGalleryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE30199073E6006498A8 /* GCGalleryImageView.m */; };
+		D487BE3419907404006498A8 /* GCGalleryPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE3319907404006498A8 /* GCGalleryPageControl.m */; };
+		D487BE3719909264006498A8 /* GCTourPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D487BE3619909264006498A8 /* GCTourPageControl.m */; };
 		D487BE3E199096EF006498A8 /* tour_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE38199096EF006498A8 /* tour_0@2x.png */; };
 		D487BE3F199096EF006498A8 /* tour_0@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE39199096EF006498A8 /* tour_0@R4.png */; };
 		D487BE40199096EF006498A8 /* tour_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3A199096EF006498A8 /* tour_1@2x.png */; };
 		D487BE41199096EF006498A8 /* tour_1@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3B199096EF006498A8 /* tour_1@R4.png */; };
 		D487BE42199096EF006498A8 /* tour_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3C199096EF006498A8 /* tour_2@2x.png */; };
 		D487BE43199096EF006498A8 /* tour_2@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = D487BE3D199096EF006498A8 /* tour_2@R4.png */; };
-		D4C59FBE198C9401000FD7E8 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FBD198C9401000FD7E8 /* AppUtility.m */; };
-		D4C59FC1198C9413000FD7E8 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC0198C9413000FD7E8 /* AppConfig.m */; };
-		D4C59FC4198C9422000FD7E8 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC3198C9422000FD7E8 /* Constant.m */; };
-		D4C59FC7198C9434000FD7E8 /* CustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC6198C9434000FD7E8 /* CustomLogFormatters.m */; };
-		D4C59FCA198C9683000FD7E8 /* GuidedTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */; };
-		D4C59FCD198C96D8000FD7E8 /* TourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */; };
-		D4C59FD0198C970C000FD7E8 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */; };
+		D4C59FBE198C9401000FD7E8 /* GCAppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FBD198C9401000FD7E8 /* GCAppUtility.m */; };
+		D4C59FC1198C9413000FD7E8 /* GCAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC0198C9413000FD7E8 /* GCAppConfig.m */; };
+		D4C59FC4198C9422000FD7E8 /* GCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC3198C9422000FD7E8 /* GCConstant.m */; };
+		D4C59FC7198C9434000FD7E8 /* GCCustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC6198C9434000FD7E8 /* GCCustomLogFormatters.m */; };
+		D4C59FCA198C9683000FD7E8 /* GCGuidedTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC9198C9683000FD7E8 /* GCGuidedTourViewController.m */; };
+		D4C59FCD198C96D8000FD7E8 /* GCTourScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FCC198C96D8000FD7E8 /* GCTourScrollView.m */; };
+		D4C59FD0198C970C000FD7E8 /* GCGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FCF198C970C000FD7E8 /* GCGalleryViewController.m */; };
 		D4FD9B7D198C8D4600927FDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7C198C8D4600927FDC /* Foundation.framework */; };
 		D4FD9B7F198C8D4600927FDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */; };
 		D4FD9B81198C8D4600927FDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B80198C8D4600927FDC /* UIKit.framework */; };
@@ -54,38 +54,38 @@
 /* Begin PBXFileReference section */
 		90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Story2Movie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story2Movie.xcconfig"; path = "Pods/Pods-Story2Movie.xcconfig"; sourceTree = "<group>"; };
-		D487BE1A1990735B006498A8 /* SectionScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionScrollView.h; path = Gallery/SectionScrollView.h; sourceTree = "<group>"; };
-		D487BE1B1990735B006498A8 /* SectionScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionScrollView.m; path = Gallery/SectionScrollView.m; sourceTree = "<group>"; };
-		D487BE1D19907386006498A8 /* SectionImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionImageView.h; path = Gallery/SectionImageView.h; sourceTree = "<group>"; };
-		D487BE1E19907386006498A8 /* SectionImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionImageView.m; path = Gallery/SectionImageView.m; sourceTree = "<group>"; };
-		D487BE2C199073C1006498A8 /* GalleryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryScrollView.h; path = Gallery/GalleryScrollView.h; sourceTree = "<group>"; };
-		D487BE2D199073C1006498A8 /* GalleryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryScrollView.m; path = Gallery/GalleryScrollView.m; sourceTree = "<group>"; };
-		D487BE2F199073E6006498A8 /* GalleryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryImageView.h; path = Gallery/GalleryImageView.h; sourceTree = "<group>"; };
-		D487BE30199073E6006498A8 /* GalleryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryImageView.m; path = Gallery/GalleryImageView.m; sourceTree = "<group>"; };
-		D487BE3219907404006498A8 /* GalleryPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryPageControl.h; path = Gallery/GalleryPageControl.h; sourceTree = "<group>"; };
-		D487BE3319907404006498A8 /* GalleryPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryPageControl.m; path = Gallery/GalleryPageControl.m; sourceTree = "<group>"; };
-		D487BE3519909264006498A8 /* TourPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TourPageControl.h; path = GuidedTour/TourPageControl.h; sourceTree = "<group>"; };
-		D487BE3619909264006498A8 /* TourPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TourPageControl.m; path = GuidedTour/TourPageControl.m; sourceTree = "<group>"; };
+		D487BE1A1990735B006498A8 /* GCSectionScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSectionScrollView.h; path = Gallery/GCSectionScrollView.h; sourceTree = "<group>"; };
+		D487BE1B1990735B006498A8 /* GCSectionScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSectionScrollView.m; path = Gallery/GCSectionScrollView.m; sourceTree = "<group>"; };
+		D487BE1D19907386006498A8 /* GCSectionImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSectionImageView.h; path = Gallery/GCSectionImageView.h; sourceTree = "<group>"; };
+		D487BE1E19907386006498A8 /* GCSectionImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSectionImageView.m; path = Gallery/GCSectionImageView.m; sourceTree = "<group>"; };
+		D487BE2C199073C1006498A8 /* GCGalleryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCGalleryScrollView.h; path = Gallery/GCGalleryScrollView.h; sourceTree = "<group>"; };
+		D487BE2D199073C1006498A8 /* GCGalleryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCGalleryScrollView.m; path = Gallery/GCGalleryScrollView.m; sourceTree = "<group>"; };
+		D487BE2F199073E6006498A8 /* GCGalleryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCGalleryImageView.h; path = Gallery/GCGalleryImageView.h; sourceTree = "<group>"; };
+		D487BE30199073E6006498A8 /* GCGalleryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCGalleryImageView.m; path = Gallery/GCGalleryImageView.m; sourceTree = "<group>"; };
+		D487BE3219907404006498A8 /* GCGalleryPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCGalleryPageControl.h; path = Gallery/GCGalleryPageControl.h; sourceTree = "<group>"; };
+		D487BE3319907404006498A8 /* GCGalleryPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCGalleryPageControl.m; path = Gallery/GCGalleryPageControl.m; sourceTree = "<group>"; };
+		D487BE3519909264006498A8 /* GCTourPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCTourPageControl.h; path = GuidedTour/GCTourPageControl.h; sourceTree = "<group>"; };
+		D487BE3619909264006498A8 /* GCTourPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCTourPageControl.m; path = GuidedTour/GCTourPageControl.m; sourceTree = "<group>"; };
 		D487BE38199096EF006498A8 /* tour_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_0@2x.png"; path = "AppImages/Tour/tour_0@2x.png"; sourceTree = "<group>"; };
 		D487BE39199096EF006498A8 /* tour_0@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_0@R4.png"; path = "AppImages/Tour/tour_0@R4.png"; sourceTree = "<group>"; };
 		D487BE3A199096EF006498A8 /* tour_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_1@2x.png"; path = "AppImages/Tour/tour_1@2x.png"; sourceTree = "<group>"; };
 		D487BE3B199096EF006498A8 /* tour_1@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_1@R4.png"; path = "AppImages/Tour/tour_1@R4.png"; sourceTree = "<group>"; };
 		D487BE3C199096EF006498A8 /* tour_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_2@2x.png"; path = "AppImages/Tour/tour_2@2x.png"; sourceTree = "<group>"; };
 		D487BE3D199096EF006498A8 /* tour_2@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tour_2@R4.png"; path = "AppImages/Tour/tour_2@R4.png"; sourceTree = "<group>"; };
-		D4C59FBC198C9401000FD7E8 /* AppUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppUtility.h; path = AppUtility/AppUtility.h; sourceTree = "<group>"; };
-		D4C59FBD198C9401000FD7E8 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppUtility.m; path = AppUtility/AppUtility.m; sourceTree = "<group>"; };
-		D4C59FBF198C9413000FD7E8 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = AppUtility/AppConfig.h; sourceTree = "<group>"; };
-		D4C59FC0198C9413000FD7E8 /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppConfig.m; path = AppUtility/AppConfig.m; sourceTree = "<group>"; };
-		D4C59FC2198C9422000FD7E8 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constant.h; path = AppUtility/Constant.h; sourceTree = "<group>"; };
-		D4C59FC3198C9422000FD7E8 /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constant.m; path = AppUtility/Constant.m; sourceTree = "<group>"; };
-		D4C59FC5198C9434000FD7E8 /* CustomLogFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomLogFormatters.h; path = AppUtility/CustomLogFormatters.h; sourceTree = "<group>"; };
-		D4C59FC6198C9434000FD7E8 /* CustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomLogFormatters.m; path = AppUtility/CustomLogFormatters.m; sourceTree = "<group>"; };
-		D4C59FC8198C9683000FD7E8 /* GuidedTourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuidedTourViewController.h; path = GuidedTour/GuidedTourViewController.h; sourceTree = "<group>"; };
-		D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuidedTourViewController.m; path = GuidedTour/GuidedTourViewController.m; sourceTree = "<group>"; };
-		D4C59FCB198C96D8000FD7E8 /* TourScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TourScrollView.h; path = GuidedTour/TourScrollView.h; sourceTree = "<group>"; };
-		D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TourScrollView.m; path = GuidedTour/TourScrollView.m; sourceTree = "<group>"; };
-		D4C59FCE198C970C000FD7E8 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryViewController.h; path = Gallery/GalleryViewController.h; sourceTree = "<group>"; };
-		D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryViewController.m; path = Gallery/GalleryViewController.m; sourceTree = "<group>"; };
+		D4C59FBC198C9401000FD7E8 /* GCAppUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppUtility.h; path = AppUtility/GCAppUtility.h; sourceTree = "<group>"; };
+		D4C59FBD198C9401000FD7E8 /* GCAppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppUtility.m; path = AppUtility/GCAppUtility.m; sourceTree = "<group>"; };
+		D4C59FBF198C9413000FD7E8 /* GCAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppConfig.h; path = AppUtility/GCAppConfig.h; sourceTree = "<group>"; };
+		D4C59FC0198C9413000FD7E8 /* GCAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppConfig.m; path = AppUtility/GCAppConfig.m; sourceTree = "<group>"; };
+		D4C59FC2198C9422000FD7E8 /* GCConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCConstant.h; path = AppUtility/GCConstant.h; sourceTree = "<group>"; };
+		D4C59FC3198C9422000FD7E8 /* GCConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCConstant.m; path = AppUtility/GCConstant.m; sourceTree = "<group>"; };
+		D4C59FC5198C9434000FD7E8 /* GCCustomLogFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCCustomLogFormatters.h; path = AppUtility/GCCustomLogFormatters.h; sourceTree = "<group>"; };
+		D4C59FC6198C9434000FD7E8 /* GCCustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCCustomLogFormatters.m; path = AppUtility/GCCustomLogFormatters.m; sourceTree = "<group>"; };
+		D4C59FC8198C9683000FD7E8 /* GCGuidedTourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCGuidedTourViewController.h; path = GuidedTour/GCGuidedTourViewController.h; sourceTree = "<group>"; };
+		D4C59FC9198C9683000FD7E8 /* GCGuidedTourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCGuidedTourViewController.m; path = GuidedTour/GCGuidedTourViewController.m; sourceTree = "<group>"; };
+		D4C59FCB198C96D8000FD7E8 /* GCTourScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCTourScrollView.h; path = GuidedTour/GCTourScrollView.h; sourceTree = "<group>"; };
+		D4C59FCC198C96D8000FD7E8 /* GCTourScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCTourScrollView.m; path = GuidedTour/GCTourScrollView.m; sourceTree = "<group>"; };
+		D4C59FCE198C970C000FD7E8 /* GCGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCGalleryViewController.h; path = Gallery/GCGalleryViewController.h; sourceTree = "<group>"; };
+		D4C59FCF198C970C000FD7E8 /* GCGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCGalleryViewController.m; path = Gallery/GCGalleryViewController.m; sourceTree = "<group>"; };
 		D4FD9B79198C8D4600927FDC /* Story2Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Story2Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FD9B7C198C8D4600927FDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,14 +140,14 @@
 		D4C59FB9198C92F1000FD7E8 /* AppUtility */ = {
 			isa = PBXGroup;
 			children = (
-				D4C59FBC198C9401000FD7E8 /* AppUtility.h */,
-				D4C59FBD198C9401000FD7E8 /* AppUtility.m */,
-				D4C59FBF198C9413000FD7E8 /* AppConfig.h */,
-				D4C59FC0198C9413000FD7E8 /* AppConfig.m */,
-				D4C59FC2198C9422000FD7E8 /* Constant.h */,
-				D4C59FC3198C9422000FD7E8 /* Constant.m */,
-				D4C59FC5198C9434000FD7E8 /* CustomLogFormatters.h */,
-				D4C59FC6198C9434000FD7E8 /* CustomLogFormatters.m */,
+				D4C59FBC198C9401000FD7E8 /* GCAppUtility.h */,
+				D4C59FBD198C9401000FD7E8 /* GCAppUtility.m */,
+				D4C59FBF198C9413000FD7E8 /* GCAppConfig.h */,
+				D4C59FC0198C9413000FD7E8 /* GCAppConfig.m */,
+				D4C59FC2198C9422000FD7E8 /* GCConstant.h */,
+				D4C59FC3198C9422000FD7E8 /* GCConstant.m */,
+				D4C59FC5198C9434000FD7E8 /* GCCustomLogFormatters.h */,
+				D4C59FC6198C9434000FD7E8 /* GCCustomLogFormatters.m */,
 			);
 			name = AppUtility;
 			sourceTree = "<group>";
@@ -155,18 +155,18 @@
 		D4C59FBA198C92FA000FD7E8 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				D4C59FCE198C970C000FD7E8 /* GalleryViewController.h */,
-				D4C59FCF198C970C000FD7E8 /* GalleryViewController.m */,
-				D487BE1A1990735B006498A8 /* SectionScrollView.h */,
-				D487BE1B1990735B006498A8 /* SectionScrollView.m */,
-				D487BE1D19907386006498A8 /* SectionImageView.h */,
-				D487BE1E19907386006498A8 /* SectionImageView.m */,
-				D487BE2C199073C1006498A8 /* GalleryScrollView.h */,
-				D487BE2D199073C1006498A8 /* GalleryScrollView.m */,
-				D487BE2F199073E6006498A8 /* GalleryImageView.h */,
-				D487BE30199073E6006498A8 /* GalleryImageView.m */,
-				D487BE3219907404006498A8 /* GalleryPageControl.h */,
-				D487BE3319907404006498A8 /* GalleryPageControl.m */,
+				D4C59FCE198C970C000FD7E8 /* GCGalleryViewController.h */,
+				D4C59FCF198C970C000FD7E8 /* GCGalleryViewController.m */,
+				D487BE1A1990735B006498A8 /* GCSectionScrollView.h */,
+				D487BE1B1990735B006498A8 /* GCSectionScrollView.m */,
+				D487BE1D19907386006498A8 /* GCSectionImageView.h */,
+				D487BE1E19907386006498A8 /* GCSectionImageView.m */,
+				D487BE2C199073C1006498A8 /* GCGalleryScrollView.h */,
+				D487BE2D199073C1006498A8 /* GCGalleryScrollView.m */,
+				D487BE2F199073E6006498A8 /* GCGalleryImageView.h */,
+				D487BE30199073E6006498A8 /* GCGalleryImageView.m */,
+				D487BE3219907404006498A8 /* GCGalleryPageControl.h */,
+				D487BE3319907404006498A8 /* GCGalleryPageControl.m */,
 			);
 			name = Gallery;
 			sourceTree = "<group>";
@@ -174,12 +174,12 @@
 		D4C59FBB198C9307000FD7E8 /* GuidedTour */ = {
 			isa = PBXGroup;
 			children = (
-				D4C59FC8198C9683000FD7E8 /* GuidedTourViewController.h */,
-				D4C59FC9198C9683000FD7E8 /* GuidedTourViewController.m */,
-				D4C59FCB198C96D8000FD7E8 /* TourScrollView.h */,
-				D4C59FCC198C96D8000FD7E8 /* TourScrollView.m */,
-				D487BE3519909264006498A8 /* TourPageControl.h */,
-				D487BE3619909264006498A8 /* TourPageControl.m */,
+				D4C59FC8198C9683000FD7E8 /* GCGuidedTourViewController.h */,
+				D4C59FC9198C9683000FD7E8 /* GCGuidedTourViewController.m */,
+				D4C59FCB198C96D8000FD7E8 /* GCTourScrollView.h */,
+				D4C59FCC198C96D8000FD7E8 /* GCTourScrollView.m */,
+				D487BE3519909264006498A8 /* GCTourPageControl.h */,
+				D487BE3619909264006498A8 /* GCTourPageControl.m */,
 			);
 			name = GuidedTour;
 			sourceTree = "<group>";
@@ -319,6 +319,7 @@
 		D4FD9B71198C8D4600927FDC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GC;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Golden Compass";
 				TargetAttributes = {
@@ -412,21 +413,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C59FC7198C9434000FD7E8 /* CustomLogFormatters.m in Sources */,
-				D4C59FBE198C9401000FD7E8 /* AppUtility.m in Sources */,
-				D4C59FC1198C9413000FD7E8 /* AppConfig.m in Sources */,
-				D487BE1C1990735B006498A8 /* SectionScrollView.m in Sources */,
-				D487BE2E199073C1006498A8 /* GalleryScrollView.m in Sources */,
+				D4C59FC7198C9434000FD7E8 /* GCCustomLogFormatters.m in Sources */,
+				D4C59FBE198C9401000FD7E8 /* GCAppUtility.m in Sources */,
+				D4C59FC1198C9413000FD7E8 /* GCAppConfig.m in Sources */,
+				D487BE1C1990735B006498A8 /* GCSectionScrollView.m in Sources */,
+				D487BE2E199073C1006498A8 /* GCGalleryScrollView.m in Sources */,
 				D4FD9B8D198C8D4600927FDC /* AppDelegate.m in Sources */,
-				D4C59FC4198C9422000FD7E8 /* Constant.m in Sources */,
+				D4C59FC4198C9422000FD7E8 /* GCConstant.m in Sources */,
 				D4FD9B89198C8D4600927FDC /* main.m in Sources */,
-				D4C59FCA198C9683000FD7E8 /* GuidedTourViewController.m in Sources */,
-				D487BE3719909264006498A8 /* TourPageControl.m in Sources */,
-				D487BE3419907404006498A8 /* GalleryPageControl.m in Sources */,
-				D4C59FCD198C96D8000FD7E8 /* TourScrollView.m in Sources */,
-				D4C59FD0198C970C000FD7E8 /* GalleryViewController.m in Sources */,
-				D487BE31199073E6006498A8 /* GalleryImageView.m in Sources */,
-				D487BE1F19907386006498A8 /* SectionImageView.m in Sources */,
+				D4C59FCA198C9683000FD7E8 /* GCGuidedTourViewController.m in Sources */,
+				D487BE3719909264006498A8 /* GCTourPageControl.m in Sources */,
+				D487BE3419907404006498A8 /* GCGalleryPageControl.m in Sources */,
+				D4C59FCD198C96D8000FD7E8 /* GCTourScrollView.m in Sources */,
+				D4C59FD0198C970C000FD7E8 /* GCGalleryViewController.m in Sources */,
+				D487BE31199073E6006498A8 /* GCGalleryImageView.m in Sources */,
+				D487BE1F19907386006498A8 /* GCSectionImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "Constant.h"
+#import "GCConstant.h"
 
 @implementation Constant
 
