@@ -21,7 +21,9 @@
     if (self) {
         // Add to parentController in order to place constrait
         self.pagingEnabled = YES;
+        self.showsHorizontalScrollIndicator = NO;
         self.backgroundColor = [UIColor blackColor];
+        [self setContentOffset:CGPointFromString(@"200")];
         [self fetchImageViews];
         [parentController.view addSubview:self];
         [self mas_makeConstraints:^(MASConstraintMaker *make){
@@ -54,38 +56,11 @@
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(self.mas_right);
             }];
+            [self addStartButtonOnImageView:imageView];
         }else{
             previousImageView = imageView;
         }
     }
-    
-    
-    
-    
-//    UIImageView *imageView = [tourImages_array objectAtIndex:0];
-//    [self addSubview:imageView];
-//    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidth, ScreenHeight)]);
-//        make.top.equalTo(self.mas_top);
-//        make.left.equalTo(self.mas_left).offset(0);
-//    }];
-//    
-//    UIImageView *imageView2 = [tourImages_array objectAtIndex:1];
-//    [self addSubview:imageView2];
-//    [imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidth, ScreenHeight)]);
-//        make.top.equalTo(self.mas_top);
-//        make.left.equalTo(imageView.mas_right).offset(0);
-//    }];
-//    
-//    UIImageView *imageView3 = [tourImages_array objectAtIndex:2];
-//    [self addSubview:imageView3];
-//    [imageView3 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidth, ScreenHeight)]);
-//        make.top.equalTo(self.mas_top);
-//        make.left.equalTo(imageView2.mas_right).offset(0);
-//        make.right.equalTo(self.mas_right);
-//    }];
 }
 
 - (void)fetchImageViews
@@ -115,8 +90,33 @@
     }
 }
 
+-(void)addStartButtonOnImageView:(UIImageView *)lastImageView
+{
+    UIButton *btn_start = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btn_start setTitle:@"Start" forState:UIControlStateNormal];
+    btn_start.titleLabel.font = [UIFont fontWithName:@"Arial" size:30.0];
+    btn_start.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    btn_start.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [btn_start setTintColor:[utility colorWithRGBAinHex:0xE0E0E0FF]];
+    [btn_start addTarget:self action:@selector(enterMenuViewController) forControlEvents:UIControlEventTouchUpInside];
+    btn_start.layer.borderWidth = 3.0f;
+    btn_start.layer.borderColor = [utility colorWithRGBAinHex:0xE0E0E0FF].CGColor;
+    btn_start.layer.cornerRadius = 20.0f;
+    [self addSubview:btn_start]; //TODO: add to lastImage? response chain
+    [btn_start mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(100, 50)]);
+        make.bottom.equalTo(lastImageView.mas_bottom).offset(-70);
+        make.right.equalTo(lastImageView.mas_right).offset(-110);
+    }];
+    
 
+}
 
+-(void)enterMenuViewController
+{
+    NSLog(@"Pressed Start button...");
+    [parentController presentViewController:[[GCGalleryViewController alloc] init] animated:YES completion:nil];
+}
 
 
 

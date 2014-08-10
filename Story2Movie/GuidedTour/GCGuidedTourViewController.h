@@ -10,7 +10,7 @@
 #import "GCTourScrollView.h"
 #import "GCTourPageControl.h"
 
-@interface GCGuidedTourViewController : UIViewController
+@interface GCGuidedTourViewController : UIViewController <UIScrollViewDelegate>
 
 #pragma mark - AppUtility
 @property GCAppUtility *utility;

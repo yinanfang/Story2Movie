@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCGalleryViewController.h"
 
 @interface GCTourScrollView : UIScrollView
 

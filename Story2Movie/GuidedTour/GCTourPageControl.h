@@ -10,4 +10,8 @@
 
 @interface GCTourPageControl : UIPageControl
 
+@property UIViewController *parentController;
+
+-(id)initWithParentController:(UIViewController *)controller;
+
 @end
