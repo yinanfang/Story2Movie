@@ -15,7 +15,6 @@
 #pragma mark - AppUtility
 @property GCAppUtility *utility;
 
-@property NSMutableArray *tourImages_array;
 @property GCTourScrollView *tourScrollView;
 @property GCTourPageControl *tourPageControl;
 

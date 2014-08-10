@@ -29,6 +29,8 @@ NSString *const Section03 = @"03_About";
     DDLogVerbose(@"Initializing App Configuration...");
     
     // Set up the GalleryImageWidth and GalleryImageHeight according to device height
+    NSScreenSizeWithInset = [NSValue valueWithCGSize:CGSizeMake(ScreenWidth-2, ScreenHeight-2)];
+    
     GalleryImageWidth = 145;
     if (IS_IPHONE4S) {
         GalleryImageHeight = 215;

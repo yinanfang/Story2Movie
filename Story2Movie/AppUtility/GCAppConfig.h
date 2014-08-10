@@ -24,6 +24,7 @@ FOUNDATION_EXPORT NSString *const Section02;
 
 
 #pragma mark - Gallery item width and height
+static NSValue *NSScreenSizeWithInset;
 static CGFloat GalleryImageWidth;
 static CGFloat GalleryImageHeight;
 

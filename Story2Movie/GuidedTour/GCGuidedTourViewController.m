@@ -14,7 +14,7 @@
 
 @implementation GCGuidedTourViewController
 @synthesize utility;
-@synthesize tourImages_array, tourScrollView, tourPageControl;
+@synthesize tourScrollView, tourPageControl;
 
 - (void)viewDidLoad
 {
@@ -24,22 +24,14 @@
     // Initialize Utility object
     utility = [[GCAppUtility alloc] init];
         
-    [self fetchImages];
     
-    tourScrollView = [[GCTourScrollView alloc] initWithImageArray:tourImages_array ParentController:self];
-    [self.view addSubview:tourScrollView];
+    
+    tourScrollView = [[GCTourScrollView alloc] initWithParentController:self];
+    [tourScrollView setupTourScrollView];
+    
+    
 }
-- (void)fetchImages
-{
-    tourImages_array = [[NSMutableArray alloc] init];
-    for (int i = 0; i < count_tourPages; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"tour_%i", i];
-        UIImageView *imageView = [utility getFullScreenImageView:imageName];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.clipsToBounds = YES;
-        [tourImages_array addObject:imageView];
-    }
-}
+
 
 // Hide the status bar on the tour page
 - (BOOL)prefersStatusBarHidden

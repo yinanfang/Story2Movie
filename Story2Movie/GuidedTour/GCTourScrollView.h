@@ -10,12 +10,15 @@
 
 @interface GCTourScrollView : UIScrollView
 
+#pragma mark - AppUtility
+@property GCAppUtility *utility;
+
 @property NSMutableArray *tourImages_array;
 @property UIViewController *parentController;
 @property UIView *contentView;
 
 
--(id)initWithImageArray:(NSMutableArray *)img_arr ParentController:(UIViewController *)controller;
-
+-(id)initWithParentController:(UIViewController *)controller;
+-(void)setupTourScrollView;
 
 @end
