@@ -11,15 +11,6 @@
 @implementation GCTourPageControl
 @synthesize parentController;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (id)initWithParentController:(UIViewController *)controller
 {
     parentController = controller;

@@ -43,7 +43,7 @@
         newPageNumber = (scrollView.contentOffset.x/ScreenWidth)+0.5;
     }else{
         DDLogVerbose(@"swipe motion");
-        newPageNumber = (velocity.x > 0) ? tourPageControl.currentPage+1 : tourPageControl.currentPage-1;
+        newPageNumber = (velocity.x > 0) ? (int)tourPageControl.currentPage+1 : (int)tourPageControl.currentPage-1;
         DDLogVerbose(@"page number before addjust: %i", newPageNumber);
         if (newPageNumber < 0) {
             newPageNumber = 0;

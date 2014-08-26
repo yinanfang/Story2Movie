@@ -14,11 +14,11 @@
 
 - (id)initWithParentController:(UIViewController *)controller
 {
-    // Initialize Utility object
-    utility = [[GCAppUtility alloc] init];
     parentController = controller;
     self = [super init];
     if (self) {
+        // Initialize Utility object
+        utility = [[GCAppUtility alloc] init];
         // Add to parentController in order to place constrait
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
@@ -42,6 +42,11 @@
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidth, ScreenHeight)]);
             make.top.equalTo(self.mas_top);
+            
+            MASConstraint *testConstraint = make.top.equalTo(self.mas_top);
+            NSLayoutConstraint *testNSConstraint;
+            testConstraint = [
+
         }];
         if (!previousImageView) { // First one, pin to top
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
