@@ -26,17 +26,15 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:HasShownTour])
     {
         DDLogVerbose(@"It's NOT First Launch. Presenting Gallery...");
-        // Set root view controller
-        self.window.rootViewController = [[GCGalleryViewController alloc] init];
     }else{
         DDLogVerbose(@"It's First Launch. Presenting Guided Tour...");
         // Set the First Launch BOOL
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HasShownTour];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        // Set root view controller
-        self.window.rootViewController = [[GCGuidedTourViewController alloc] init];
     }
     
+    // Set root view controller
+    self.window.rootViewController = [[GCBookController alloc] init];
     // Display view
     [self.window makeKeyAndVisible];
     DDLogInfo(@"========== End of AppDelegate ==========");

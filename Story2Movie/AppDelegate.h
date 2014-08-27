@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GCGuidedTourViewController.h"
-#import "GCGalleryViewController.h"
+#import "GCBookController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

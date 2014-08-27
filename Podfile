@@ -5,12 +5,16 @@ platform :ios, "7.0"
 target "Story2Movie" do
     pod "AFNetworking"
     pod 'CocoaLumberjack'
+    pod 'Facebook-iOS-SDK'
+    pod 'FlatUIKit'
     pod 'LBBlurredImage'
     pod 'Mantle'
-    pod 'MWPhotoBrowser'
     pod 'Masonry'
-    pod 'TSMessages'
+    pod 'pop'
     pod 'ReactiveCocoa'
+    pod 'Shimmer'
+    pod 'TSMessages'
+    pod 'Tweaks'
 
 end
 

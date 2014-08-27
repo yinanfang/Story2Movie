@@ -32,7 +32,7 @@ static CGFloat GalleryImageHeight;
 
 // Don't change this
 #pragma mark - CocoaLumberjack Logging Constant
-#import "DDLog.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #if DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else

@@ -13,7 +13,7 @@
 #import "GCConstant.h"
 
 // CocoaLumberjack
-#import <DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import <DDTTYLogger.h>
 #import <DDASLLogger.h>
 #import <DDFileLogger.h>

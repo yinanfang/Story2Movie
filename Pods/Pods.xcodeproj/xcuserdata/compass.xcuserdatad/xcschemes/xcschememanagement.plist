@@ -9,22 +9,37 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Story2Movie-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Story2Movie-CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Story2Movie-DACircularProgress.xcscheme</key>
+		<key>Pods-Story2Movie-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Story2Movie-MBProgressHUD.xcscheme</key>
+		<key>Pods-Story2Movie-FlatUIKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Story2Movie-MWPhotoBrowser.xcscheme</key>
+		<key>Pods-Story2Movie-HexColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Story2Movie-LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Story2Movie-Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,12 +49,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Story2Movie-PSTCollectionView.xcscheme</key>
+		<key>Pods-Story2Movie-ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Story2Movie-SDWebImage.xcscheme</key>
+		<key>Pods-Story2Movie-Shimmer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Story2Movie-TSMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Story2Movie-Tweaks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Story2Movie-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +82,77 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>12BD088E1F974BFEB31DFFDF</key>
+		<key>1F248F439C4745DA93C5042D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>33BF774FA9864E70A0C12A5B</key>
+		<key>28EF1FA3EDE1471F85DBC116</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34F78A935107446A9276611C</key>
+		<key>35A7BBC4BD354D539CC5BD6D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5CE4EB9CFF9C483D89705AA9</key>
+		<key>36C22B72638E45B99517C7C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0329CA8F96A4D669CE07C45</key>
+		<key>511F6BA1BC8246FD87E643C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B9367C518AB64C79A8DEDF4B</key>
+		<key>51A6D04E20374FE8A76ECA53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA36B61C5BB84374B48FB998</key>
+		<key>56CED8A6114A49CD9807BECD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F639B7A3BE2E4BB197728561</key>
+		<key>750209EE64984079A6D8152E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F809AA3A703743C696A916CD</key>
+		<key>901FD29605274AE88FDAD65A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>972BEA8158F94BC69B4E8A21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B63FFCE6EA06420097CD1BCD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8EBBB75631B44FA864DFE3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9F639BA48404435ADDDE8CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CBC5159BB9FB4475A353C3C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F01769A05D3E42278CC13C35</key>
 		<dict>
 			<key>primary</key>
 			<true/>
