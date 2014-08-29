@@ -13,8 +13,8 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+    // Include everything
+    #import "GCAppUtility.h"
 #endif
 
-
-// Include everything
-#import "GCAppUtility.h"

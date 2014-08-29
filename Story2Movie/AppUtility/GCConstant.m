@@ -10,23 +10,32 @@
 
 @implementation Constant
 
-#pragma mark - Screen width and height
-
-
 #pragma mark - Gesture Recognizer
 CGFloat const SWIPE_VELOCITY_THRESHOLD = 0.278f;
-
 
 #pragma mark - Others
 NSString *const HasShownTour = @"HasShownTour";
 
 
-
-
-+(void)setUpConstant
++ (Constant *)sharedInstance
 {
-    DDLogVerbose(@"Initializing constants...");
+    static Constant *shareInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareInstance = [[self alloc] init];
+    });
+    return shareInstance;
+}
 
+- (id)init
+{
+    DDLogVerbose(@"Initializing Constant...");
+    self = [super init];
+    if (self) {
+        // Initialize values
+        
+    }
+    return self;
 }
 
 @end

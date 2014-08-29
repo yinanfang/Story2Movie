@@ -19,6 +19,7 @@
 		D4DDFAC719AD57000010640E /* GCStoryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFAC619AD57000010640E /* GCStoryScrollView.m */; };
 		D4DDFACA19AD57870010640E /* GCStoryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFAC919AD57870010640E /* GCStoryImageView.m */; };
 		D4DDFACD19AD57B80010640E /* GCStoryVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFACC19AD57B80010640E /* GCStoryVideoView.m */; };
+		D4DDFAD019AD5FA90010640E /* GCBookImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFACF19AD5FA90010640E /* GCBookImageView.m */; };
 		D4FD9B7D198C8D4600927FDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7C198C8D4600927FDC /* Foundation.framework */; };
 		D4FD9B7F198C8D4600927FDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */; };
 		D4FD9B81198C8D4600927FDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B80198C8D4600927FDC /* UIKit.framework */; };
@@ -68,6 +69,8 @@
 		D4DDFAC919AD57870010640E /* GCStoryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryImageView.m; path = Story/GCStoryImageView.m; sourceTree = "<group>"; };
 		D4DDFACB19AD57B80010640E /* GCStoryVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryVideoView.h; path = Story/GCStoryVideoView.h; sourceTree = "<group>"; };
 		D4DDFACC19AD57B80010640E /* GCStoryVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryVideoView.m; path = Story/GCStoryVideoView.m; sourceTree = "<group>"; };
+		D4DDFACE19AD5FA90010640E /* GCBookImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCBookImageView.h; path = Book/GCBookImageView.h; sourceTree = "<group>"; };
+		D4DDFACF19AD5FA90010640E /* GCBookImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCBookImageView.m; path = Book/GCBookImageView.m; sourceTree = "<group>"; };
 		D4FD9B79198C8D4600927FDC /* Story2Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Story2Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FD9B7C198C8D4600927FDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,6 +143,8 @@
 				D4DDFAB119AD39F00010640E /* GCBookController.m */,
 				D4DDFAC219AD56C40010640E /* GCBookScrollView.h */,
 				D4DDFAC319AD56C40010640E /* GCBookScrollView.m */,
+				D4DDFACE19AD5FA90010640E /* GCBookImageView.h */,
+				D4DDFACF19AD5FA90010640E /* GCBookImageView.m */,
 				D4DDFABF19AD566D0010640E /* GCBookPageControl.h */,
 				D4DDFAC019AD566D0010640E /* GCBookPageControl.m */,
 			);
@@ -374,6 +379,7 @@
 				D4DDFAC419AD56C40010640E /* GCBookScrollView.m in Sources */,
 				D4C59FC7198C9434000FD7E8 /* GCCustomLogFormatters.m in Sources */,
 				D4DDFACA19AD57870010640E /* GCStoryImageView.m in Sources */,
+				D4DDFAD019AD5FA90010640E /* GCBookImageView.m in Sources */,
 				D4C59FBE198C9401000FD7E8 /* GCAppUtility.m in Sources */,
 				D4DDFAC719AD57000010640E /* GCStoryScrollView.m in Sources */,
 				D4C59FC1198C9413000FD7E8 /* GCAppConfig.m in Sources */,

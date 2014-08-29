@@ -13,7 +13,48 @@
 @end
 
 @implementation GCBookController
+@synthesize utility;
+@synthesize bookScrollView, bookPageControl;
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    DDLogInfo(@"====================  Entered main menu page  ====================");
+    
+    // Initialize Utility object
+    utility = [[GCAppUtility alloc] init];
+    
+    [self initBookController];
+}
+
+-(void)initBookController
+{
+    bookPageControl = [[GCBookPageControl alloc] initWithParentController:self];
+    bookScrollView = [[GCBookScrollView alloc] initWithParentController:self];
+}
+
+-(void)initBookScrollView
+{
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - General View Methods
+// Hide the status bar on the tour page
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -22,13 +63,6 @@
     }
     return self;
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

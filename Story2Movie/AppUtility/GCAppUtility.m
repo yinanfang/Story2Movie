@@ -24,8 +24,8 @@
         DDLogInfo(@"In Development mode with domain: %@", DevelopmentDomain);
         [defaults setObject:DevelopmentDomain forKey:@"current_domain"];
     }
-    [AppConfig setUpAppConfig];
-    [Constant setUpConstant];
+//    [AppConfig init];
+//    [Constant init];
 }
 
 -(void)setCachePolicy
@@ -57,7 +57,7 @@
     DDLogInfo(@"DDLogInfo");
     DDLogDebug(@"DDLogDebug");
     DDLogVerbose(@"DDLogVerbose");
-    LogTest(@"LogTest for XcodeColors");
+    DDLogTest(@"LogTest for XcodeColors");
     
     // DDASLLogger
     [DDLog addLogger:[DDASLLogger sharedInstance]];
