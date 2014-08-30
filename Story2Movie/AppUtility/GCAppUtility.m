@@ -10,6 +10,30 @@
 
 @implementation GCAppUtility
 
++ (GCAppUtility *)sharedInstance
+{
+    static GCAppUtility *shareInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareInstance = [[self alloc] init];
+    });
+    return shareInstance;
+}
+
+- (id)init
+{
+    DDLogVerbose(@"Initializing GCAppUtility...");
+    self = [super init];
+    if (self) {
+        // Initialize values
+        
+        // Set up the GalleryImageWidth and GalleryImageHeight according to device height
+        
+    }
+    return self;
+}
+
+
 #pragma mark - Basic Setup
 -(void)ApplicationSetupWithProductionMode:(BOOL)mode
 {
@@ -24,8 +48,6 @@
         DDLogInfo(@"In Development mode with domain: %@", DevelopmentDomain);
         [defaults setObject:DevelopmentDomain forKey:@"current_domain"];
     }
-//    [AppConfig init];
-//    [Constant init];
 }
 
 -(void)setCachePolicy

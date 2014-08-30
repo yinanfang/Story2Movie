@@ -18,5 +18,5 @@
 @property GCBookController *parentController;
 
 - (id)initWithParentController:(GCBookController *)controller;
-
+-(void)setupBookPageControl;
 @end

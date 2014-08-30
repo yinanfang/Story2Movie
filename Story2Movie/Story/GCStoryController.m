@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
+#import "GCBookController.h"
 #import "GCStoryController.h"
 
 @interface GCStoryController ()
@@ -13,6 +14,55 @@
 @end
 
 @implementation GCStoryController
+@synthesize utility;
+@synthesize parentController;
+@synthesize storyScrollViewArray, storyScrollView;
+
+- (id)initWithParentController:(GCBookController *)controller
+{
+    self = [super init];
+    if (self) {
+        // Get Utility object
+        utility = [GCAppUtility sharedInstance];
+        
+        // Initialization Variables
+        self.view.backgroundColor = [UIColor blackColor];
+        self.view.frame = CGRectMake(0, ScreenHeight-[[AppConfig sharedInstance] StoryImageHeight], ScreenWidth, [[AppConfig sharedInstance] StoryImageHeight]);
+        parentController = controller;
+        
+        // Empty Frame Initialization
+        storyScrollViewArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < [[AppConfig sharedInstance] bookCount]; i++) {
+            storyScrollView = [[GCStoryScrollView alloc] initWithParentController:self ScrollerNumber:i];
+            [storyScrollViewArray insertObject:storyScrollView atIndex:i];
+        }
+    }
+    return self;
+}
+
+
+
+
+-(void)willMoveToParentViewController:(UIViewController *)parent
+{
+    DDLogWarn(@"will move to parent view controller");
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    DDLogWarn(@"view did load");
+}
+
+-(void)didMoveToParentViewController:(UIViewController *)parent
+{
+    DDLogWarn(@"did move to parent view controller");
+}
+
+
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,12 +71,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

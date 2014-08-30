@@ -17,11 +17,11 @@
 {
     self = [super init];
     if (self) {
-        // Initialization code
+        // Initialization variables
         parentView = ParentView;
         
         // Customize Book Image View
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor lightGrayColor];
         self.layer.cornerRadius = 5;
         
         // Add book title with shimmer effect

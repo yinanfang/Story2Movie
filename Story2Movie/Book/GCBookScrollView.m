@@ -13,42 +13,44 @@
 @synthesize utility;
 @synthesize parentController, bookPageControl, manager, bookCount, bookCurrentPageNumber, bookNames, bookImageViews;
 
-
+#pragma mark - Blank Frame Initialization
 - (id)initWithParentController:(GCBookController *)controller
 {
-    self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
+    self = [super init];
     if (self) {
-        // Initialize Utility object
-        utility = [[GCAppUtility alloc] init];
+        // Get Utility object
+        utility = [GCAppUtility sharedInstance];
         
         // Initialization Variables
         parentController = controller;
-        bookPageControl = parentController.bookPageControl;
         manager = [AFHTTPRequestOperationManager manager];
         bookCount = [[AppConfig sharedInstance] bookCount];
         bookCurrentPageNumber = [[AppConfig sharedInstance] bookCurrentPageNumber];
         
         // Empty Frame Initialization
-        [self initWithBlankFrame];
+        self.pagingEnabled = YES;
+        self.delegate = self;
+        self.showsHorizontalScrollIndicator = YES;
+        self.showsVerticalScrollIndicator = NO;
+        self.backgroundColor = [UIColor clearColor];
+        [parentController.view addSubview:self];
+        [self mas_makeConstraints:^(MASConstraintMaker *make){
+            make.edges.equalTo(parentController.view);
+        }];
+        
+        // Observe value changes
+        [RACObserve(self, bookCount) subscribeNext:^(NSNumber *newBookCount){
+            [AppConfig sharedInstance].bookCount = [newBookCount integerValue];
+            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCount to %li", [AppConfig sharedInstance].bookCount);
+        }];
     }
     return self;
 }
 
-#pragma mark - Blank Frame Initialization
--(void)initWithBlankFrame
+-(void)setupBlankBookScrollView
 {
-    // Prepare Book Scroll View
-    self.pagingEnabled = YES;
-    self.delegate = self;
-    self.showsHorizontalScrollIndicator = YES;
-    self.showsVerticalScrollIndicator = NO;
-    self.backgroundColor = [UIColor clearColor];
-    [parentController.view insertSubview:self belowSubview:parentController.bookPageControl];
-    [self mas_makeConstraints:^(MASConstraintMaker *make){
-        make.edges.equalTo(parentController.view);
-    }];
-    
     // Prepare Blank Book Image with loading sign with shimmering effect
+    bookPageControl = parentController.bookPageControl;
     GCBookImageView *previousImageView = nil;
     for (int i = 0; i < bookCount; i++) {
         GCBookImageView *imageView = [[GCBookImageView alloc] initBlankBookImageViewWithParentView:self];
@@ -89,7 +91,7 @@
     DDLogVerbose(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     DDLogVerbose(@"content offset: %f", scrollView.contentOffset.x);
     DDLogVerbose(@"velocity: %f", velocity.x);
-    DDLogVerbose(@"page number before addjust: %i", bookPageControl.currentPage);
+    DDLogVerbose(@"page number before addjust: %li", bookPageControl.currentPage);
     
     if (fabs(velocity.x) <= SWIPE_VELOCITY_THRESHOLD) {    // Pan motion
         DDLogVerbose(@"pan motion");
@@ -104,8 +106,7 @@
             newPageNumber = ceil(scrollView.contentSize.width/ScreenWidth) - 1;
         }
     }
-    DDLogVerbose(@"new page number: %i", newPageNumber);
-    [AppConfig sharedInstance].bookCurrentPageNumber = newPageNumber;
+    DDLogVerbose(@"new page number: %li", newPageNumber);
     bookPageControl.currentPage = newPageNumber;
 }
 

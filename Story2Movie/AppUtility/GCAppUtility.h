@@ -43,6 +43,9 @@
 
 @interface GCAppUtility : NSObject
 
+// This is the method to access this Singleton class
++ (GCAppUtility *)sharedInstance;
+
 #pragma mark - Basic Setup
 -(void)ApplicationSetupWithProductionMode:(BOOL)mode;
 -(NSString *)getCurrentDomain;

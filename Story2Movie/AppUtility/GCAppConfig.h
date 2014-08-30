@@ -42,6 +42,7 @@ FOUNDATION_EXPORT NSString *const Section02;
 @property NSValue *NSScreenSizeWithInset;
 @property CGFloat StoryImageWidth;
 @property CGFloat StoryImageHeight;
+@property NSMutableDictionary *storyCountDictionary;
 
 // This is the method to access this Singleton class
 + (AppConfig *)sharedInstance;

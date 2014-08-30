@@ -15,6 +15,7 @@
 @implementation GCBookController
 @synthesize utility;
 @synthesize bookScrollView, bookPageControl;
+@synthesize storyController;
 
 - (void)viewDidLoad
 {
@@ -22,21 +23,28 @@
     // Do any additional setup after loading the view.
     DDLogInfo(@"====================  Entered main menu page  ====================");
     
-    // Initialize Utility object
-    utility = [[GCAppUtility alloc] init];
+    // Get Utility object
+    utility = [GCAppUtility sharedInstance];
     
-    [self initBookController];
+    // Main init methods
+    [self initAndSetupBookAndStory];
 }
 
--(void)initBookController
+-(void)initAndSetupBookAndStory
 {
-    bookPageControl = [[GCBookPageControl alloc] initWithParentController:self];
     bookScrollView = [[GCBookScrollView alloc] initWithParentController:self];
-}
-
--(void)initBookScrollView
-{
+    bookPageControl = [[GCBookPageControl alloc] initWithParentController:self];
     
+    storyController = [[GCStoryController alloc] initWithParentController:self];
+    [self addChildViewController:storyController];
+    [self.view addSubview:storyController.view];
+    [storyController didMoveToParentViewController:self];
+    
+    [bookScrollView setupBlankBookScrollView];
+    [bookPageControl setupBookPageControl];
+    for (GCStoryScrollView *storyScroller in storyController.storyScrollViewArray) {
+        [storyScroller setupBlankStoryScrollView];
+    }
 }
 
 
@@ -55,6 +63,12 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

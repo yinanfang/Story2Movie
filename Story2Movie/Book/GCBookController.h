@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GCBookScrollView.h"
 #import "GCBookPageControl.h"
+#import "GCStoryController.h"
+#import "GCStoryScrollView.h"
 
 @interface GCBookController : UIViewController
 
@@ -19,7 +21,8 @@
 @property GCBookScrollView *bookScrollView;
 @property GCBookPageControl *bookPageControl;
 
-
+#pragma mark - Story
+@property GCStoryController *storyController;
 
 
 @end

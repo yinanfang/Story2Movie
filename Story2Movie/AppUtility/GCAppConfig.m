@@ -24,7 +24,7 @@ NSString *const Section02 = @"02_About";
 @synthesize bookCount, bookCurrentPageNumber;
 
 #pragma mark - Story item
-@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight;
+@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight, storyCountDictionary;
 
 + (AppConfig *)sharedInstance
 {
@@ -54,6 +54,12 @@ NSString *const Section02 = @"02_About";
             StoryImageHeight = 258;
         }
         StoryImageWidth = 320*(StoryImageHeight/ScreenHeight);
+        
+        storyCountDictionary = [[NSMutableDictionary alloc] init];
+        for (int i = 0; i < bookCount; i++) {
+            [storyCountDictionary setValue:[NSNumber numberWithInt:4] forKey:[NSString stringWithFormat:@"%i", i]];
+        }
+        
     }
     return self;
 }

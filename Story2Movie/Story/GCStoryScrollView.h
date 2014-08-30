@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GCStoryController;
+#import "GCStoryImageView.h"
 
-@interface GCStoryScrollView : UIScrollView
+@interface GCStoryScrollView : UIScrollView <UIScrollViewDelegate>
+
+#pragma mark - AppUtility
+@property GCAppUtility *utility;
+
+#pragma mark - Parent Controller
+@property GCStoryController *parentController;
+
+#pragma mark - Story View
+@property AFHTTPRequestOperationManager *manager;
+@property NSInteger scrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
+@property NSMutableArray *storyNames, *storyImageViews;
+
+-(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber;
+-(void)setupBlankStoryScrollView;
+
 
 @end

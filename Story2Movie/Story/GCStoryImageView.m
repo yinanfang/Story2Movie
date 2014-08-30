@@ -9,12 +9,22 @@
 #import "GCStoryImageView.h"
 
 @implementation GCStoryImageView
+@synthesize parentView;
 
-- (id)initWithFrame:(CGRect)frame
+-(id)initBlankStoryImageViewWithParentView:(GCStoryScrollView *)ParentView
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
-        // Initialization code
+        // Initialization variables
+        parentView = ParentView;
+        
+        // Customize Book Image View
+        self.backgroundColor = [UIColor lightGrayColor];
+        self.layer.cornerRadius = 5;
+        
+        
+        
+        
     }
     return self;
 }

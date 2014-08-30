@@ -11,7 +11,7 @@
 
 @interface GCBookImageView : UIImageView
 
-@property UIView *parentView;
+@property GCBookScrollView *parentView;
 @property FBShimmeringView *bookTitleView;
 
 -(id)initBlankBookImageViewWithParentView:(GCBookScrollView *)ParentView;

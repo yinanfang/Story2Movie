@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GCStoryScrollView;
 
 @interface GCStoryImageView : UIImageView
+
+@property GCStoryScrollView *parentView;
+
+
+-(id)initBlankStoryImageViewWithParentView:(GCStoryScrollView *)ParentView;
 
 @end

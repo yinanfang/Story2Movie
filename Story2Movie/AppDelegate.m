@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Initialize Utility object
-    utility = [[GCAppUtility alloc] init];
+    utility = [GCAppUtility sharedInstance];
     [utility ApplicationSetupWithProductionMode:NO];
     
     // Initialize window and set background

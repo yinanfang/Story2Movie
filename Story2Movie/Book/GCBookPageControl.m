@@ -18,8 +18,8 @@
 {
     self = [super init];
     if (self) {
-        // Initialize Utility object
-        utility = [[GCAppUtility alloc] init];
+        // Get Utility object
+        utility = [GCAppUtility sharedInstance];
         
         // Initialization Variables
         parentController = controller;
@@ -32,25 +32,23 @@
         self.backgroundColor = [UIColor clearColor];
         self.enabled = NO;  // Disable the "clickPageControl" method
         [parentController.view addSubview:self];
-        [self mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(320, 20)]);
-            make.bottom.equalTo(parentController.view.mas_bottom).offset(-260);
-            make.centerX.equalTo(parentController.view.mas_centerX);
-        }];
-
+        
         // Observe value changes
-        NSInteger *test;
-        
-        
-        
-//        [[RACObserve(self, currentPage) subscribeNext:^(NSInteger *newPageNumber){
-//            DDLogWarn(@"number: %@", newPageNumber);
-//        }]];
-        
+        [RACObserve(self, currentPage) subscribeNext:^(NSNumber *newPageNumber){
+            [AppConfig sharedInstance].bookCurrentPageNumber = [newPageNumber integerValue];
+            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCurrentPageNumber to %li", [AppConfig sharedInstance].bookCurrentPageNumber);
+        }];
     }
     return self;
 }
-
+-(void)setupBookPageControl
+{
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(320, 30)]);
+        make.bottom.equalTo(parentController.storyController.view.mas_top);
+        make.centerX.equalTo(parentController.view.mas_centerX);
+    }];
+}
 
 
 

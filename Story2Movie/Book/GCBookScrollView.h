@@ -27,8 +27,8 @@
 
 
 
-- (id)initWithParentController:(GCBookController *)controller;
-
+-(id)initWithParentController:(GCBookController *)controller;
+-(void)setupBlankBookScrollView;
 
 
 @end
