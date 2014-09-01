@@ -33,8 +33,8 @@ PODS:
   - Facebook-iOS-SDK (3.17.0):
     - Bolts
   - FlatUIKit (1.4)
+  - FXBlurView (1.6.2)
   - HexColors (2.2.1)
-  - LBBlurredImage (0.2.0)
   - Mantle (1.5):
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
@@ -57,7 +57,7 @@ DEPENDENCIES:
   - CocoaLumberjack
   - Facebook-iOS-SDK
   - FlatUIKit
-  - LBBlurredImage
+  - FXBlurView
   - Mantle
   - Masonry
   - pop
@@ -72,8 +72,8 @@ SPEC CHECKSUMS:
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
   Facebook-iOS-SDK: f20274d809f112ba540842e2b6cbe50128d51b7b
   FlatUIKit: edc1ed0c130687dc64a10e45851cc58925f6893d
+  FXBlurView: 47496afc9160097fa34af35fc4b310bd85d65dca
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
-  LBBlurredImage: 30cc42be977bbcece286d26d2d9c08b8be7f05e8
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
   Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
   pop: e518794da38942c05255eb64b36d894e70cb4f00

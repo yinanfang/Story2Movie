@@ -24,5 +24,10 @@
 #pragma mark - Story
 @property GCStoryController *storyController;
 
+#pragma mark - Networking
+@property AFHTTPRequestOperationManager *manager;
+
+
+
 
 @end

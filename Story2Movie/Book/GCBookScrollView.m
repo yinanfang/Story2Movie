@@ -18,13 +18,11 @@
 {
     self = [super init];
     if (self) {
-        // Get Utility object
-        utility = [GCAppUtility sharedInstance];
-        
         // Initialization Variables
+        utility = [GCAppUtility sharedInstance];
         parentController = controller;
         manager = [AFHTTPRequestOperationManager manager];
-        bookCount = [[AppConfig sharedInstance] bookCount];
+        bookCount = [[[AppConfig sharedInstance] defaultBookCount] integerValue];
         bookCurrentPageNumber = [[AppConfig sharedInstance] bookCurrentPageNumber];
         
         // Empty Frame Initialization
@@ -40,8 +38,8 @@
         
         // Observe value changes
         [RACObserve(self, bookCount) subscribeNext:^(NSNumber *newBookCount){
-            [AppConfig sharedInstance].bookCount = [newBookCount integerValue];
-            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCount to %li", [AppConfig sharedInstance].bookCount);
+            [[[AppConfig sharedInstance] AppGeneral] setObject:newBookCount forKey:@"bookCount"];
+            DDLogVerbose(@"RAC updated booCount in [[AppConfig sharedInstance] AppGeneral] to %@", [[[AppConfig sharedInstance] AppGeneral] objectForKey:@"bookCount"]);
         }];
     }
     return self;
@@ -91,7 +89,7 @@
     DDLogVerbose(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     DDLogVerbose(@"content offset: %f", scrollView.contentOffset.x);
     DDLogVerbose(@"velocity: %f", velocity.x);
-    DDLogVerbose(@"page number before addjust: %li", bookPageControl.currentPage);
+    DDLogVerbose(@"page number before addjust: %li", (long)bookPageControl.currentPage);
     
     if (fabs(velocity.x) <= SWIPE_VELOCITY_THRESHOLD) {    // Pan motion
         DDLogVerbose(@"pan motion");
@@ -106,7 +104,7 @@
             newPageNumber = ceil(scrollView.contentSize.width/ScreenWidth) - 1;
         }
     }
-    DDLogVerbose(@"new page number: %li", newPageNumber);
+    DDLogVerbose(@"new page number: %li", (long)newPageNumber);
     bookPageControl.currentPage = newPageNumber;
 }
 

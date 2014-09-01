@@ -29,20 +29,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 FOUNDATION_EXPORT NSString *const DevelopmentDomain;
 FOUNDATION_EXPORT NSString *const ProductionDomain;
 
-#pragma mark - Section Name
-FOUNDATION_EXPORT NSString *const Section00;
-FOUNDATION_EXPORT NSString *const Section01;
-FOUNDATION_EXPORT NSString *const Section02;
+#pragma mark - App General Data
+@property NSMutableDictionary *AppGeneral;
+@property NSNumber *defaultStoryCount, *defaultBookCount;
 
-#pragma mark - GCBookScrollView
-// Total Book number
-@property NSInteger bookCount, bookCurrentPageNumber;
+#pragma mark - Book
+@property NSMutableDictionary *bookNames;
+@property NSInteger bookCurrentPageNumber;
 
 #pragma mark - Story item
 @property NSValue *NSScreenSizeWithInset;
 @property CGFloat StoryImageWidth;
 @property CGFloat StoryImageHeight;
-@property NSMutableDictionary *storyCountDictionary;
+
 
 // This is the method to access this Singleton class
 + (AppConfig *)sharedInstance;

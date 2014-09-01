@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class GCBookController;
+#import "GCStoryScrollView.h"
 
 @interface GCBookPageControl : UIPageControl
 

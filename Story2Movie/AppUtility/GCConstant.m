@@ -10,8 +10,11 @@
 
 @implementation Constant
 
+#pragma mark - Image Types
+@synthesize PNGTypeAndSuffix;
+
 #pragma mark - Gesture Recognizer
-CGFloat const SWIPE_VELOCITY_THRESHOLD = 0.278f;
+CGFloat const SWIPE_VELOCITY_THRESHOLD = 0.278f; // TODO: it's weird. Simulator require >.5 to be a swipe
 
 #pragma mark - Others
 NSString *const HasShownTour = @"HasShownTour";
@@ -32,7 +35,13 @@ NSString *const HasShownTour = @"HasShownTour";
     DDLogVerbose(@"Initializing Constant...");
     self = [super init];
     if (self) {
-        // Initialize values
+        // Set Constants
+        // PNGTypeAndSuffix
+        if (IS_IPHONE4S) {
+            PNGTypeAndSuffix = @"@2x.png";
+        } else if (IS_IPHONE5S) {
+            PNGTypeAndSuffix = @"@R4.png";
+        }
         
     }
     return self;

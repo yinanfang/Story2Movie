@@ -23,7 +23,6 @@
 @property GCStoryScrollView *storyScrollView;
 
 
-
 -(id)initWithParentController:(GCBookController *)controller;
 
 

@@ -22,17 +22,15 @@
 {
     self = [super init];
     if (self) {
-        // Get Utility object
-        utility = [GCAppUtility sharedInstance];
-        
         // Initialization Variables
+        utility = [GCAppUtility sharedInstance];
         self.view.backgroundColor = [UIColor blackColor];
-        self.view.frame = CGRectMake(0, ScreenHeight-[[AppConfig sharedInstance] StoryImageHeight], ScreenWidth, [[AppConfig sharedInstance] StoryImageHeight]);
+        self.view.frame = CGRectMake(0, ScreenHeight-[[AppConfig sharedInstance] StoryImageHeight], ScreenWidth, [[AppConfig sharedInstance] StoryImageHeight]);    // Set a frame for other view to reference to. Set constraint later in didMoveToParentViewController
         parentController = controller;
         
         // Empty Frame Initialization
         storyScrollViewArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < [[AppConfig sharedInstance] bookCount]; i++) {
+        for (int i = 0; i < [[[AppConfig sharedInstance] defaultBookCount] integerValue]; i++) {
             storyScrollView = [[GCStoryScrollView alloc] initWithParentController:self ScrollerNumber:i];
             [storyScrollViewArray insertObject:storyScrollView atIndex:i];
         }
@@ -45,19 +43,27 @@
 
 -(void)willMoveToParentViewController:(UIViewController *)parent
 {
-    DDLogWarn(@"will move to parent view controller");
+    DDLogVerbose(@"will move to parent view controller");
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    DDLogWarn(@"view did load");
+    DDLogVerbose(@"view did load");
 }
 
 -(void)didMoveToParentViewController:(UIViewController *)parent
 {
-    DDLogWarn(@"did move to parent view controller");
+    DDLogVerbose(@"did move to parent view controller");
+    // Setting view constraint after it's added to the super view
+    [self.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(parentController.view.mas_width);
+        make.height.equalTo(@([[AppConfig sharedInstance] StoryImageHeight]));
+        make.centerX.equalTo(parentController.view.mas_centerX);
+        make.bottom.equalTo(parentController.view.mas_bottom);
+    }];
+    
 }
 
 

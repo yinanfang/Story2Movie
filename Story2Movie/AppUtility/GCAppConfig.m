@@ -12,19 +12,18 @@
 
 #pragma mark - Domain
 // Change the domain for server here
-NSString *const DevelopmentDomain = @"http://story2movie.192.168.0.10.xip.io";
+NSString *const DevelopmentDomain = @"http://Story2Movie.192.168.0.7.xip.io";
 NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.com";
 
-#pragma mark - Section Name
-NSString *const Section00 = @"00_Story";
-NSString *const Section01 = @"01_Video";
-NSString *const Section02 = @"02_About";
+#pragma mark - App General Data
+@synthesize AppGeneral;
+@synthesize defaultStoryCount, defaultBookCount;
 
-#pragma mark - GCBookScrollView
-@synthesize bookCount, bookCurrentPageNumber;
+#pragma mark - Book
+@synthesize bookCurrentPageNumber;
 
 #pragma mark - Story item
-@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight, storyCountDictionary;
+@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight;
 
 + (AppConfig *)sharedInstance
 {
@@ -42,7 +41,39 @@ NSString *const Section02 = @"02_About";
     self = [super init];
     if (self) {
         // Initialize values
-        bookCount = 3;
+        //        AppGeneral = [[NSMutableDictionary alloc] init];
+        //        NSInteger defaultBookCount = 3;
+        //        [AppGeneral setObject:[NSNumber numberWithInteger:defaultBookCount] forKey:@"bookCount"];
+        //        NSMutableDictionary *bookDictionaryCollection = [[NSMutableDictionary alloc] init];
+        //        [AppGeneral setObject:bookDictionaryCollection forKey:@"book"];
+        //        NSMutableDictionary *bookDictionarySingle;
+        //        for (NSInteger i = 0; i < defaultBookCount; i++) {
+        //            <#statements#>
+        //        }
+        defaultBookCount = [NSNumber numberWithInteger:3];
+        defaultStoryCount = [NSNumber numberWithInteger:5];
+        NSDictionary *defaultAppGeneral = @{@"bookCount": defaultBookCount,
+                                            @"bookCollection":@{
+                                                    @0: @{
+                                                            @"bookName": @"s",
+                                                            @"storyCount": defaultStoryCount,
+                                                            @"storyImageNames": @"",
+                                                            },
+                                                    @1: @{
+                                                            @"bookName": @"",
+                                                            @"storyCount": defaultStoryCount,
+                                                            @"storyImageNames": @"",
+                                                            },
+                                                    @2: @{
+                                                            @"bookName": @"",
+                                                            @"storyCount": defaultStoryCount,
+                                                            @"storyImageNames": @"",
+                                                            },
+                                                    }
+                                            };
+        AppGeneral = [defaultAppGeneral mutableCopy];
+        
+        
         bookCurrentPageNumber = 0;
         
         // Set up the GalleryImageWidth and GalleryImageHeight according to device height
@@ -55,10 +86,10 @@ NSString *const Section02 = @"02_About";
         }
         StoryImageWidth = 320*(StoryImageHeight/ScreenHeight);
         
-        storyCountDictionary = [[NSMutableDictionary alloc] init];
-        for (int i = 0; i < bookCount; i++) {
-            [storyCountDictionary setValue:[NSNumber numberWithInt:4] forKey:[NSString stringWithFormat:@"%i", i]];
-        }
+        
+        
+        
+        
         
     }
     return self;

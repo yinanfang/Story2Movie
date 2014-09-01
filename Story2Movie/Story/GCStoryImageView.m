@@ -7,6 +7,7 @@
 //
 
 #import "GCStoryImageView.h"
+#import "GCStoryScrollView.h"
 
 @implementation GCStoryImageView
 @synthesize parentView;
@@ -23,6 +24,15 @@
         self.layer.cornerRadius = 5;
         
         
+        
+        // testing purpose
+        if (parentView.storyScrollerNumber == 0) {
+            self.backgroundColor = [UIColor redColor];
+        }else if (parentView.storyScrollerNumber == 1) {
+            self.backgroundColor = [UIColor blueColor];
+        }else if (parentView.storyScrollerNumber == 2) {
+            self.backgroundColor = [UIColor yellowColor];
+        }
         
         
     }

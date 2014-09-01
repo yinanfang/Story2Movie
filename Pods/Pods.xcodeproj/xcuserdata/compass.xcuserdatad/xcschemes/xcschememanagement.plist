@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Story2Movie-FXBlurView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Story2Movie-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -30,11 +35,6 @@
 			<false/>
 		</dict>
 		<key>Pods-Story2Movie-HexColors.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Story2Movie-LBBlurredImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -82,77 +82,77 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1F248F439C4745DA93C5042D</key>
+		<key>04038BC672D6438EA2E21906</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>28EF1FA3EDE1471F85DBC116</key>
+		<key>344CC13B6CD348ABBE629A74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35A7BBC4BD354D539CC5BD6D</key>
+		<key>34E8079D933A424CB1CBD532</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>36C22B72638E45B99517C7C0</key>
+		<key>35FE4E1CC3DA46CCB5EFD34E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>511F6BA1BC8246FD87E643C0</key>
+		<key>38447033B04E402E960C41D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51A6D04E20374FE8A76ECA53</key>
+		<key>7A0A4531B29E473D8C252703</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56CED8A6114A49CD9807BECD</key>
+		<key>7A9B3D5E406B40BAAC71D96B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>750209EE64984079A6D8152E</key>
+		<key>88B20025426345CB8E942C0A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>901FD29605274AE88FDAD65A</key>
+		<key>9D6FBDF14ACB496E967E8ED5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>972BEA8158F94BC69B4E8A21</key>
+		<key>A654953C8A1C4D628A8A2BC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B63FFCE6EA06420097CD1BCD</key>
+		<key>C295B53241D2470288B0EA50</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8EBBB75631B44FA864DFE3D</key>
+		<key>CEC4B7A62D624FDA9ADCCD94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9F639BA48404435ADDDE8CD</key>
+		<key>EC98555B2BE546408F445A65</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBC5159BB9FB4475A353C3C7</key>
+		<key>EFF802DC3EF848808E7B45A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F01769A05D3E42278CC13C35</key>
+		<key>F9C96EC2D4C14220B8E789D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

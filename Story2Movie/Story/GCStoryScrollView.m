@@ -11,7 +11,7 @@
 @implementation GCStoryScrollView
 @synthesize utility;
 @synthesize parentController;
-@synthesize manager, scrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
+@synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
 @synthesize storyNames, storyImageViews;
 
 #pragma mark - Blank Frame Initialization
@@ -19,14 +19,12 @@
 {
     self = [super init];
     if (self) {
-        // Get Utility object
-        utility = [GCAppUtility sharedInstance];
-        
         // Initialization Variables
+        utility = [GCAppUtility sharedInstance];
         parentController = controller;
         manager = [AFHTTPRequestOperationManager manager];
-        scrollerNumber = ScrollerNumber;
-        storyCount = [[[[AppConfig sharedInstance] storyCountDictionary] objectForKey:[NSString stringWithFormat:@"%li", scrollerNumber]] integerValue];
+        storyScrollerNumber = ScrollerNumber;
+        storyCount = [[[AppConfig sharedInstance] defaultStoryCount] integerValue];
         StoryImageWidth = [[AppConfig sharedInstance] StoryImageWidth];
         StoryImageHeight = [[AppConfig sharedInstance] StoryImageHeight];
         
@@ -37,16 +35,24 @@
         self.showsVerticalScrollIndicator = NO;
         self.backgroundColor = [UIColor clearColor];
         [parentController.view addSubview:self];
-        [self mas_makeConstraints:^(MASConstraintMaker *make){
-            make.edges.equalTo(parentController.view);
-        }];
         
-        // Observe value changes
-        [RACObserve(self, storyCount) subscribeNext:^(NSNumber *newStoryCount){
-            NSMutableDictionary *storyCountDictionary = [[AppConfig sharedInstance] storyCountDictionary];
-            [storyCountDictionary setValue:[NSNumber numberWithInteger:storyCount] forKey:[NSString stringWithFormat:@"%li", ScrollerNumber]];
-        }];
-    
+        // Only place the first scroll view in the middle
+        if (ScrollerNumber == 0) {
+            [self mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(parentController.view.mas_top);
+                make.left.equalTo(parentController.view.mas_left);
+                make.bottom.equalTo(parentController.view.mas_bottom);
+                make.right.equalTo(parentController.view.mas_right);
+            }];
+        }else {
+            [self mas_makeConstraints:^(MASConstraintMaker *make){
+                make.top.equalTo(parentController.view.mas_top);
+                make.left.equalTo(parentController.view.mas_left).with.offset(ScreenWidth);
+                make.bottom.equalTo(parentController.view.mas_bottom);
+                make.right.equalTo(parentController.view.mas_right).with.offset(ScreenWidth);
+            }];
+        }
+
         // Observe value changes
         [RACObserve(self, StoryImageWidth) subscribeNext:^(NSNumber *newWidth){
             [AppConfig sharedInstance].StoryImageWidth = [newWidth floatValue];
@@ -62,9 +68,6 @@
     return self;
 }
 
-
-
-
 -(void)setupBlankStoryScrollView
 {
     // Prepare Blank Story Image with loading sign with shimmering effect
@@ -74,7 +77,9 @@
         [storyImageViews addObject:imageView];
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(StoryImageWidth-2, StoryImageHeight)]);
+            make.height.equalTo(@(StoryImageHeight));
+            make.width.equalTo(@(StoryImageHeight*(ScreenWidth/ScreenHeight)));
+//            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(StoryImageWidth-2, StoryImageHeight)]);
             make.top.equalTo(self.mas_top);
         }];
         if (!previousImageView) { // First one, pin to top
@@ -95,6 +100,43 @@
         }
     }
 }
+
+-(void)moveStoryScrollViewToMiddel
+{
+    [parentController.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self mas_updateConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(parentController.view.mas_left);
+            make.right.equalTo(parentController.view.mas_right);
+        }];
+        [parentController.view layoutIfNeeded];
+    }completion:nil];
+}
+
+-(void)moveStoryScrollViewToRight
+{
+    [parentController.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self mas_updateConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(parentController.view.mas_left).with.offset(ScreenWidth);
+            make.right.equalTo(parentController.view.mas_right).with.offset(ScreenWidth);
+        }];
+        [parentController.view layoutIfNeeded];
+    }completion:nil];
+}
+
+-(void)moveStoryScrollViewToLeft
+{
+    [parentController.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self mas_updateConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(parentController.view.mas_left).with.offset(-ScreenWidth);
+            make.right.equalTo(parentController.view.mas_right).with.offset(-ScreenWidth);
+        }];
+        [parentController.view layoutIfNeeded];
+    }completion:nil];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

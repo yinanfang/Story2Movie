@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35A7BBC4BD354D539CC5BD6D"
+               BlueprintIdentifier = "CEC4B7A62D624FDA9ADCCD94"
                BuildableName = "libPods-Story2Movie-AFNetworking.a"
                BlueprintName = "Pods-Story2Movie-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">

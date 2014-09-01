@@ -7,7 +7,7 @@ target "Story2Movie" do
     pod 'CocoaLumberjack'
     pod 'Facebook-iOS-SDK'
     pod 'FlatUIKit'
-    pod 'LBBlurredImage'
+    pod 'FXBlurView'
     pod 'Mantle'
     pod 'Masonry'
     pod 'pop'

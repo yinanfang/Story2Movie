@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, testEnum) {
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 
+#pragma mark - Image Types
+@property NSString *PNGTypeAndSuffix;
+
 #pragma mark - Gesture Recognizer
 FOUNDATION_EXPORT CGFloat const SWIPE_VELOCITY_THRESHOLD;
 

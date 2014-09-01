@@ -20,11 +20,14 @@
 
 #pragma mark - Story View
 @property AFHTTPRequestOperationManager *manager;
-@property NSInteger scrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
+@property NSInteger storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
 @property NSMutableArray *storyNames, *storyImageViews;
 
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber;
 -(void)setupBlankStoryScrollView;
 
+-(void)moveStoryScrollViewToMiddel;
+-(void)moveStoryScrollViewToRight;
+-(void)moveStoryScrollViewToLeft;
 
 @end

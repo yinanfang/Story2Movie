@@ -18,14 +18,12 @@
 {
     self = [super init];
     if (self) {
-        // Get Utility object
-        utility = [GCAppUtility sharedInstance];
-        
         // Initialization Variables
+        utility = [GCAppUtility sharedInstance];
         parentController = controller;
         
         // Empty Frame Initialization
-        self.numberOfPages = [[AppConfig sharedInstance] bookCount];
+        self.numberOfPages = [[[AppConfig sharedInstance] defaultBookCount] integerValue];
         self.currentPage = 0;
         self.pageIndicatorTintColor = [UIColor lightGrayColor];
         self.currentPageIndicatorTintColor = [UIColor blackColor];
@@ -36,7 +34,7 @@
         // Observe value changes
         [RACObserve(self, currentPage) subscribeNext:^(NSNumber *newPageNumber){
             [AppConfig sharedInstance].bookCurrentPageNumber = [newPageNumber integerValue];
-            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCurrentPageNumber to %li", [AppConfig sharedInstance].bookCurrentPageNumber);
+            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCurrentPageNumber to %li", (long)[AppConfig sharedInstance].bookCurrentPageNumber);
         }];
     }
     return self;
@@ -47,6 +45,19 @@
         make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(320, 30)]);
         make.bottom.equalTo(parentController.storyController.view.mas_top);
         make.centerX.equalTo(parentController.view.mas_centerX);
+    }];
+    
+    // Move Story Scroll View accordingly
+    [RACObserve(self, currentPage) subscribeNext:^(NSNumber *newPageNumber){
+        for (GCStoryScrollView *storyScrollView in parentController.storyController.storyScrollViewArray) {
+            if (storyScrollView.storyScrollerNumber < [newPageNumber integerValue]) {
+                [storyScrollView moveStoryScrollViewToLeft];
+            }else if (storyScrollView.storyScrollerNumber == [newPageNumber integerValue]) {
+                [storyScrollView moveStoryScrollViewToMiddel];
+            }else if (storyScrollView.storyScrollerNumber > [newPageNumber integerValue]) {
+                [storyScrollView moveStoryScrollViewToRight];
+            }
+        }    
     }];
 }
 

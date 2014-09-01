@@ -25,7 +25,7 @@
 // FlatUIKit
 #import <FlatUIKit/FlatUIKit.h>
 // LBBlurredImage
-#import <LBBlurredImage/UIImageView+LBBlurredImage.h>
+#import <FXBlurView/FXBlurView.h>
 // Mantle
 #import <Mantle/Mantle.h>
 // Masonry
