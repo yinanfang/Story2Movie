@@ -27,18 +27,7 @@
         // Customize Book Image View
         self.backgroundColor = [UIColor lightGrayColor];
         self.layer.cornerRadius = 5;
-        self.layer.masksToBounds = YES;
-        
-        // testing purpose
-        if (parentView.storyScrollerNumber == 0) {
-            self.backgroundColor = [UIColor redColor];
-        }else if (parentView.storyScrollerNumber == 1) {
-            self.backgroundColor = [UIColor blueColor];
-        }else if (parentView.storyScrollerNumber == 2) {
-            self.backgroundColor = [UIColor yellowColor];
-        }
-        
-        
+        self.layer.masksToBounds = YES;     
     }
     return self;
 }
