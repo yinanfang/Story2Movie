@@ -24,11 +24,13 @@
 @property AFHTTPRequestOperationManager *manager;
 @property NSInteger bookCount, bookCurrentPageNumber;
 @property NSMutableArray *bookNames, *bookImageViews;
-
+@property GCBookImageView *previousBookImageView;
+@property MASConstraint *bookImageRightMostConstraint;
 
 
 -(id)initWithParentController:(GCBookController *)controller;
 -(void)setupBlankBookScrollView;
+-(void)loadBookScrollViewContent;
 
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A78B21EC316E49589E7FDED0 /* libPods-Story2Movie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */; };
+		D4ADF27C19B5468100752303 /* GCStoryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ADF27B19B5468100752303 /* GCStoryItemView.m */; };
 		D4C59FBE198C9401000FD7E8 /* GCAppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FBD198C9401000FD7E8 /* GCAppUtility.m */; };
 		D4C59FC1198C9413000FD7E8 /* GCAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC0198C9413000FD7E8 /* GCAppConfig.m */; };
 		D4C59FC4198C9422000FD7E8 /* GCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C59FC3198C9422000FD7E8 /* GCConstant.m */; };
@@ -17,8 +18,6 @@
 		D4DDFAC119AD566D0010640E /* GCBookPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFAC019AD566D0010640E /* GCBookPageControl.m */; };
 		D4DDFAC419AD56C40010640E /* GCBookScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFAC319AD56C40010640E /* GCBookScrollView.m */; };
 		D4DDFAC719AD57000010640E /* GCStoryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFAC619AD57000010640E /* GCStoryScrollView.m */; };
-		D4DDFACA19AD57870010640E /* GCStoryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFAC919AD57870010640E /* GCStoryImageView.m */; };
-		D4DDFACD19AD57B80010640E /* GCStoryVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFACC19AD57B80010640E /* GCStoryVideoView.m */; };
 		D4DDFAD019AD5FA90010640E /* GCBookImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DDFACF19AD5FA90010640E /* GCBookImageView.m */; };
 		D4FD9B7D198C8D4600927FDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7C198C8D4600927FDC /* Foundation.framework */; };
 		D4FD9B7F198C8D4600927FDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */; };
@@ -47,6 +46,8 @@
 /* Begin PBXFileReference section */
 		90B8250549DA465A965ACE47 /* libPods-Story2Movie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Story2Movie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC69E138A3C40C7AA415B85 /* Pods-Story2Movie.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story2Movie.xcconfig"; path = "Pods/Pods-Story2Movie.xcconfig"; sourceTree = "<group>"; };
+		D4ADF27A19B5468100752303 /* GCStoryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryItemView.h; path = Story/GCStoryItemView.h; sourceTree = "<group>"; };
+		D4ADF27B19B5468100752303 /* GCStoryItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryItemView.m; path = Story/GCStoryItemView.m; sourceTree = "<group>"; };
 		D4C59FBC198C9401000FD7E8 /* GCAppUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppUtility.h; path = AppUtility/GCAppUtility.h; sourceTree = "<group>"; };
 		D4C59FBD198C9401000FD7E8 /* GCAppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppUtility.m; path = AppUtility/GCAppUtility.m; sourceTree = "<group>"; };
 		D4C59FBF198C9413000FD7E8 /* GCAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppConfig.h; path = AppUtility/GCAppConfig.h; sourceTree = "<group>"; };
@@ -65,10 +66,6 @@
 		D4DDFAC319AD56C40010640E /* GCBookScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCBookScrollView.m; path = Book/GCBookScrollView.m; sourceTree = "<group>"; };
 		D4DDFAC519AD57000010640E /* GCStoryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryScrollView.h; path = Story/GCStoryScrollView.h; sourceTree = "<group>"; };
 		D4DDFAC619AD57000010640E /* GCStoryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryScrollView.m; path = Story/GCStoryScrollView.m; sourceTree = "<group>"; };
-		D4DDFAC819AD57870010640E /* GCStoryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryImageView.h; path = Story/GCStoryImageView.h; sourceTree = "<group>"; };
-		D4DDFAC919AD57870010640E /* GCStoryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryImageView.m; path = Story/GCStoryImageView.m; sourceTree = "<group>"; };
-		D4DDFACB19AD57B80010640E /* GCStoryVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryVideoView.h; path = Story/GCStoryVideoView.h; sourceTree = "<group>"; };
-		D4DDFACC19AD57B80010640E /* GCStoryVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryVideoView.m; path = Story/GCStoryVideoView.m; sourceTree = "<group>"; };
 		D4DDFACE19AD5FA90010640E /* GCBookImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCBookImageView.h; path = Book/GCBookImageView.h; sourceTree = "<group>"; };
 		D4DDFACF19AD5FA90010640E /* GCBookImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCBookImageView.m; path = Book/GCBookImageView.m; sourceTree = "<group>"; };
 		D4FD9B79198C8D4600927FDC /* Story2Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Story2Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,10 +155,8 @@
 				D4DDFABD19AD3AB00010640E /* GCStoryController.m */,
 				D4DDFAC519AD57000010640E /* GCStoryScrollView.h */,
 				D4DDFAC619AD57000010640E /* GCStoryScrollView.m */,
-				D4DDFAC819AD57870010640E /* GCStoryImageView.h */,
-				D4DDFAC919AD57870010640E /* GCStoryImageView.m */,
-				D4DDFACB19AD57B80010640E /* GCStoryVideoView.h */,
-				D4DDFACC19AD57B80010640E /* GCStoryVideoView.m */,
+				D4ADF27A19B5468100752303 /* GCStoryItemView.h */,
+				D4ADF27B19B5468100752303 /* GCStoryItemView.m */,
 			);
 			name = Story;
 			sourceTree = "<group>";
@@ -377,8 +372,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4DDFAC419AD56C40010640E /* GCBookScrollView.m in Sources */,
+				D4ADF27C19B5468100752303 /* GCStoryItemView.m in Sources */,
 				D4C59FC7198C9434000FD7E8 /* GCCustomLogFormatters.m in Sources */,
-				D4DDFACA19AD57870010640E /* GCStoryImageView.m in Sources */,
 				D4DDFAD019AD5FA90010640E /* GCBookImageView.m in Sources */,
 				D4C59FBE198C9401000FD7E8 /* GCAppUtility.m in Sources */,
 				D4DDFAC719AD57000010640E /* GCStoryScrollView.m in Sources */,
@@ -386,7 +381,6 @@
 				D4DDFAB219AD39F00010640E /* GCBookController.m in Sources */,
 				D4FD9B8D198C8D4600927FDC /* AppDelegate.m in Sources */,
 				D4DDFAC119AD566D0010640E /* GCBookPageControl.m in Sources */,
-				D4DDFACD19AD57B80010640E /* GCStoryVideoView.m in Sources */,
 				D4C59FC4198C9422000FD7E8 /* GCConstant.m in Sources */,
 				D4FD9B89198C8D4600927FDC /* main.m in Sources */,
 				D4DDFABE19AD3AB00010640E /* GCStoryController.m in Sources */,

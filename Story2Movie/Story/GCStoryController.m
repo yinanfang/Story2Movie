@@ -24,13 +24,13 @@
     if (self) {
         // Initialization Variables
         utility = [GCAppUtility sharedInstance];
-        self.view.backgroundColor = [UIColor blackColor];
-        self.view.frame = CGRectMake(0, ScreenHeight-[[AppConfig sharedInstance] StoryImageHeight], ScreenWidth, [[AppConfig sharedInstance] StoryImageHeight]);    // Set a frame for other view to reference to. Set constraint later in didMoveToParentViewController
+        self.view.backgroundColor = [UIColor clearColor];
+        self.view.frame = CGRectMake(0, ScreenHeight-[[GCAppConfig sharedInstance] StoryImageHeight], ScreenWidth, [[GCAppConfig sharedInstance] StoryImageHeight]);    // Set a frame for other view to reference to. Set constraint later in didMoveToParentViewController
         parentController = controller;
         
         // Empty Frame Initialization
         storyScrollViewArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < [[[AppConfig sharedInstance] defaultBookCount] integerValue]; i++) {
+        for (int i = 0; i < [[[GCAppConfig sharedInstance] defaultBookCount] integerValue]; i++) {
             storyScrollView = [[GCStoryScrollView alloc] initWithParentController:self ScrollerNumber:i];
             [storyScrollViewArray insertObject:storyScrollView atIndex:i];
         }
@@ -59,7 +59,7 @@
     // Setting view constraint after it's added to the super view
     [self.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(parentController.view.mas_width);
-        make.height.equalTo(@([[AppConfig sharedInstance] StoryImageHeight]));
+        make.height.equalTo(@([[GCAppConfig sharedInstance] StoryImageHeight]));
         make.centerX.equalTo(parentController.view.mas_centerX);
         make.bottom.equalTo(parentController.view.mas_bottom);
     }];

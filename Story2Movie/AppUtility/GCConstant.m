@@ -8,7 +8,7 @@
 
 #import "GCConstant.h"
 
-@implementation Constant
+@implementation GCConstant
 
 #pragma mark - Image Types
 @synthesize PNGTypeAndSuffix;
@@ -20,9 +20,9 @@ CGFloat const SWIPE_VELOCITY_THRESHOLD = 0.278f; // TODO: it's weird. Simulator 
 NSString *const HasShownTour = @"HasShownTour";
 
 
-+ (Constant *)sharedInstance
++ (GCConstant *)sharedInstance
 {
-    static Constant *shareInstance = nil;
+    static GCConstant *shareInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         shareInstance = [[self alloc] init];

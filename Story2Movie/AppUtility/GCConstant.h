@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, testEnum) {
     testEnum4
 };
 
-@interface Constant : NSObject
+@interface GCConstant : NSObject
 
 #pragma mark - Screen width and height
 // iPhone4S@2x: W*H = 320*480
@@ -42,6 +42,6 @@ FOUNDATION_EXPORT CGFloat const SWIPE_VELOCITY_THRESHOLD;
 FOUNDATION_EXPORT NSString *const HasShownTour;
 
 // This is the method to access this Singleton class
-+ (AppConfig *)sharedInstance;
++ (GCConstant *)sharedInstance;
 
 @end

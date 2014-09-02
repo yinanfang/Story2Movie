@@ -8,7 +8,7 @@
 
 #import "GCAppConfig.h"
 
-@implementation AppConfig
+@implementation GCAppConfig
 
 #pragma mark - Domain
 // Change the domain for server here
@@ -25,9 +25,9 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
 #pragma mark - Story item
 @synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight;
 
-+ (AppConfig *)sharedInstance
++ (GCAppConfig *)sharedInstance
 {
-    static AppConfig *shareInstance = nil;
+    static GCAppConfig *shareInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         shareInstance = [[self alloc] init];
@@ -52,26 +52,44 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
         //        }
         defaultBookCount = [NSNumber numberWithInteger:3];
         defaultStoryCount = [NSNumber numberWithInteger:5];
-        NSDictionary *defaultAppGeneral = @{@"bookCount": defaultBookCount,
-                                            @"bookCollection":@{
-                                                    @0: @{
-                                                            @"bookName": @"s",
-                                                            @"storyCount": defaultStoryCount,
-                                                            @"storyImageNames": @"",
-                                                            },
-                                                    @1: @{
-                                                            @"bookName": @"",
-                                                            @"storyCount": defaultStoryCount,
-                                                            @"storyImageNames": @"",
-                                                            },
-                                                    @2: @{
-                                                            @"bookName": @"",
-                                                            @"storyCount": defaultStoryCount,
-                                                            @"storyImageNames": @"",
-                                                            },
-                                                    }
-                                            };
-        AppGeneral = [defaultAppGeneral mutableCopy];
+//        NSDictionary *defaultAppGeneral = @{@"bookCount": defaultBookCount,
+//                                            @"bookCollection":@{
+//                                                    @0: @{
+//                                                            @"bookName": @"s",
+//                                                            @"storyCount": defaultStoryCount,
+//                                                            @"storyImageNames": @"",
+//                                                            },
+//                                                    @1: @{
+//                                                            @"bookName": @"",
+//                                                            @"storyCount": defaultStoryCount,
+//                                                            @"storyImageNames": @"",
+//                                                            },
+//                                                    @2: @{
+//                                                            @"bookName": @"",
+//                                                            @"storyCount": defaultStoryCount,
+//                                                            @"storyImageNames": @"",
+//                                                            },
+//                                                    }
+//                                            };
+//        AppGeneral = [defaultAppGeneral mutableCopy];
+        NSMutableDictionary *storyImageNames = [[NSMutableDictionary alloc] init];
+        NSDictionary *singleBook = @{
+                                     @"bookName": @"defaultName",
+                                     @"storyCount": defaultStoryCount,
+                                     @"storyImageNames": [storyImageNames mutableCopy],
+                                     };
+        NSDictionary *bookCollection = @{
+                                         @"0": [singleBook mutableCopy],
+                                         @"1": [singleBook mutableCopy],
+                                         @"2": [singleBook mutableCopy],
+                                         };
+        NSDictionary *data_tmp = @{
+                                   @"bookCount": defaultBookCount,
+                                   @"bookCollection": [bookCollection mutableCopy],
+                                   };
+        AppGeneral = [data_tmp mutableCopy];
+        
+        
         
         
         bookCurrentPageNumber = 0;

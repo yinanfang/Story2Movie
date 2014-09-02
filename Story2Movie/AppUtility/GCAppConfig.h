@@ -23,7 +23,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #define XCODE_COLORS_RESET     XCODE_COLORS_ESCAPE @";"   // Clear any foreground or background
 #define DDLogTest(frmt, ...) NSLog((XCODE_COLORS_ESCAPE @"fg0,0,255;" frmt XCODE_COLORS_RESET), ##__VA_ARGS__)
 
-@interface AppConfig : NSObject
+@interface GCAppConfig : NSObject
 
 #pragma mark - Domain
 FOUNDATION_EXPORT NSString *const DevelopmentDomain;
@@ -44,7 +44,7 @@ FOUNDATION_EXPORT NSString *const ProductionDomain;
 
 
 // This is the method to access this Singleton class
-+ (AppConfig *)sharedInstance;
++ (GCAppConfig *)sharedInstance;
 
 
 @end

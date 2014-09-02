@@ -23,7 +23,7 @@
         parentController = controller;
         
         // Empty Frame Initialization
-        self.numberOfPages = [[[AppConfig sharedInstance] defaultBookCount] integerValue];
+        self.numberOfPages = [[[GCAppConfig sharedInstance] defaultBookCount] integerValue];
         self.currentPage = 0;
         self.pageIndicatorTintColor = [UIColor lightGrayColor];
         self.currentPageIndicatorTintColor = [UIColor blackColor];
@@ -33,8 +33,8 @@
         
         // Observe value changes
         [RACObserve(self, currentPage) subscribeNext:^(NSNumber *newPageNumber){
-            [AppConfig sharedInstance].bookCurrentPageNumber = [newPageNumber integerValue];
-            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCurrentPageNumber to %li", (long)[AppConfig sharedInstance].bookCurrentPageNumber);
+            [GCAppConfig sharedInstance].bookCurrentPageNumber = [newPageNumber integerValue];
+            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].bookCurrentPageNumber to %li", (long)[GCAppConfig sharedInstance].bookCurrentPageNumber);
         }];
     }
     return self;

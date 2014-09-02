@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class GCStoryController;
-#import "GCStoryImageView.h"
+#import "GCStoryItemView.h"
 
 @interface GCStoryScrollView : UIScrollView <UIScrollViewDelegate>
 
@@ -22,9 +22,14 @@
 @property AFHTTPRequestOperationManager *manager;
 @property NSInteger storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
 @property NSMutableArray *storyNames, *storyImageViews;
+@property GCStoryItemView *previousStoryImageView;
+@property MASConstraint *storyImageRightMostConstraint;
 
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber;
 -(void)setupBlankStoryScrollView;
+-(void)loadStoryScrollViewContent;
+
+
 
 -(void)moveStoryScrollViewToMiddel;
 -(void)moveStoryScrollViewToRight;

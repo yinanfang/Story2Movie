@@ -10,19 +10,25 @@
 #import "GCBookImageView.h"
 
 @implementation GCBookImageView
-@synthesize parentView;
+@synthesize utility;
+@synthesize parentView, bookNumber;
 @synthesize bookTitleView;
+@synthesize manager;
 
--(id)initBlankBookImageViewWithParentView:(GCBookScrollView *)ParentView
+-(id)initBlankBookImageViewWithParentView:(GCBookScrollView *)ParentView bookNumber:(NSInteger)number
 {
     self = [super init];
     if (self) {
         // Initialization variables
+        utility = [GCAppUtility sharedInstance];
         parentView = ParentView;
+        bookNumber = number;
+        manager = [AFHTTPRequestOperationManager manager];
         
         // Customize Book Image View
         self.backgroundColor = [UIColor lightGrayColor];
         self.layer.cornerRadius = 5;
+        self.layer.masksToBounds = YES;
         
         // Add book title with shimmer effect
         bookTitleView = [[FBShimmeringView alloc] initWithFrame:ScreenBounds];
@@ -49,6 +55,18 @@
     return self;
 }
 
+-(void)loadBookImage
+{
+    NSString *url_string = [[NSString alloc] initWithFormat:@"%@/app_content/book/%li/cover%@", [utility getCurrentDomain], bookNumber, [[GCConstant sharedInstance] PNGTypeAndSuffix]];
+    DDLogVerbose(@"url: %@", url_string);
+    manager.responseSerializer = [AFImageResponseSerializer serializer];
+    [manager GET:url_string parameters:nil success:^(AFHTTPRequestOperation *operation, UIImage *responsePNG) {
+        DDLogVerbose(@"Image: %@", responsePNG);
+        self.image = responsePNG;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        DDLogError(@"Error: %@", error);
+    }];
+}
 
 
 /*

@@ -13,6 +13,7 @@
 @synthesize parentController;
 @synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
 @synthesize storyNames, storyImageViews;
+@synthesize previousStoryImageView, storyImageRightMostConstraint;
 
 #pragma mark - Blank Frame Initialization
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber
@@ -24,9 +25,10 @@
         parentController = controller;
         manager = [AFHTTPRequestOperationManager manager];
         storyScrollerNumber = ScrollerNumber;
-        storyCount = [[[AppConfig sharedInstance] defaultStoryCount] integerValue];
-        StoryImageWidth = [[AppConfig sharedInstance] StoryImageWidth];
-        StoryImageHeight = [[AppConfig sharedInstance] StoryImageHeight];
+        storyCount = [[[GCAppConfig sharedInstance] defaultStoryCount] integerValue];
+        storyImageViews = [[NSMutableArray alloc] init];
+        StoryImageWidth = [[GCAppConfig sharedInstance] StoryImageWidth];
+        StoryImageHeight = [[GCAppConfig sharedInstance] StoryImageHeight];
         
         // Empty Frame Initialization
         self.pagingEnabled = NO;
@@ -55,12 +57,12 @@
 
         // Observe value changes
         [RACObserve(self, StoryImageWidth) subscribeNext:^(NSNumber *newWidth){
-            [AppConfig sharedInstance].StoryImageWidth = [newWidth floatValue];
-            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].StoryImageWidth to %f", [AppConfig sharedInstance].StoryImageWidth);
+            [GCAppConfig sharedInstance].StoryImageWidth = [newWidth floatValue];
+            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].StoryImageWidth to %f", [GCAppConfig sharedInstance].StoryImageWidth);
         }];
         [RACObserve(self, StoryImageHeight) subscribeNext:^(NSNumber *newHeight){
-            [AppConfig sharedInstance].StoryImageHeight = [newHeight floatValue];
-            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].StoryImageHeight to %f", [AppConfig sharedInstance].StoryImageHeight);
+            [GCAppConfig sharedInstance].StoryImageHeight = [newHeight floatValue];
+            DDLogVerbose(@"RAC updated [AppConfig sharedInstance].StoryImageHeight to %f", [GCAppConfig sharedInstance].StoryImageHeight);
         }];
         
         DDLogVerbose(@"Init StoryScrollView: %li; Story Count: %li", (long)ScrollerNumber, (long)storyCount);
@@ -71,9 +73,9 @@
 -(void)setupBlankStoryScrollView
 {
     // Prepare Blank Story Image with loading sign with shimmering effect
-    GCStoryImageView *previousImageView = nil;
+    previousStoryImageView = nil;
     for (int i = 0; i < storyCount; i++) {
-        GCStoryImageView *imageView = [[GCStoryImageView alloc] initBlankStoryImageViewWithParentView:self];
+        GCStoryItemView *imageView = [[GCStoryItemView alloc] initBlankStoryImageViewWithParentView:self storyNumber:i];
         [storyImageViews addObject:imageView];
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,24 +84,62 @@
 //            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(StoryImageWidth-2, StoryImageHeight)]);
             make.top.equalTo(self.mas_top);
         }];
-        if (!previousImageView) { // First one, pin to top
+        if (!previousStoryImageView) { // First one, pin to top
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self.mas_left).offset(1);
             }];
         }else{
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(previousImageView.mas_right).offset(2);
+                make.left.equalTo(previousStoryImageView.mas_right).offset(2);
             }];
         }
         if (i == storyCount-1) { // Last one, pin to right
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(self.mas_right).offset(-1);
+                storyImageRightMostConstraint = make.right.equalTo(self.mas_right).offset(-1);
             }];
-        }else{
-            previousImageView = imageView;
         }
+        previousStoryImageView = imageView;
     }
 }
+
+-(void)loadStoryScrollViewContent
+{
+    DDLogWarn(@"start loading story #%li", storyScrollerNumber);
+    NSInteger defaultStoryCount = storyCount;
+    NSString *keyPathForStoryCountInAppGeneral = [NSString stringWithFormat:@"bookCollection.%li.storyCount", storyScrollerNumber];
+    storyCount = [[[[GCAppConfig sharedInstance] AppGeneral] valueForKeyPath:keyPathForStoryCountInAppGeneral] integerValue];
+    if (storyCount != defaultStoryCount) {
+        DDLogWarn(@"adding more story image view to count #%li", storyCount);
+        [storyImageRightMostConstraint uninstall];
+        for (int i = (int)defaultStoryCount; i < storyCount; i++) {
+            GCStoryItemView *imageView = [[GCStoryItemView alloc] initBlankStoryImageViewWithParentView:self storyNumber:i];
+            [storyImageViews addObject:imageView];
+            [self addSubview:imageView];
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@(StoryImageHeight));
+                make.width.equalTo(@(StoryImageHeight*(ScreenWidth/ScreenHeight)));
+                //            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(StoryImageWidth-2, StoryImageHeight)]);
+                make.top.equalTo(self.mas_top);
+            }];
+            // Stick to the last image view
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(previousStoryImageView.mas_right).offset(2);
+            }];
+            if (i == storyCount-1) { // Last one, pin to right
+                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    storyImageRightMostConstraint = make.right.equalTo(self.mas_right).offset(-1);
+                }];
+            }
+            previousStoryImageView = imageView;
+        }
+    }
+    DDLogWarn(@"Loop through and call load method in image views");
+    for (GCStoryItemView *storyImageView in storyImageViews) {
+        [storyImageView loadStoryImage];
+    }
+}
+
+
 
 -(void)moveStoryScrollViewToMiddel
 {

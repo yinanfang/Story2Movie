@@ -27,6 +27,7 @@
     // Initialization Variables
     utility = [GCAppUtility sharedInstance];
     manager = [AFHTTPRequestOperationManager manager];
+    self.view.backgroundColor = [UIColor clearColor];
     
     // Main init methods
     [self initAndSetupBookAndStory];
@@ -55,36 +56,48 @@
 
 -(void)LoadAppContent
 {
-    DDLogWarn(@"Initial AppContent Dictionary: %@", [[AppConfig sharedInstance] AppGeneral]);
+    DDLogVerbose(@"Initial AppContent Dictionary: %@", [[GCAppConfig sharedInstance] AppGeneral]);
     
     NSString *url_string = [[NSString alloc] initWithFormat:@"%@/app_content/controller.php", [utility getCurrentDomain]];
     DDLogVerbose(@"url is: %@", url_string);
     NSDictionary *parameters = @{@"cmd": @"AppGeneral"};
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager POST:url_string parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        DDLogVerbose(@"Printing response JSON: %@", responseObject);
-        NSDictionary *responseDictionary = (NSDictionary *)responseObject;
-        NSMutableDictionary *AppGeneral = [[AppConfig sharedInstance] AppGeneral];
+    [manager POST:url_string parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
+        DDLogInfo(@"Get data successfully. Printing response JSON: %@", responseDictionary);
+        NSMutableDictionary *AppGeneral = [[GCAppConfig sharedInstance] AppGeneral];
         
         // Set bookCount
         NSNumber *newBookCount = [responseDictionary objectForKey:@"bookCount"];
         [AppGeneral setObject:newBookCount forKey:@"bookCount"];
         // Set bookCollection
-        NSDictionary *bookNames = [responseDictionary objectForKey:@"bookNames"];
-        NSLog(@"bookNames: %@", bookNames);
-        for (NSInteger i = 0; i < [newBookCount integerValue]; i++) {
-//            NSString *bookName = [bookNames objectForKey:[NSString stringWithFormat:@"%li", i]];
-//            NSDictionary *book = [[AppGeneral objectForKey:@"bookCollection"] objectForKey:[NSNumber numberWithInteger:i]];
-//            NSMutableDictionary *mutableBook = [book mutableCopy];
-//            [mutableBook setObject:bookName forKey:@"bookName"];
-//            book = mutableBook;
+        for (int i = 0; i < [newBookCount integerValue]; i++) {
+            // Set book names
+            NSString *keyPathForNewBookName = [NSString stringWithFormat:@"bookNames.%i", i];
+            NSString *newBookName = [responseDictionary valueForKeyPath:keyPathForNewBookName];
+//            DDLogWarn(@"new book name: %@", newBookName);
+            NSString *keyPathForBookNameInAppGeneral = [NSString stringWithFormat:@"bookCollection.%i.bookName", i];
+            [AppGeneral setValue:newBookName forKeyPath:keyPathForBookNameInAppGeneral];
             
-            [[AppGeneral objectForKey:@"bookCollection"] objectForKey:[NSNumber numberWithInteger:i]];
+            // Set story image names
+            NSString *keyPathForNewStoryImageNames = [NSString stringWithFormat:@"storyImageNames.%i", i];
+            NSDictionary *newStoryImageNamesDictionary = [responseDictionary valueForKeyPath:keyPathForNewStoryImageNames];
+//            DDLogWarn(@"story image names: %@", newStoryImageNamesDictionary);
+            NSString *keyPathForStoryImageNamesInAppGeneral = [NSString stringWithFormat:@"bookCollection.%i.storyImageNames", i];
+            [AppGeneral setValue:newStoryImageNamesDictionary forKeyPath:keyPathForStoryImageNamesInAppGeneral];
+            // Set story count
+            NSNumber *storyCount = [NSNumber numberWithInteger:[[newStoryImageNamesDictionary allKeys] count]];
+            NSString *keyPathForStoryCountInAppGeneral = [NSString stringWithFormat:@"bookCollection.%i.storyCount", i];
+            [AppGeneral setValue:storyCount forKeyPath:keyPathForStoryCountInAppGeneral];
+        }
+        DDLogInfo(@"End AppContent Dictionary: %@", [[GCAppConfig sharedInstance] AppGeneral]);
+        
+        // Call child views' load method
+        [bookScrollView loadBookScrollViewContent];
+        for (GCStoryScrollView *storyScroller in storyController.storyScrollViewArray) {
+            [storyScroller loadStoryScrollViewContent];
         }
         
         
-        
-        DDLogWarn(@"End AppContent Dictionary: %@", [[AppConfig sharedInstance] AppGeneral]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         DDLogError(@"Error: %@", error);
     }];

@@ -11,11 +11,16 @@
 
 @interface GCBookImageView : UIImageView
 
+#pragma mark - AppUtility
+@property GCAppUtility *utility;
+
 @property GCBookScrollView *parentView;
+@property NSInteger bookNumber;
 @property FBShimmeringView *bookTitleView;
+@property AFHTTPRequestOperationManager *manager;
 
--(id)initBlankBookImageViewWithParentView:(GCBookScrollView *)ParentView;
-
+-(id)initBlankBookImageViewWithParentView:(GCBookScrollView *)ParentView bookNumber:(NSInteger)number;
+-(void)loadBookImage;
 
 
 @end
