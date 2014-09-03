@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class GCStoryScrollView;
 
-@interface GCStoryItemView : UIImageView
+@interface GCStoryItemView : UIImageView <UIGestureRecognizerDelegate>
 
 #pragma mark - AppUtility
 @property GCAppUtility *utility;

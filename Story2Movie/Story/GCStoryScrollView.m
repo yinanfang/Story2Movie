@@ -14,6 +14,7 @@
 @synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
 @synthesize storyNames, storyImageViews;
 @synthesize previousStoryImageView, storyImageRightMostConstraint;
+@synthesize storyScrollViewPanGesture, storyScrollViewPanVelecity;
 
 #pragma mark - Blank Frame Initialization
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber
@@ -137,10 +138,60 @@
     for (GCStoryItemView *storyImageView in storyImageViews) {
         [storyImageView loadStoryImage];
     }
+    
+    // Add Gesture Recognizer to the Story Scroll View
+    [self addPanGestureRecognizerToView];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
+#pragma mark - Pan Gesture
+- (void)addPanGestureRecognizerToView
+{
+    storyScrollViewPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(gestureRecognizerDidPan:)];
+    storyScrollViewPanGesture.delegate = self;
+    [self addGestureRecognizer:storyScrollViewPanGesture];
+}
+// First
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        DDLogWarn(@"StoryScrollView shoud receive touch!!!");
+        return YES;
+    }
+    DDLogWarn(@"StoryScrollView shoud NOT receive touch!!!");
+    return NO;
+}
+// Second
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == storyScrollViewPanGesture) {
+        // Only respond to Vertical motion
+        UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer *)gestureRecognizer;
+        storyScrollViewPanVelecity = [panGesture velocityInView:parentController.view];
+        if (fabsf(storyScrollViewPanVelecity.y) > fabsf(storyScrollViewPanVelecity.x)) {
+            DDLogWarn(@"StoryScroll begins upward/freestyle motion!!!!!!");
+            return YES;
+        } else {
+            DDLogWarn(@"Should not react!!!!!!");
+            return NO;
+        }
+    }
+    DDLogWarn(@"Should not begin");
+    return YES;
+}
+// Third
+- (void)gestureRecognizerDidPan:(UIPanGestureRecognizer*)panGesture {
+    DDLogWarn(@"Panning Story Scroll View!!!!!!!!!");
+    
 }
 
 
 
+#pragma mark - Story Scroll View Movement
 -(void)moveStoryScrollViewToMiddel
 {
     [parentController.view layoutIfNeeded];

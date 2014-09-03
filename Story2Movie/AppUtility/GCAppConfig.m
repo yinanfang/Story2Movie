@@ -12,7 +12,7 @@
 
 #pragma mark - Domain
 // Change the domain for server here
-NSString *const DevelopmentDomain = @"http://Story2Movie.152.23.116.107.xip.io";
+NSString *const DevelopmentDomain = @"http://Story2Movie.152.23.126.147.xip.io";
 NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.com";
 
 #pragma mark - App General Data

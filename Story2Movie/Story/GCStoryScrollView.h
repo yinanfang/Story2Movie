@@ -10,7 +10,7 @@
 @class GCStoryController;
 #import "GCStoryItemView.h"
 
-@interface GCStoryScrollView : UIScrollView <UIScrollViewDelegate>
+@interface GCStoryScrollView : UIScrollView <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 #pragma mark - AppUtility
 @property GCAppUtility *utility;
@@ -24,6 +24,8 @@
 @property NSMutableArray *storyNames, *storyImageViews;
 @property GCStoryItemView *previousStoryImageView;
 @property MASConstraint *storyImageRightMostConstraint;
+@property UIPanGestureRecognizer *storyScrollViewPanGesture;
+@property CGPoint storyScrollViewPanVelecity;
 
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber;
 -(void)setupBlankStoryScrollView;

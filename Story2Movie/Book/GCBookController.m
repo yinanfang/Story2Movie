@@ -38,6 +38,10 @@
     // Initialization
     bookScrollView = [[GCBookScrollView alloc] initWithParentController:self];
     bookPageControl = [[GCBookPageControl alloc] initWithParentController:self];
+    
+    
+    
+    
     storyController = [[GCStoryController alloc] initWithParentController:self];
     [self addChildViewController:storyController];
     [self.view addSubview:storyController.view];
