@@ -11,10 +11,11 @@
 @implementation GCStoryScrollView
 @synthesize utility;
 @synthesize parentController;
-@synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
-@synthesize storyNames, storyImageViews;
+@synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth, StoryImageWidth_Standard, StoryImageHeight_Standard;
+@synthesize storyNames, storyItemViews;
 @synthesize previousStoryImageView, storyImageRightMostConstraint;
-@synthesize storyScrollViewPanGesture, storyScrollViewPanVelecity;
+@synthesize storyScrollViewVerticalPanGesture, storyScrollViewPanVelecity, storyScrollViewPanTranslation;
+@synthesize storyScrollViewPositionMode;
 
 #pragma mark - Blank Frame Initialization
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber
@@ -27,9 +28,13 @@
         manager = [AFHTTPRequestOperationManager manager];
         storyScrollerNumber = ScrollerNumber;
         storyCount = [[[GCAppConfig sharedInstance] defaultStoryCount] integerValue];
-        storyImageViews = [[NSMutableArray alloc] init];
+        storyItemViews = [[NSMutableArray alloc] init];
         StoryImageWidth = [[GCAppConfig sharedInstance] StoryImageWidth];
         StoryImageHeight = [[GCAppConfig sharedInstance] StoryImageHeight];
+        StoryImageHeight_Standard = [[GCAppConfig sharedInstance] StoryImageHeight_Standard];
+        StoryImageWidth_Standard = [[GCAppConfig sharedInstance] StoryImageWidth_Standard];
+        
+        storyScrollViewPositionMode = StoryScrollViewPositionFloat;
         
         // Empty Frame Initialization
         self.pagingEnabled = NO;
@@ -65,6 +70,15 @@
             [GCAppConfig sharedInstance].StoryImageHeight = [newHeight floatValue];
             DDLogVerbose(@"RAC updated [AppConfig sharedInstance].StoryImageHeight to %f", [GCAppConfig sharedInstance].StoryImageHeight);
         }];
+        [RACObserve(self, storyScrollViewPositionMode) subscribeNext:^(NSNumber *newHeight){
+            if ([newHeight integerValue] == StoryScrollViewPositionFloat) {
+                [GCAppConfig sharedInstance].storyScrollViewPositionMode = StoryScrollViewPositionFloat;
+                DDLogVerbose(@"RAC updated [GCAppConfig sharedInstance].storyScrollViewPositionMode to StoryScrollViewPositionFloat");
+            } else if ([newHeight integerValue] == StoryScrollViewPositionFullScreen) {
+                [GCAppConfig sharedInstance].storyScrollViewPositionMode = StoryScrollViewPositionFullScreen;
+                DDLogVerbose(@"RAC updated [GCAppConfig sharedInstance].storyScrollViewPositionMode to StoryScrollViewPositionFullScreen");
+            }
+        }];
         
         DDLogVerbose(@"Init StoryScrollView: %li; Story Count: %li", (long)ScrollerNumber, (long)storyCount);
     }
@@ -77,7 +91,7 @@
     previousStoryImageView = nil;
     for (int i = 0; i < storyCount; i++) {
         GCStoryItemView *imageView = [[GCStoryItemView alloc] initBlankStoryImageViewWithParentView:self storyNumber:i];
-        [storyImageViews addObject:imageView];
+        [storyItemViews addObject:imageView];
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@(StoryImageHeight));
@@ -114,7 +128,7 @@
         [storyImageRightMostConstraint uninstall];
         for (int i = (int)defaultStoryCount; i < storyCount; i++) {
             GCStoryItemView *imageView = [[GCStoryItemView alloc] initBlankStoryImageViewWithParentView:self storyNumber:i];
-            [storyImageViews addObject:imageView];
+            [storyItemViews addObject:imageView];
             [self addSubview:imageView];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.height.equalTo(@(StoryImageHeight));
@@ -135,7 +149,7 @@
         }
     }
     DDLogWarn(@"Loop through and call load method in image views");
-    for (GCStoryItemView *storyImageView in storyImageViews) {
+    for (GCStoryItemView *storyImageView in storyItemViews) {
         [storyImageView loadStoryImage];
     }
     
@@ -143,6 +157,7 @@
     [self addPanGestureRecognizerToView];
 }
 
+// Allowing multiple gesture recognizer to work together
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
@@ -151,45 +166,118 @@
 #pragma mark - Pan Gesture
 - (void)addPanGestureRecognizerToView
 {
-    storyScrollViewPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(gestureRecognizerDidPan:)];
-    storyScrollViewPanGesture.delegate = self;
-    [self addGestureRecognizer:storyScrollViewPanGesture];
+    storyScrollViewVerticalPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(gestureRecognizerDidPan:)];
+    storyScrollViewVerticalPanGesture.delegate = self;
+    [self addGestureRecognizer:storyScrollViewVerticalPanGesture];
 }
 // First
+// Two default gesture recognizer will be auto-pass into: UIScrollViewDelayedTouchesBeganGestureRecognizer, UIScrollViewPanGestureRecognizer
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
-        DDLogWarn(@"StoryScrollView shoud receive touch!!!");
+    // Handle customized gesture recognizer
+    if (gestureRecognizer == storyScrollViewVerticalPanGesture) {
+        DDLogVerbose(@"ShouldReceiveTouch allowing customed recognizer - %@", [gestureRecognizer description]);
         return YES;
     }
-    DDLogWarn(@"StoryScrollView shoud NOT receive touch!!!");
-    return NO;
+    
+    // Handle default gesture recognizer
+    DDLogVerbose(@"ShouldReceiveTouch allowing default recognizer - %@", [gestureRecognizer description]);
+    return YES;
 }
 // Second
-- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (gestureRecognizer == storyScrollViewPanGesture) {
+    // Handle customized gesture recognizer
+    if (gestureRecognizer == storyScrollViewVerticalPanGesture) {
         // Only respond to Vertical motion
-        UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer *)gestureRecognizer;
-        storyScrollViewPanVelecity = [panGesture velocityInView:parentController.view];
+        storyScrollViewPanVelecity = [storyScrollViewVerticalPanGesture velocityInView:parentController.view];
         if (fabsf(storyScrollViewPanVelecity.y) > fabsf(storyScrollViewPanVelecity.x)) {
-            DDLogWarn(@"StoryScroll begins upward/freestyle motion!!!!!!");
+            DDLogVerbose(@"StoryScrollView begins upward/freestyle motion!!!");
             return YES;
         } else {
-            DDLogWarn(@"Should not react!!!!!!");
+            DDLogVerbose(@"StoryScrollView ignores unwanted horizontal motion!!!");
             return NO;
         }
     }
-    DDLogWarn(@"Should not begin");
+    
+    // Handle default gesture recognizer
+    DDLogVerbose(@"ShouldBegin allowing default recognizer - %@", [gestureRecognizer description]);
     return YES;
 }
 // Third
 - (void)gestureRecognizerDidPan:(UIPanGestureRecognizer*)panGesture {
-    DDLogWarn(@"Panning Story Scroll View!!!!!!!!!");
+    DDLogVerbose(@"Panning Story Scroll View...");
+    storyScrollViewPanTranslation = [panGesture translationInView:parentController.view];
+    DDLogVerbose(@"vertical translation: %f", storyScrollViewPanTranslation.y);
+    CGFloat newStoryImageHeight = StoryImageHeight + (-storyScrollViewPanTranslation.y);
+    DDLogVerbose(@"newStoryImageHeight: %f", newStoryImageHeight);
+    // Change the controller height
+    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
+        make.height.equalTo(@(newStoryImageHeight));
+    }];
+    // Change the image size for this scroll view. Update other when scroll to them
+    for (GCStoryItemView *storyItemView in self.storyItemViews) {
+        [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
+            make.height.equalTo(@(newStoryImageHeight));
+            make.width.equalTo(@(newStoryImageHeight*(ScreenWidth/ScreenHeight)));
+        }];
+    }
+    // Adjust scroll view offset
+    CGFloat motionOffset = (-storyScrollViewPanTranslation.y);
+    self.contentOffset = CGPointMake(self.contentOffset.x+motionOffset, self.contentOffset.y);
     
+    // When gesture ends
+    if (panGesture.state == UIGestureRecognizerStateEnded) {
+        DDLogWarn(@"Gesture Ended - %@", [panGesture description]);
+        
+//        DDLogWarn(@"determinant: %f", newStoryImageHeight);
+        if (newStoryImageHeight > [[GCAppConfig sharedInstance] HeightDeterminant_FloatVSFullScreen]) {
+            DDLogWarn(@"should be full screen mode");
+            self.storyScrollViewPositionMode = StoryScrollViewPositionFullScreen; // RAC
+            [self enterOrRestoreScrollViewModeToFullScreen];
+            newStoryImageHeight = ScreenHeight;
+        } else {
+            DDLogWarn(@"should be floating mode");
+            self.storyScrollViewPositionMode = StoryScrollViewPositionFloat;// RAC
+            [self enterOrRestoreScrollViewModeToFloat];
+            newStoryImageHeight = StoryImageHeight_Standard;
+        }
+        
+        
+        // Update Height and Width in this class and AppConfig
+        self.StoryImageHeight = newStoryImageHeight; // RAC
+    }
+    
+ 
 }
 
+-(void)enterOrRestoreScrollViewModeToFullScreen
+{
+    DDLogVerbose(@"Updating the scroll view to full screen mode...");
 
+}
+
+-(void)enterOrRestoreScrollViewModeToFloat
+{
+    DDLogVerbose(@"Updating the scroll view to float mode...");
+    [parentController.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        // Change the image size for this scroll view. Update other when scroll to them
+        for (GCStoryItemView *storyItemView in self.storyItemViews) {
+            [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
+                make.height.equalTo(@(StoryImageHeight_Standard));
+                make.width.equalTo(@(StoryImageHeight_Standard*(ScreenWidth/ScreenHeight)));
+            }];
+        }
+
+
+        [parentController.view layoutIfNeeded];
+    }completion:nil];
+    // Change the controller height
+    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
+        make.height.equalTo(@(StoryImageHeight_Standard));
+    }];
+}
 
 #pragma mark - Story Scroll View Movement
 -(void)moveStoryScrollViewToMiddel

@@ -20,12 +20,16 @@
 
 #pragma mark - Story View
 @property AFHTTPRequestOperationManager *manager;
-@property NSInteger storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth;
-@property NSMutableArray *storyNames, *storyImageViews;
+@property NSInteger storyScrollerNumber, storyCount;
+@property CGFloat StoryImageHeight, StoryImageWidth;
+@property CGFloat StoryImageWidth_Standard, StoryImageHeight_Standard;
+@property NSMutableArray *storyNames, *storyItemViews;
 @property GCStoryItemView *previousStoryImageView;
 @property MASConstraint *storyImageRightMostConstraint;
-@property UIPanGestureRecognizer *storyScrollViewPanGesture;
-@property CGPoint storyScrollViewPanVelecity;
+@property UIPanGestureRecognizer *storyScrollViewVerticalPanGesture;
+@property CGPoint storyScrollViewPanVelecity, storyScrollViewPanTranslation;
+@property StoryScrollViewPositionMode storyScrollViewPositionMode;
+
 
 -(id)initWithParentController:(GCStoryController *)controller ScrollerNumber:(NSInteger)ScrollerNumber;
 -(void)setupBlankStoryScrollView;

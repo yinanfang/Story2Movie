@@ -43,7 +43,8 @@
 {
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(320, 30)]);
-        make.bottom.equalTo(parentController.storyController.view.mas_top);
+//        make.bottom.equalTo(parentController.storyController.view.mas_top);
+        make.bottom.equalTo(parentController.view.mas_bottom).with.offset(-[[GCAppConfig sharedInstance] StoryImageHeight]);// Independent to the Story Controller View
         make.centerX.equalTo(parentController.view.mas_centerX);
     }];
     
