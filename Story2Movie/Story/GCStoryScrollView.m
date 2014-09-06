@@ -14,7 +14,7 @@
 @synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth, StoryImageWidth_Standard, StoryImageHeight_Standard;
 @synthesize storyNames, storyItemViews;
 @synthesize previousStoryImageView, storyImageRightMostConstraint;
-@synthesize storyScrollViewVerticalPanGesture, storyScrollViewPanVelecity, storyScrollViewPanTranslation;
+@synthesize storyScrollViewVerticalPanGesture, storyScrollViewPanVelecity, storyScrollViewPanTranslation, oldContentOffset, oldStoryControllerViewFrame;
 @synthesize storyScrollViewPositionMode;
 
 #pragma mark - Blank Frame Initialization
@@ -206,46 +206,116 @@
 }
 // Third
 - (void)gestureRecognizerDidPan:(UIPanGestureRecognizer*)panGesture {
-    DDLogVerbose(@"Panning Story Scroll View...");
+    if (panGesture.state == UIGestureRecognizerStateBegan) {
+        DDLogWarn(@"Panning Story Scroll View...");
+        oldContentOffset = self.contentOffset;
+        oldStoryControllerViewFrame = self.parentController.view.frame;
+    }
+    DDLogWarn(@"======================================================================");
+    DDLogWarn(@"temp oldContentOffset: %f", oldContentOffset.x);
+    DDLogWarn(@"temp oldStoryControllerViewFrame: %@", [NSValue valueWithCGRect:oldStoryControllerViewFrame]);
+    
     storyScrollViewPanTranslation = [panGesture translationInView:parentController.view];
-    DDLogVerbose(@"vertical translation: %f", storyScrollViewPanTranslation.y);
+    CGFloat oldStoryImageHeight = StoryImageHeight;
     CGFloat newStoryImageHeight = StoryImageHeight + (-storyScrollViewPanTranslation.y);
-    DDLogVerbose(@"newStoryImageHeight: %f", newStoryImageHeight);
-    // Change the controller height
-    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
-        make.height.equalTo(@(newStoryImageHeight));
-    }];
-    // Change the image size for this scroll view. Update other when scroll to them
-    for (GCStoryItemView *storyItemView in self.storyItemViews) {
+    CGFloat oldStoryImageWidth = StoryImageWidth;
+    CGFloat newStoryImageWidth = newStoryImageHeight*(ScreenWidth/ScreenHeight);
+    CGPoint touchPointInScrollView = [panGesture locationInView:self];
+    CGPoint touchPointInStoryController = [panGesture locationInView:self.parentController.view];
+    CGFloat numberOfStoryItemBeforeTheItemTouch = floor(touchPointInScrollView.x/StoryImageWidth);
+    CGFloat percentageInOldItem = (touchPointInScrollView.x-numberOfStoryItemBeforeTheItemTouch*oldStoryImageWidth)/oldStoryImageWidth;
+    CGFloat deltaContentOffset = numberOfStoryItemBeforeTheItemTouch*newStoryImageWidth + percentageInOldItem*newStoryImageWidth - touchPointInScrollView.x;
+    
+    DDLogVerbose(@"temp result01: %f", storyScrollViewPanTranslation.y);
+    DDLogVerbose(@"temp result02: %f", percentageInOldItem);
+    DDLogVerbose(@"temp result03: %f", numberOfStoryItemBeforeTheItemTouch*newStoryImageWidth);
+    DDLogVerbose(@"temp result04: %f", percentageInOldItem*newStoryImageWidth);
+    DDLogWarn(@"deltaContentOffset: %f", deltaContentOffset);
+//    DDLogVerbose(@"vertical translation: %f", storyScrollViewPanTranslation.y);
+//    DDLogVerbose(@"newStoryImageHeight: %f", newStoryImageHeight);
+    
+    // React to pan motion. Change Adjust the Story Item dynamically
+//    parentController.view.frame.size.height = newStoryImageHeight;
+    parentController.view.frame = CGRectMake(0, oldStoryControllerViewFrame.origin.y+storyScrollViewPanTranslation.y, ScreenWidth, newStoryImageHeight);
+    for (GCStoryItemView *storyItemView in storyItemViews) {
+        //        storyItemView.frame = CGRectMake(newStoryImageWidth*storyItemView.storyNumber, 0, newStoryImageWidth, newStoryImageHeight);
         [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
             make.height.equalTo(@(newStoryImageHeight));
-            make.width.equalTo(@(newStoryImageHeight*(ScreenWidth/ScreenHeight)));
+            make.width.equalTo(@(newStoryImageWidth));
         }];
+        [super updateConstraints];
     }
+    
+//    // Change the controller height
+//    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
+//        make.height.equalTo(@(newStoryImageHeight));
+//    }];
+//    [super updateConstraints];
+//    // Change the image size for this scroll view. Update other when scroll to them
+//    for (GCStoryItemView *storyItemView in self.storyItemViews) {
+//        [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
+//            make.height.equalTo(@(newStoryImageHeight));
+//            make.width.equalTo(@(newStoryImageWidth));
+//        }];
+//        [super updateConstraints];
+//    }
     // Adjust scroll view offset
-    CGFloat motionOffset = (-storyScrollViewPanTranslation.y);
-    self.contentOffset = CGPointMake(self.contentOffset.x+motionOffset, self.contentOffset.y);
+    CGPoint newContentOffset = CGPointMake(oldContentOffset.x+deltaContentOffset-storyScrollViewPanTranslation.x, self.contentOffset.y);
+    if (newContentOffset.x>0 | (self.contentSize.width-newContentOffset.x)>0) {
+        // When the story scroll view is in the middle
+        self.contentOffset = newContentOffset;
+    } else {
+//        if (touchPointInScrollView.x < touchPointInStoryController.x) {
+//            // When left edge reach in
+//            DDLogError(@"left edge reach in");
+//            self.contentOffset = CGPointZero;
+//        } else if ((self.contentSize.width-touchPointInScrollView.x) < (ScreenWidth-touchPointInStoryController.x)){
+//            // When right edge reach in
+//            DDLogError(@"right edge reach in");
+//            self.contentOffset = CGPointMake(newStoryImageWidth*storyCount-ScreenWidth, self.contentOffset.y);
+//        }
+    }
+    
+//    if (touchPointInScrollView.x < touchPointInStoryController.x) {
+//        // When left edge reach in
+//        DDLogError(@"left edge reach in");
+//        self.contentOffset = CGPointZero;
+//    } else if ((self.contentSize.width-touchPointInScrollView.x) < (ScreenWidth-touchPointInStoryController.x)){
+//        // When right edge reach in
+//        DDLogError(@"right edge reach in");
+//        self.contentOffset = CGPointMake(newStoryImageWidth*storyCount-ScreenWidth, self.contentOffset.y);
+//    } else {
+//        DDLogError(@"im the middle");
+//        self.contentOffset = CGPointMake(oldContentOffset.x+deltaContentOffset-storyScrollViewPanTranslation.x, self.contentOffset.y);
+//    }
+    DDLogWarn(@"contentOffset: %f", self.contentOffset.x);
+    // Update Height and Width in this class and AppConfig
+//    self.StoryImageHeight = newStoryImageHeight; // RAC
+//    self.StoryImageWidth = newStoryImageWidth; // RAC
     
     // When gesture ends
     if (panGesture.state == UIGestureRecognizerStateEnded) {
         DDLogWarn(@"Gesture Ended - %@", [panGesture description]);
         
+        
+        
 //        DDLogWarn(@"determinant: %f", newStoryImageHeight);
         if (newStoryImageHeight > [[GCAppConfig sharedInstance] HeightDeterminant_FloatVSFullScreen]) {
             DDLogWarn(@"should be full screen mode");
-            self.storyScrollViewPositionMode = StoryScrollViewPositionFullScreen; // RAC
-            [self enterOrRestoreScrollViewModeToFullScreen];
-            newStoryImageHeight = ScreenHeight;
+//            self.storyScrollViewPositionMode = StoryScrollViewPositionFullScreen; // RAC
+//            [self enterOrRestoreScrollViewModeToFullScreen];
+//            newStoryImageHeight = ScreenHeight;
         } else {
             DDLogWarn(@"should be floating mode");
-            self.storyScrollViewPositionMode = StoryScrollViewPositionFloat;// RAC
-            [self enterOrRestoreScrollViewModeToFloat];
-            newStoryImageHeight = StoryImageHeight_Standard;
+//            self.storyScrollViewPositionMode = StoryScrollViewPositionFloat;// RAC
+//            [self enterOrRestoreScrollViewModeToFloat];
+//            newStoryImageHeight = StoryImageHeight_Standard;
         }
         
         
         // Update Height and Width in this class and AppConfig
         self.StoryImageHeight = newStoryImageHeight; // RAC
+        self.StoryImageWidth = newStoryImageWidth; // RAC
     }
     
  

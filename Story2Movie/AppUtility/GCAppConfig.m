@@ -106,7 +106,7 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
             StoryImageHeight_Standard = 258;
         }
         StoryImageWidth = 320*(StoryImageHeight/ScreenHeight);
-        StoryImageWidth_Standard  = 320*(StoryImageHeight/ScreenHeight);
+        StoryImageWidth_Standard  = 320*(StoryImageHeight/ScreenHeight); //145
         
         HeightDeterminant_FloatVSFullScreen = ScreenHeight-(ScreenHeight-StoryImageHeight)/2;
         

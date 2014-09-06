@@ -28,6 +28,9 @@
 @property MASConstraint *storyImageRightMostConstraint;
 @property UIPanGestureRecognizer *storyScrollViewVerticalPanGesture;
 @property CGPoint storyScrollViewPanVelecity, storyScrollViewPanTranslation;
+@property CGPoint oldContentOffset;
+@property CGRect oldStoryControllerViewFrame;
+
 @property StoryScrollViewPositionMode storyScrollViewPositionMode;
 
 
