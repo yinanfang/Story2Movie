@@ -35,7 +35,7 @@ FOUNDATION_EXPORT NSString *const ProductionDomain;
 
 #pragma mark - Book Specific
 @property NSInteger bookCurrentPageNumber;
-@property CGRect PageControlRect;
+@property CGRect PageControlRect, BookTitleViewRect;
 
 #pragma mark - Story Specific
 @property CGFloat WidthForSmallStory, HeightForSmallStory;

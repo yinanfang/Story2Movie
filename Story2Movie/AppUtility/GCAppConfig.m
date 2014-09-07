@@ -20,7 +20,7 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
 @synthesize defaultStoryCount, defaultBookCount;
 
 #pragma mark - Book Specific
-@synthesize bookCurrentPageNumber, PageControlRect;
+@synthesize bookCurrentPageNumber, PageControlRect, BookTitleViewRect;
 
 #pragma mark - Story Specific
 @synthesize WidthForSmallStory, HeightForSmallStory, WidthForCurrentStory, HeightForCurrentStory;
@@ -49,7 +49,7 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
         // Initialize values
         
         // App General Data
-        defaultBookCount = [NSNumber numberWithInteger:3];
+        defaultBookCount = [NSNumber numberWithInteger:2];
         defaultStoryCount = [NSNumber numberWithInteger:5];
 //        NSDictionary *defaultAppGeneral = @{@"bookCount": defaultBookCount,
 //                                            @"bookCollection":@{
@@ -95,6 +95,7 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
         }else if (IS_IPHONE4S){
             PageControlRect = CGRectMake(60, 242, 200, 20);                     // 480-218+20 = 242
         }
+        BookTitleViewRect = CGRectMake(15, 13, 150, 22);
         
         // Story Specific
         if (IS_IPHONE5S) {

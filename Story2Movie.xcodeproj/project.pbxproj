@@ -18,6 +18,9 @@
 		D4DBD36C19BC1771008D2A0B /* GCStoryCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBD36B19BC1771008D2A0B /* GCStoryCollectionController.m */; };
 		D4DBD37219BC209A008D2A0B /* GCBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBD37119BC209A008D2A0B /* GCBookController.m */; };
 		D4DBD37519BC20C8008D2A0B /* GCBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBD37419BC20C8008D2A0B /* GCBookView.m */; };
+		D4DBD37819BC935A008D2A0B /* GCStoryScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBD37719BC935A008D2A0B /* GCStoryScrollView.m */; };
+		D4DBD37B19BC9382008D2A0B /* GCStoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBD37A19BC9382008D2A0B /* GCStoryController.m */; };
+		D4DBD37E19BC9395008D2A0B /* GCStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DBD37D19BC9395008D2A0B /* GCStoryView.m */; };
 		D4FD9B7D198C8D4600927FDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7C198C8D4600927FDC /* Foundation.framework */; };
 		D4FD9B7F198C8D4600927FDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */; };
 		D4FD9B81198C8D4600927FDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD9B80198C8D4600927FDC /* UIKit.framework */; };
@@ -65,6 +68,12 @@
 		D4DBD37119BC209A008D2A0B /* GCBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCBookController.m; path = Book/GCBookController.m; sourceTree = "<group>"; };
 		D4DBD37319BC20C8008D2A0B /* GCBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCBookView.h; path = Book/GCBookView.h; sourceTree = "<group>"; };
 		D4DBD37419BC20C8008D2A0B /* GCBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCBookView.m; path = Book/GCBookView.m; sourceTree = "<group>"; };
+		D4DBD37619BC935A008D2A0B /* GCStoryScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryScrollView.h; path = Story/GCStoryScrollView.h; sourceTree = "<group>"; };
+		D4DBD37719BC935A008D2A0B /* GCStoryScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryScrollView.m; path = Story/GCStoryScrollView.m; sourceTree = "<group>"; };
+		D4DBD37919BC9382008D2A0B /* GCStoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryController.h; path = Story/GCStoryController.h; sourceTree = "<group>"; };
+		D4DBD37A19BC9382008D2A0B /* GCStoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryController.m; path = Story/GCStoryController.m; sourceTree = "<group>"; };
+		D4DBD37C19BC9395008D2A0B /* GCStoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCStoryView.h; path = Story/GCStoryView.h; sourceTree = "<group>"; };
+		D4DBD37D19BC9395008D2A0B /* GCStoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCStoryView.m; path = Story/GCStoryView.m; sourceTree = "<group>"; };
 		D4FD9B79198C8D4600927FDC /* Story2Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Story2Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FD9B7C198C8D4600927FDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4FD9B7E198C8D4600927FDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,14 +144,14 @@
 			children = (
 				D47B583319BC132600921567 /* GCBookCollectionController.h */,
 				D47B583419BC132600921567 /* GCBookCollectionController.m */,
+				D4DBD36719BC1741008D2A0B /* GCBookPageControl.h */,
+				D4DBD36819BC1741008D2A0B /* GCBookPageControl.m */,
 				D4DBD36419BC1716008D2A0B /* GCBookScrollView.h */,
 				D4DBD36519BC1716008D2A0B /* GCBookScrollView.m */,
 				D4DBD37019BC209A008D2A0B /* GCBookController.h */,
 				D4DBD37119BC209A008D2A0B /* GCBookController.m */,
 				D4DBD37319BC20C8008D2A0B /* GCBookView.h */,
 				D4DBD37419BC20C8008D2A0B /* GCBookView.m */,
-				D4DBD36719BC1741008D2A0B /* GCBookPageControl.h */,
-				D4DBD36819BC1741008D2A0B /* GCBookPageControl.m */,
 			);
 			name = Book;
 			sourceTree = "<group>";
@@ -152,6 +161,12 @@
 			children = (
 				D4DBD36A19BC1771008D2A0B /* GCStoryCollectionController.h */,
 				D4DBD36B19BC1771008D2A0B /* GCStoryCollectionController.m */,
+				D4DBD37619BC935A008D2A0B /* GCStoryScrollView.h */,
+				D4DBD37719BC935A008D2A0B /* GCStoryScrollView.m */,
+				D4DBD37919BC9382008D2A0B /* GCStoryController.h */,
+				D4DBD37A19BC9382008D2A0B /* GCStoryController.m */,
+				D4DBD37C19BC9395008D2A0B /* GCStoryView.h */,
+				D4DBD37D19BC9395008D2A0B /* GCStoryView.m */,
 			);
 			name = Story;
 			sourceTree = "<group>";
@@ -367,10 +382,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4C59FC7198C9434000FD7E8 /* GCCustomLogFormatters.m in Sources */,
+				D4DBD37819BC935A008D2A0B /* GCStoryScrollView.m in Sources */,
 				D4DBD36C19BC1771008D2A0B /* GCStoryCollectionController.m in Sources */,
 				D4C59FBE198C9401000FD7E8 /* GCAppUtility.m in Sources */,
 				D4DBD37519BC20C8008D2A0B /* GCBookView.m in Sources */,
+				D4DBD37B19BC9382008D2A0B /* GCStoryController.m in Sources */,
 				D4DBD37219BC209A008D2A0B /* GCBookController.m in Sources */,
+				D4DBD37E19BC9395008D2A0B /* GCStoryView.m in Sources */,
 				D4C59FC1198C9413000FD7E8 /* GCAppConfig.m in Sources */,
 				D47B583519BC132600921567 /* GCBookCollectionController.m in Sources */,
 				D4DBD36619BC1716008D2A0B /* GCBookScrollView.m in Sources */,

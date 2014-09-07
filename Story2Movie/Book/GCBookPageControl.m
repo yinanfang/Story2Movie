@@ -17,14 +17,14 @@
 {
     self = [super initWithFrame:[[GCAppConfig sharedInstance] PageControlRect]];
     if (self) {
-        // Initialization code
+        // Initialize Variables
         utility = [GCAppUtility sharedInstance];
         parentController = controller;
         
         // Empty Frame Initialization
         self.numberOfPages = [[[GCAppConfig sharedInstance] defaultBookCount] integerValue];
         self.currentPage = 0;
-        self.pageIndicatorTintColor = [UIColor lightGrayColor];
+        self.pageIndicatorTintColor = [UIColor grayColor];
         self.currentPageIndicatorTintColor = [UIColor blackColor];
         self.backgroundColor = [UIColor clearColor];
         self.enabled = NO;  // Disable the "clickPageControl" method

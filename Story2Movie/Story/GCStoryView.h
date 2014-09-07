@@ -1,5 +1,5 @@
 //
-//  GCBookView.h
+//  GCStoryView.h
 //  Story2Movie
 //
 //  Created by Golden Compass on 9/7/14.
@@ -7,24 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-@class GCBookController;
+@class GCStoryScrollView;
+@class GCStoryController;
 
-@interface GCBookView : UIView
+
+@interface GCStoryView : UIView
 
 #pragma mark - AppUtility
 @property GCAppUtility *utility;
 
 #pragma mark - Parent Controller
-@property GCBookController *parentController;
+@property GCStoryController *parentController;
+@property CGFloat WidthForSmallStory, HeightForSmallStory;
 @property CGFloat PixelAdjustForHorizontalGap;
-@property FBShimmeringView *bookTitleView;
-@property UILabel *bookTitleLabel;
 @property AFHTTPRequestOperationManager *manager;
 
 
-- (id)initWithParentController:(GCBookController *)controller;
-- (void)loadBookContent;
 
-
+- (id)initWithParentController:(GCStoryController *)controller;
+- (void)loadStoryContent;
 
 @end

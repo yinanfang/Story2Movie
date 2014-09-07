@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class GCBookCollectionController;
+#import "GCStoryScrollView.h"
 
 @interface GCStoryCollectionController : UIViewController
 
@@ -17,6 +18,11 @@
 #pragma mark - Parent Controller
 @property GCBookCollectionController *parentController;
 
+#pragma mark - Book
+@property NSInteger bookCount;
+
+#pragma mark - Story
+@property NSMutableArray *storyScrollViewArray;
 
 
 
@@ -26,6 +32,7 @@
 
 
 -(id)initWithParentController:(GCBookCollectionController *)controller;
+- (void)loadStoryCollectionControllerContent;
 
 
 

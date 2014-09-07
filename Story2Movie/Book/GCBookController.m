@@ -7,21 +7,38 @@
 //
 
 #import "GCBookController.h"
+#import "GCBookScrollView.h"
 
 @interface GCBookController ()
 
 @end
 
 @implementation GCBookController
+@synthesize utility;
+@synthesize parentView;
+@synthesize bookNumber, bookView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (id)initWithFrame:(CGRect)frame ParentView:(GCBookScrollView *)view bookNumber:(NSInteger)number
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        // Initialization Variables
+        utility = [GCAppUtility sharedInstance];
+        parentView = view;
+        bookNumber = number;
+        
+        // Empty Frame Initialization
+        self.view.backgroundColor = [UIColor clearColor];
+        self.view.frame = frame;
+        bookView = [[GCBookView alloc] initWithParentController:self];
+        
     }
     return self;
 }
+
+
+
 
 - (void)viewDidLoad
 {
