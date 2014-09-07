@@ -19,12 +19,16 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
 @synthesize AppGeneral;
 @synthesize defaultStoryCount, defaultBookCount;
 
-#pragma mark - Book
+#pragma mark - Book Specific
 @synthesize bookCurrentPageNumber;
 
-#pragma mark - Story item
-@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight, StoryImageWidth_Standard, StoryImageHeight_Standard, ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage, HeightDeterminant_FloatVSFullScreen;
-@synthesize storyScrollViewPositionMode;
+#pragma mark - Story Specific
+@synthesize WidthForSmallStory, HeightForSmallStory, WidthForCurrentStory, HeightForCurrentStory;
+
+#pragma mark - General
+@synthesize PixelAdjustForHorizontalGap;
+@synthesize HeightDeterminant_FloatVSFullScreen;
+@synthesize storyDisplayStyleMode;
 
 + (GCAppConfig *)sharedInstance
 {
@@ -42,15 +46,8 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
     self = [super init];
     if (self) {
         // Initialize values
-        //        AppGeneral = [[NSMutableDictionary alloc] init];
-        //        NSInteger defaultBookCount = 3;
-        //        [AppGeneral setObject:[NSNumber numberWithInteger:defaultBookCount] forKey:@"bookCount"];
-        //        NSMutableDictionary *bookDictionaryCollection = [[NSMutableDictionary alloc] init];
-        //        [AppGeneral setObject:bookDictionaryCollection forKey:@"book"];
-        //        NSMutableDictionary *bookDictionarySingle;
-        //        for (NSInteger i = 0; i < defaultBookCount; i++) {
-        //            <#statements#>
-        //        }
+        
+        // App General Data
         defaultBookCount = [NSNumber numberWithInteger:3];
         defaultStoryCount = [NSNumber numberWithInteger:5];
 //        NSDictionary *defaultAppGeneral = @{@"bookCount": defaultBookCount,
@@ -90,31 +87,25 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
                                    };
         AppGeneral = [data_tmp mutableCopy];
         
-        
-        
-        
+        // Book Specific
         bookCurrentPageNumber = 0;
         
-        // Set up the GalleryImageWidth and GalleryImageHeight according to device height
-        NSScreenSizeWithInset = [NSValue valueWithCGSize:CGSizeMake(ScreenWidth-2, ScreenHeight-2)];
-        
-        if (IS_IPHONE4S) {
-            StoryImageHeight = 215;
-            StoryImageHeight_Standard = 215;
-        }else if (IS_IPHONE5S){
-            StoryImageHeight = 258;
-            StoryImageHeight_Standard = 258;
+        // Story Specific
+        if (IS_IPHONE5S) {
+            HeightForSmallStory = 258;
+        }else if (IS_IPHONE4S){
+            HeightForSmallStory = 218;                                          // 480*(258/568) = 218.028169
         }
-        StoryImageWidth = 320*(StoryImageHeight/ScreenHeight) - 2;              // 145 - 5S - Adjust for the gap
-        StoryImageWidth_Standard  = 320*(StoryImageHeight/ScreenHeight) - 2;    //
+        WidthForSmallStory = 320*(HeightForSmallStory/ScreenHeight);           // 145.352113
         
-        ScreenHeightAdjustedForImage = ScreenHeight;
-        ScreenWidthAdjustedForImage = ScreenWidth - 2;
+        HeightForCurrentStory = HeightForSmallStory;
+        WidthForCurrentStory = WidthForSmallStory;
         
-        HeightDeterminant_FloatVSFullScreen = ScreenHeight-(ScreenHeight-StoryImageHeight)/2;
-        
-        storyScrollViewPositionMode = StoryScrollViewPositionFloat;
-        
+        // General
+        PixelAdjustForHorizontalGap = 1.0;
+        HeightDeterminant_FloatVSFullScreen = ScreenHeight-(ScreenHeight-HeightForSmallStory)/2;
+        storyDisplayStyleMode = StoryDisplayStyleModeFloat;
+
         
     }
     return self;

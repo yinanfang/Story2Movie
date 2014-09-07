@@ -33,23 +33,21 @@ FOUNDATION_EXPORT NSString *const ProductionDomain;
 @property NSMutableDictionary *AppGeneral;
 @property NSNumber *defaultStoryCount, *defaultBookCount;
 
-#pragma mark - Book
-@property NSMutableDictionary *bookNames;
+#pragma mark - Book Specific
 @property NSInteger bookCurrentPageNumber;
 
-#pragma mark - Story
-@property NSValue *NSScreenSizeWithInset;
-@property CGFloat StoryImageWidth, StoryImageHeight;
-@property CGFloat StoryImageWidth_Standard, StoryImageHeight_Standard;
-@property CGFloat ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage;
+#pragma mark - Story Specific
+@property CGFloat WidthForSmallStory, HeightForSmallStory;
+@property CGFloat WidthForCurrentStory, HeightForCurrentStory;
+
+#pragma mark - General
+@property CGFloat PixelAdjustForHorizontalGap;
 @property CGFloat HeightDeterminant_FloatVSFullScreen;
-
-
-typedef NS_ENUM(NSInteger, StoryScrollViewPositionMode) {
-    StoryScrollViewPositionFloat,
-    StoryScrollViewPositionFullScreen
+typedef NS_ENUM(NSInteger, StoryDisplayStyleMode) {
+    StoryDisplayStyleModeFloat,
+    StoryDisplayStyleModeFullScreen
 };
-@property StoryScrollViewPositionMode storyScrollViewPositionMode;
+@property StoryDisplayStyleMode storyDisplayStyleMode;
 
 // This is the method to access this Singleton class
 + (GCAppConfig *)sharedInstance;

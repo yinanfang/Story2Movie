@@ -34,7 +34,7 @@
     }
     
     // Set root view controller
-    self.window.rootViewController = [[GCBookController alloc] init];
+    self.window.rootViewController = [[GCBookCollectionController alloc] init];
     // Display view
     [self.window makeKeyAndVisible];
     DDLogInfo(@"========== End of AppDelegate ==========");

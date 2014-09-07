@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GCBookController.h"
+#import "GCBookCollectionController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
