@@ -28,4 +28,11 @@
 - (id)initWithParentController:(GCStoryCollectionController *)controller ScrollViewNumber:(NSInteger)number;
 - (void)loadStoryScrollViewContent;
 
+
+#pragma mark - Story Scroll View Movement
+-(void)moveStoryScrollViewToMiddel;
+-(void)moveStoryScrollViewToRight;
+-(void)moveStoryScrollViewToLeft;
+
+
 @end

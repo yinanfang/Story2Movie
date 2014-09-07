@@ -81,18 +81,33 @@
 }
 
 
+#pragma mark - Story Scroll View Movement
+-(void)moveStoryScrollViewToMiddel
+{
+    POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    springAnimation.springBounciness=0;
+    springAnimation.springSpeed=20;
+    springAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, ScreenWidth, HeightForSmallStory)];
+    [self pop_addAnimation:springAnimation forKey:@"moveStoryScrollViewToMiddel"];
+}
 
+-(void)moveStoryScrollViewToRight
+{
+    POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    springAnimation.springBounciness=0;
+    springAnimation.springSpeed=20;
+    springAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(ScreenWidth, 0, ScreenWidth, HeightForSmallStory)];
+    [self pop_addAnimation:springAnimation forKey:@"moveStoryScrollViewToMiddel"];
+}
 
+-(void)moveStoryScrollViewToLeft
+{
+    POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    springAnimation.springBounciness=0;
+    springAnimation.springSpeed=20;
+    springAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(-ScreenWidth, 0, ScreenWidth, HeightForSmallStory)];
+    [self pop_addAnimation:springAnimation forKey:@"moveStoryScrollViewToMiddel"];
 
-
-
-
-
-
-
-
-
-
-
+}
 
 @end

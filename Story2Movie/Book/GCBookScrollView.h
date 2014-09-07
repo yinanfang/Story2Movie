@@ -10,6 +10,7 @@
 @class GCBookCollectionController;
 #import "GCBookPageControl.h"
 #import "GCBookController.h"
+#import "GCStoryScrollView.h"
 
 @interface GCBookScrollView : UIScrollView <UIScrollViewDelegate>
 

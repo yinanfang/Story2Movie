@@ -102,8 +102,21 @@
             newPageNumber = ceil(scrollView.contentSize.width/ScreenWidth) - 1;
         }
     }
+    
+    // Update bookPageControl's currentPage number
     DDLogVerbose(@"new page number: %li", (long)newPageNumber);
     bookPageControl.currentPage = newPageNumber;
+    
+    // Update Story Scroll View Position
+    for (GCStoryScrollView *storyScrollView in parentController.storyCollectionController.storyScrollViewArray) {
+        if (storyScrollView.storyScrollViewNumber < newPageNumber) {
+            [storyScrollView moveStoryScrollViewToLeft];
+        }else if (storyScrollView.storyScrollViewNumber == newPageNumber) {
+            [storyScrollView moveStoryScrollViewToMiddel];
+        }else if (storyScrollView.storyScrollViewNumber > newPageNumber) {
+            [storyScrollView moveStoryScrollViewToRight];
+        }
+    }
 }
 
 
