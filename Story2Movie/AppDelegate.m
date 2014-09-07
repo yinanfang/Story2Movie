@@ -15,7 +15,7 @@
 {
     // Initialize Utility object
     utility = [GCAppUtility sharedInstance];
-    [utility ApplicationSetupWithProductionMode:NO];
+    [utility ApplicationSetupWithProductionMode:YES];
     
     // Initialize window and set background
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

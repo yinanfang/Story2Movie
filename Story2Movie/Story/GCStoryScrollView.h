@@ -23,13 +23,15 @@
 @property NSInteger storyScrollerNumber, storyCount;
 @property CGFloat StoryImageHeight, StoryImageWidth;
 @property CGFloat StoryImageWidth_Standard, StoryImageHeight_Standard;
+@property CGFloat ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage;
 @property NSMutableArray *storyNames, *storyItemViews;
 @property GCStoryItemView *previousStoryImageView;
-@property MASConstraint *storyImageRightMostConstraint;
+@property MASConstraint *storyImageRightMostConstraint, *storyImageLeftMostConstraint;
 @property UIPanGestureRecognizer *storyScrollViewVerticalPanGesture;
-@property CGPoint storyScrollViewPanVelecity, storyScrollViewPanTranslation;
-@property CGPoint oldContentOffset;
-@property CGRect oldStoryControllerViewFrame;
+@property CGPoint storyScrollViewPanVelecity, storyScrollViewPanTranslation, touchPointInScrollView, touchPointInStoryController;
+@property CGFloat newStoryImageHeight, newStoryImageWidth;
+@property CGFloat percentageOfWidthInOldItem, oldStoryControllerViewOffsetX, oldScrollViewConstraintOffsetX, newScrollViewConstraintOffsetX, numberOfStoryItemBeforeTheItemTouch;
+
 
 @property StoryScrollViewPositionMode storyScrollViewPositionMode;
 

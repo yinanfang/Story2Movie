@@ -14,6 +14,7 @@
 @synthesize parentController, bookPageControl;
 @synthesize manager, bookCount, bookCurrentPageNumber, bookNames, bookImageViews;
 @synthesize previousBookImageView, bookImageRightMostConstraint;
+@synthesize ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage;
 
 #pragma mark - Blank Frame Initialization
 - (id)initWithParentController:(GCBookController *)controller
@@ -27,6 +28,8 @@
         bookCount = [[[GCAppConfig sharedInstance] defaultBookCount] integerValue];
         bookImageViews = [[NSMutableArray alloc] init];
         bookCurrentPageNumber = [[GCAppConfig sharedInstance] bookCurrentPageNumber];
+        ScreenHeightAdjustedForImage = [[GCAppConfig sharedInstance] ScreenHeightAdjustedForImage];
+        ScreenWidthAdjustedForImage = [[GCAppConfig sharedInstance] ScreenWidthAdjustedForImage];
         
         // Empty Frame Initialization
         self.pagingEnabled = YES;
@@ -52,7 +55,7 @@
         [bookImageViews addObject:imageView];
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidth-2, ScreenHeight)]);
+            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidthAdjustedForImage, ScreenHeight)]);
             make.top.equalTo(self.mas_top);
         }];
         if (!previousBookImageView) { // First one, pin to top
@@ -88,7 +91,7 @@
             [bookImageViews addObject:imageView];
             [self addSubview:imageView];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidth-2, ScreenHeight)]);
+                make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(ScreenWidthAdjustedForImage, ScreenHeight)]);
                 make.top.equalTo(self.mas_top);
             }];
             // Stick to the last image view

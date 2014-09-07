@@ -25,7 +25,7 @@
         manager = [AFHTTPRequestOperationManager manager];
         
         // Customize Book Image View
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = [UIColor grayColor];
         self.layer.cornerRadius = 5;
         self.layer.masksToBounds = YES;
         self.userInteractionEnabled = YES;

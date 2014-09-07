@@ -26,7 +26,7 @@
 @property NSMutableArray *bookNames, *bookImageViews;
 @property GCBookImageView *previousBookImageView;
 @property MASConstraint *bookImageRightMostConstraint;
-
+@property CGFloat ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage;
 
 -(id)initWithParentController:(GCBookController *)controller;
 -(void)setupBlankBookScrollView;

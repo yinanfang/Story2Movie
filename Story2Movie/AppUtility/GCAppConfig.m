@@ -12,7 +12,7 @@
 
 #pragma mark - Domain
 // Change the domain for server here
-NSString *const DevelopmentDomain = @"http://Story2Movie.192.168.0.7.xip.io";
+NSString *const DevelopmentDomain = @"http://Story2Movie.152.23.81.41.xip.io";
 NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.com";
 
 #pragma mark - App General Data
@@ -23,7 +23,7 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
 @synthesize bookCurrentPageNumber;
 
 #pragma mark - Story item
-@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight, StoryImageWidth_Standard, StoryImageHeight_Standard, HeightDeterminant_FloatVSFullScreen;
+@synthesize NSScreenSizeWithInset, StoryImageWidth, StoryImageHeight, StoryImageWidth_Standard, StoryImageHeight_Standard, ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage, HeightDeterminant_FloatVSFullScreen;
 @synthesize storyScrollViewPositionMode;
 
 + (GCAppConfig *)sharedInstance
@@ -105,8 +105,11 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
             StoryImageHeight = 258;
             StoryImageHeight_Standard = 258;
         }
-        StoryImageWidth = 320*(StoryImageHeight/ScreenHeight);
-        StoryImageWidth_Standard  = 320*(StoryImageHeight/ScreenHeight); //145
+        StoryImageWidth = 320*(StoryImageHeight/ScreenHeight) - 2;              // 145 - 5S - Adjust for the gap
+        StoryImageWidth_Standard  = 320*(StoryImageHeight/ScreenHeight) - 2;    //
+        
+        ScreenHeightAdjustedForImage = ScreenHeight;
+        ScreenWidthAdjustedForImage = ScreenWidth - 2;
         
         HeightDeterminant_FloatVSFullScreen = ScreenHeight-(ScreenHeight-StoryImageHeight)/2;
         

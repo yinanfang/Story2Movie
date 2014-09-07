@@ -41,6 +41,7 @@ FOUNDATION_EXPORT NSString *const ProductionDomain;
 @property NSValue *NSScreenSizeWithInset;
 @property CGFloat StoryImageWidth, StoryImageHeight;
 @property CGFloat StoryImageWidth_Standard, StoryImageHeight_Standard;
+@property CGFloat ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage;
 @property CGFloat HeightDeterminant_FloatVSFullScreen;
 
 

@@ -12,9 +12,13 @@
 @synthesize utility;
 @synthesize parentController;
 @synthesize manager, storyScrollerNumber, storyCount, StoryImageHeight, StoryImageWidth, StoryImageWidth_Standard, StoryImageHeight_Standard;
+@synthesize ScreenHeightAdjustedForImage, ScreenWidthAdjustedForImage;
 @synthesize storyNames, storyItemViews;
-@synthesize previousStoryImageView, storyImageRightMostConstraint;
-@synthesize storyScrollViewVerticalPanGesture, storyScrollViewPanVelecity, storyScrollViewPanTranslation, oldContentOffset, oldStoryControllerViewFrame;
+@synthesize previousStoryImageView, storyImageRightMostConstraint, storyImageLeftMostConstraint;
+@synthesize storyScrollViewVerticalPanGesture;
+@synthesize newStoryImageHeight, newStoryImageWidth;
+@synthesize storyScrollViewPanVelecity, storyScrollViewPanTranslation, touchPointInScrollView, touchPointInStoryController;
+@synthesize percentageOfWidthInOldItem, oldStoryControllerViewOffsetX, oldScrollViewConstraintOffsetX, newScrollViewConstraintOffsetX, numberOfStoryItemBeforeTheItemTouch;
 @synthesize storyScrollViewPositionMode;
 
 #pragma mark - Blank Frame Initialization
@@ -33,7 +37,8 @@
         StoryImageHeight = [[GCAppConfig sharedInstance] StoryImageHeight];
         StoryImageHeight_Standard = [[GCAppConfig sharedInstance] StoryImageHeight_Standard];
         StoryImageWidth_Standard = [[GCAppConfig sharedInstance] StoryImageWidth_Standard];
-        
+        ScreenHeightAdjustedForImage = [[GCAppConfig sharedInstance] ScreenHeightAdjustedForImage];
+        ScreenWidthAdjustedForImage = [[GCAppConfig sharedInstance] ScreenWidthAdjustedForImage];
         storyScrollViewPositionMode = StoryScrollViewPositionFloat;
         
         // Empty Frame Initialization
@@ -94,14 +99,14 @@
         [storyItemViews addObject:imageView];
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(StoryImageHeight));
-            make.width.equalTo(@(StoryImageHeight*(ScreenWidth/ScreenHeight)));
+            make.height.equalTo(@(StoryImageHeight_Standard));
+            make.width.equalTo(@(StoryImageWidth_Standard));
 //            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(StoryImageWidth-2, StoryImageHeight)]);
             make.top.equalTo(self.mas_top);
         }];
         if (!previousStoryImageView) { // First one, pin to top
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.mas_left).offset(1);
+                storyImageLeftMostConstraint = make.left.equalTo(self.mas_left).offset(1);
             }];
         }else{
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -131,8 +136,8 @@
             [storyItemViews addObject:imageView];
             [self addSubview:imageView];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo(@(StoryImageHeight));
-                make.width.equalTo(@(StoryImageHeight*(ScreenWidth/ScreenHeight)));
+                make.height.equalTo(@(StoryImageHeight_Standard));
+                make.width.equalTo(@(StoryImageWidth_Standard));
                 //            make.size.equalTo([NSValue valueWithCGSize:CGSizeMake(StoryImageWidth-2, StoryImageHeight)]);
                 make.top.equalTo(self.mas_top);
             }];
@@ -206,65 +211,199 @@
 }
 // Third
 - (void)gestureRecognizerDidPan:(UIPanGestureRecognizer*)panGesture {
-    if (panGesture.state == UIGestureRecognizerStateBegan) {
-        DDLogWarn(@"Panning Story Scroll View...");
-        oldContentOffset = self.contentOffset;
-        oldStoryControllerViewFrame = self.parentController.view.frame;
-    }
-    DDLogWarn(@"======================================================================");
-    DDLogWarn(@"temp oldContentOffset: %f", oldContentOffset.x);
-    DDLogWarn(@"temp oldStoryControllerViewFrame: %@", [NSValue valueWithCGRect:oldStoryControllerViewFrame]);
-    
     storyScrollViewPanTranslation = [panGesture translationInView:parentController.view];
     CGFloat oldStoryImageHeight = StoryImageHeight;
-    CGFloat newStoryImageHeight = StoryImageHeight + (-storyScrollViewPanTranslation.y);
+    newStoryImageHeight = StoryImageHeight + (-storyScrollViewPanTranslation.y);
     CGFloat oldStoryImageWidth = StoryImageWidth;
-    CGFloat newStoryImageWidth = newStoryImageHeight*(ScreenWidth/ScreenHeight);
-    CGPoint touchPointInScrollView = [panGesture locationInView:self];
-    CGPoint touchPointInStoryController = [panGesture locationInView:self.parentController.view];
-    CGFloat numberOfStoryItemBeforeTheItemTouch = floor(touchPointInScrollView.x/StoryImageWidth);
-    CGFloat percentageInOldItem = (touchPointInScrollView.x-numberOfStoryItemBeforeTheItemTouch*oldStoryImageWidth)/oldStoryImageWidth;
-    CGFloat deltaContentOffset = numberOfStoryItemBeforeTheItemTouch*newStoryImageWidth + percentageInOldItem*newStoryImageWidth - touchPointInScrollView.x;
+    newStoryImageWidth = newStoryImageHeight*(ScreenWidth/ScreenHeight)-2;
+    touchPointInScrollView = [panGesture locationInView:self];
+    touchPointInStoryController = [panGesture locationInView:self.parentController.view];
     
-    DDLogVerbose(@"temp result01: %f", storyScrollViewPanTranslation.y);
-    DDLogVerbose(@"temp result02: %f", percentageInOldItem);
-    DDLogVerbose(@"temp result03: %f", numberOfStoryItemBeforeTheItemTouch*newStoryImageWidth);
-    DDLogVerbose(@"temp result04: %f", percentageInOldItem*newStoryImageWidth);
-    DDLogWarn(@"deltaContentOffset: %f", deltaContentOffset);
-//    DDLogVerbose(@"vertical translation: %f", storyScrollViewPanTranslation.y);
-//    DDLogVerbose(@"newStoryImageHeight: %f", newStoryImageHeight);
+    if (panGesture.state == UIGestureRecognizerStateBegan) {
+        DDLogWarn(@"Start panning Story Scroll View...");
+        oldScrollViewConstraintOffsetX = self.contentOffset.x;
+        numberOfStoryItemBeforeTheItemTouch = floor(touchPointInScrollView.x/StoryImageWidth);
+        DDLogWarn(@"======================================================================");
+        DDLogWarn(@"oldContentOffsetX: %f - numberOfStoryItemBeforeTheItemTouch: %f", oldScrollViewConstraintOffsetX, numberOfStoryItemBeforeTheItemTouch);
+    }
+    newScrollViewConstraintOffsetX = oldScrollViewConstraintOffsetX+(-storyScrollViewPanTranslation.x);
+    DDLogVerbose(@"00: %@ - 01: %f", [NSValue valueWithCGPoint:touchPointInScrollView], newScrollViewConstraintOffsetX);
     
-    // React to pan motion. Change Adjust the Story Item dynamically
-//    parentController.view.frame.size.height = newStoryImageHeight;
-    parentController.view.frame = CGRectMake(0, oldStoryControllerViewFrame.origin.y+storyScrollViewPanTranslation.y, ScreenWidth, newStoryImageHeight);
-    for (GCStoryItemView *storyItemView in storyItemViews) {
-        //        storyItemView.frame = CGRectMake(newStoryImageWidth*storyItemView.storyNumber, 0, newStoryImageWidth, newStoryImageHeight);
-        [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
-            make.height.equalTo(@(newStoryImageHeight));
-            make.width.equalTo(@(newStoryImageWidth));
+    
+    
+    // Adjust scroll view offset
+    [storyItemViews[0] mas_updateConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(self.mas_left).offset(-newScrollViewConstraintOffsetX);
+    }];
+    [super updateConstraints];
+    // Change the controller height
+    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
+        make.height.equalTo(@(newStoryImageHeight));
+    }];
+    [super updateConstraints];
+
+//    self.contentOffset = CGPointMake(self.contentOffset.x-storyScrollViewPanTranslation.x, 0);
+
+    
+    
+    if (panGesture.state == UIGestureRecognizerStateEnded) {
+        DDLogWarn(@"End panning Story Scroll View...");
+        
+        // Update Height and Width in this class and AppConfig
+        self.StoryImageHeight = newStoryImageHeight; // RAC
+        
+        self.contentOffset = CGPointMake(newScrollViewConstraintOffsetX, 0);
+        // Adjust scroll view offset
+        [storyItemViews[0] mas_updateConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(self.mas_left);
         }];
         [super updateConstraints];
+        
+        DDLogWarn(@"end ContentOffsetX: %f - ", newScrollViewConstraintOffsetX);
     }
     
+//    percentageOfWidthInOldItem = (touchPointInScrollView.x-numberOfStoryItemBeforeTheItemTouch*oldStoryImageWidth)/oldStoryImageWidth;
+//    newScrollViewConstraintOffsetX = numberOfStoryItemBeforeTheItemTouch*newStoryImageWidth + percentageOfWidthInOldItem*newStoryImageWidth - touchPointInStoryController.x;
+//    DDLogVerbose(@"temp ttt: %f", touchPointInScrollView.x);
+//    DDLogVerbose(@"temp percentageOfWidthInOldItem: %f", percentageOfWidthInOldItem);
+////    DDLogVerbose(@"temp result01: %f", storyScrollViewPanTranslation.y);
+////    DDLogVerbose(@"temp result02: %f", percentageOfWidthInOldItem);
+////    DDLogVerbose(@"temp result03: %f", numberOfStoryItemBeforeTheItemTouch*newStoryImageWidth);
+////    DDLogVerbose(@"temp result04: %f", percentageOfWidthInOldItem*newStoryImageWidth);
+//    DDLogWarn(@"newScrollViewConstraintOffsetX: %f", newScrollViewConstraintOffsetX);
+//    
+//
+////    parentController.view.frame = CGRectMake(0, ScreenHeight-newStoryImageHeight, ScreenWidth, newStoryImageHeight);
+//    // Adjust scroll view offset
+//    [storyItemViews[0] mas_updateConstraints:^(MASConstraintMaker *make){
+//        make.left.equalTo(self.mas_left).offset(-newScrollViewConstraintOffsetX);
+//    }];
+//    [super updateConstraints];
 //    // Change the controller height
 //    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
 //        make.height.equalTo(@(newStoryImageHeight));
 //    }];
-//    [super updateConstraints];
 //    // Change the image size for this scroll view. Update other when scroll to them
 //    for (GCStoryItemView *storyItemView in self.storyItemViews) {
 //        [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
 //            make.height.equalTo(@(newStoryImageHeight));
 //            make.width.equalTo(@(newStoryImageWidth));
 //        }];
+//    }
+//    [super updateConstraints];
+//    
+//    // When gesture ends
+//    if (panGesture.state == UIGestureRecognizerStateEnded) {
+//        DDLogWarn(@"Gesture Ended - %@", [panGesture description]);
+//        //        DDLogWarn(@"determinant: %f", newStoryImageHeight);
+//        if (newStoryImageHeight > [[GCAppConfig sharedInstance] HeightDeterminant_FloatVSFullScreen]) {
+//            DDLogWarn(@"should be full screen mode");
+//            self.storyScrollViewPositionMode = StoryScrollViewPositionFullScreen; // RAC
+//            newStoryImageHeight = ScreenHeight;
+//            newStoryImageWidth = ScreenWidthAdjustedForImage;
+////            [self enterOrRestoreScrollViewModeToFullScreen];
+//        } else {
+//            DDLogWarn(@"should be floating mode");
+//            self.storyScrollViewPositionMode = StoryScrollViewPositionFloat;// RAC
+//            newStoryImageHeight = StoryImageHeight_Standard;
+//            newStoryImageWidth = StoryImageWidth_Standard;
+////            [self enterOrRestoreScrollViewModeToFloat];
+//        }
+//        
+//        
+//        // Update Height and Width in this class and AppConfig
+//        self.StoryImageHeight = newStoryImageHeight; // RAC
+//        self.StoryImageWidth = newStoryImageWidth; // RAC
+//        
+//        DDLogWarn(@"final contentOffset: %f", self.contentOffset.x);
+//    }
+}
+
+-(void)enterOrRestoreScrollViewModeToFullScreen
+{
+    DDLogVerbose(@"Updating the scroll view to full screen mode...");
+    self.pagingEnabled = YES;
+    [parentController.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        // Change the controller height
+        [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
+            make.height.equalTo(@(newStoryImageHeight));
+        }];
+        // Adjust scroll view offset
+        [storyItemViews[0] mas_updateConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(self.mas_left).offset(1);
+        }];
+        // Change the image size for this scroll view. Update other when scroll to them
+        for (GCStoryItemView *storyItemView in self.storyItemViews) {
+            [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
+                make.height.equalTo(@(newStoryImageHeight));
+                make.width.equalTo(@(newStoryImageWidth));
+            }];
+        }
+        [parentController.view layoutIfNeeded];
+    }completion:nil];
+    self.contentOffset = CGPointMake(numberOfStoryItemBeforeTheItemTouch*ScreenWidth, 0);
+}
+
+-(void)enterOrRestoreScrollViewModeToFloat
+{
+    DDLogVerbose(@"Updating the scroll view to float mode...");
+    self.pagingEnabled = NO;
+    [parentController.view layoutIfNeeded];
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        // Change the controller height
+        [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
+            make.height.equalTo(@(newStoryImageHeight));
+        }];
+        // Adjust scroll view offset
+        [storyItemViews[0] mas_updateConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(self.mas_left).offset(1);
+        }];
+        // Change the image size for this scroll view. Update other when scroll to them
+        for (GCStoryItemView *storyItemView in self.storyItemViews) {
+            [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
+                make.height.equalTo(@(newStoryImageHeight));
+                make.width.equalTo(@(newStoryImageWidth));
+            }];
+        }
+        [parentController.view layoutIfNeeded];
+    }completion:nil];
+    newScrollViewConstraintOffsetX = numberOfStoryItemBeforeTheItemTouch*StoryImageWidth_Standard + percentageOfWidthInOldItem*StoryImageWidth_Standard - touchPointInStoryController.x;
+    if (newScrollViewConstraintOffsetX < 0) {// drag to the right. Blank on left side
+        newScrollViewConstraintOffsetX = 0;
+    } else if ((newScrollViewConstraintOffsetX+ScreenWidth)>self.contentSize.width) {// drag to the left. Blank on the right side
+        newScrollViewConstraintOffsetX = StoryImageWidth_Standard*storyCount-ScreenWidth;
+    }
+    
+    
+    self.contentOffset = CGPointMake(newScrollViewConstraintOffsetX, 0);
+}
+
+
+
+
+//    DDLogVerbose(@"vertical translation: %f", storyScrollViewPanTranslation.y);
+//    DDLogVerbose(@"newStoryImageHeight: %f", newStoryImageHeight);
+
+// React to pan motion. Change Adjust the Story Item dynamically
+//    parentController.view.frame.size.height = newStoryImageHeight;
+//    parentController.view.frame = CGRectMake(0, oldStoryControllerViewFrame.origin.y+storyScrollViewPanTranslation.y, ScreenWidth, newStoryImageHeight);
+//    for (GCStoryItemView *storyItemView in storyItemViews) {
+//        //        storyItemView.frame = CGRectMake(newStoryImageWidth*storyItemView.storyNumber, 0, newStoryImageWidth, newStoryImageHeight);
+//        [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
+//            make.height.equalTo(@(newStoryImageHeight));
+//            make.width.equalTo(@(newStoryImageWidth));
+//        }];
 //        [super updateConstraints];
 //    }
-    // Adjust scroll view offset
-    CGPoint newContentOffset = CGPointMake(oldContentOffset.x+deltaContentOffset-storyScrollViewPanTranslation.x, self.contentOffset.y);
-    if (newContentOffset.x>0 | (self.contentSize.width-newContentOffset.x)>0) {
-        // When the story scroll view is in the middle
-        self.contentOffset = newContentOffset;
-    } else {
+
+
+
+//    CGPoint newContentOffset = CGPointMake(oldContentOffset.x+deltaContentOffset-storyScrollViewPanTranslation.x, self.contentOffset.y);
+//    if (newContentOffset.x>0 | (self.contentSize.width-newContentOffset.x)>0) {
+//        // When the story scroll view is in the middle
+//        self.contentOffset = newContentOffset;
+//    } else {
 //        if (touchPointInScrollView.x < touchPointInStoryController.x) {
 //            // When left edge reach in
 //            DDLogError(@"left edge reach in");
@@ -274,8 +413,8 @@
 //            DDLogError(@"right edge reach in");
 //            self.contentOffset = CGPointMake(newStoryImageWidth*storyCount-ScreenWidth, self.contentOffset.y);
 //        }
-    }
-    
+//    }
+
 //    if (touchPointInScrollView.x < touchPointInStoryController.x) {
 //        // When left edge reach in
 //        DDLogError(@"left edge reach in");
@@ -288,66 +427,19 @@
 //        DDLogError(@"im the middle");
 //        self.contentOffset = CGPointMake(oldContentOffset.x+deltaContentOffset-storyScrollViewPanTranslation.x, self.contentOffset.y);
 //    }
-    DDLogWarn(@"contentOffset: %f", self.contentOffset.x);
-    // Update Height and Width in this class and AppConfig
+
+
+//
+
+
+// Update Height and Width in this class and AppConfig
 //    self.StoryImageHeight = newStoryImageHeight; // RAC
 //    self.StoryImageWidth = newStoryImageWidth; // RAC
-    
-    // When gesture ends
-    if (panGesture.state == UIGestureRecognizerStateEnded) {
-        DDLogWarn(@"Gesture Ended - %@", [panGesture description]);
-        
-        
-        
-//        DDLogWarn(@"determinant: %f", newStoryImageHeight);
-        if (newStoryImageHeight > [[GCAppConfig sharedInstance] HeightDeterminant_FloatVSFullScreen]) {
-            DDLogWarn(@"should be full screen mode");
-//            self.storyScrollViewPositionMode = StoryScrollViewPositionFullScreen; // RAC
-//            [self enterOrRestoreScrollViewModeToFullScreen];
-//            newStoryImageHeight = ScreenHeight;
-        } else {
-            DDLogWarn(@"should be floating mode");
-//            self.storyScrollViewPositionMode = StoryScrollViewPositionFloat;// RAC
-//            [self enterOrRestoreScrollViewModeToFloat];
-//            newStoryImageHeight = StoryImageHeight_Standard;
-        }
-        
-        
-        // Update Height and Width in this class and AppConfig
-        self.StoryImageHeight = newStoryImageHeight; // RAC
-        self.StoryImageWidth = newStoryImageWidth; // RAC
-    }
-    
- 
-}
-
--(void)enterOrRestoreScrollViewModeToFullScreen
-{
-    DDLogVerbose(@"Updating the scroll view to full screen mode...");
-
-}
-
--(void)enterOrRestoreScrollViewModeToFloat
-{
-    DDLogVerbose(@"Updating the scroll view to float mode...");
-    [parentController.view layoutIfNeeded];
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        // Change the image size for this scroll view. Update other when scroll to them
-        for (GCStoryItemView *storyItemView in self.storyItemViews) {
-            [storyItemView mas_updateConstraints:^(MASConstraintMaker *make){
-                make.height.equalTo(@(StoryImageHeight_Standard));
-                make.width.equalTo(@(StoryImageHeight_Standard*(ScreenWidth/ScreenHeight)));
-            }];
-        }
 
 
-        [parentController.view layoutIfNeeded];
-    }completion:nil];
-    // Change the controller height
-    [parentController.view mas_updateConstraints:^(MASConstraintMaker *make){
-        make.height.equalTo(@(StoryImageHeight_Standard));
-    }];
-}
+
+
+
 
 #pragma mark - Story Scroll View Movement
 -(void)moveStoryScrollViewToMiddel
