@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCBookScrollView.h"
+#import "GCBookPageControl.h"
+#import "GCStoryCollectionController.h"
 
 @interface GCBookCollectionController : UIViewController
+
+#pragma mark - AppUtility
+@property GCAppUtility *utility;
+
+#pragma mark - Networking
+@property AFHTTPRequestOperationManager *manager;
+
+#pragma mark - Book
+@property GCBookScrollView *bookScrollView;
+@property GCBookPageControl *bookPageControl;
+
+#pragma mark - Story
+@property GCStoryCollectionController *storyCollectionController;
 
 @end

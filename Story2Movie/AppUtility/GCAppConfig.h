@@ -35,10 +35,12 @@ FOUNDATION_EXPORT NSString *const ProductionDomain;
 
 #pragma mark - Book Specific
 @property NSInteger bookCurrentPageNumber;
+@property CGRect PageControlRect;
 
 #pragma mark - Story Specific
 @property CGFloat WidthForSmallStory, HeightForSmallStory;
 @property CGFloat WidthForCurrentStory, HeightForCurrentStory;
+@property CGRect BoundsForStoryCollectionController;
 
 #pragma mark - General
 @property CGFloat PixelAdjustForHorizontalGap;

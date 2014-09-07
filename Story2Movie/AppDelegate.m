@@ -18,7 +18,7 @@
     [utility ApplicationSetupWithProductionMode:YES];
     
     // Initialize window and set background
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:ScreenBounds];
     self.window.backgroundColor = [UIColor clearColor];
     
     // Check First Launch

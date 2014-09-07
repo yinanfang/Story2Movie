@@ -20,10 +20,11 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
 @synthesize defaultStoryCount, defaultBookCount;
 
 #pragma mark - Book Specific
-@synthesize bookCurrentPageNumber;
+@synthesize bookCurrentPageNumber, PageControlRect;
 
 #pragma mark - Story Specific
 @synthesize WidthForSmallStory, HeightForSmallStory, WidthForCurrentStory, HeightForCurrentStory;
+@synthesize BoundsForStoryCollectionController;
 
 #pragma mark - General
 @synthesize PixelAdjustForHorizontalGap;
@@ -89,6 +90,11 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
         
         // Book Specific
         bookCurrentPageNumber = 0;
+        if (IS_IPHONE5S) {
+            PageControlRect = CGRectMake(60, 290, 200, 20);                     // 568-258+20 = 290
+        }else if (IS_IPHONE4S){
+            PageControlRect = CGRectMake(60, 242, 200, 20);                     // 480-218+20 = 242
+        }
         
         // Story Specific
         if (IS_IPHONE5S) {
@@ -96,10 +102,12 @@ NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.c
         }else if (IS_IPHONE4S){
             HeightForSmallStory = 218;                                          // 480*(258/568) = 218.028169
         }
-        WidthForSmallStory = 320*(HeightForSmallStory/ScreenHeight);           // 145.352113
+        WidthForSmallStory = 320*(HeightForSmallStory/ScreenHeight);            // 145.352113
         
         HeightForCurrentStory = HeightForSmallStory;
         WidthForCurrentStory = WidthForSmallStory;
+        
+        BoundsForStoryCollectionController = CGRectMake(0, ScreenHeight-HeightForSmallStory, ScreenWidth, HeightForSmallStory);
         
         // General
         PixelAdjustForHorizontalGap = 1.0;
