@@ -12,7 +12,7 @@
 @interface GCBookView : UIView
 
 #pragma mark - AppUtility
-@property GCAppUtility *utility;
+@property(readonly) GCAppUtility *utility;
 
 #pragma mark - Parent Controller
 @property GCBookController *parentController;

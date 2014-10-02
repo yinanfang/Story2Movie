@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>66FB07FD-68A4-42EE-A589-0141EB39D662</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Story2Movie</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EB387ACF7832712CB3B969727856AC62E46A2D4F</key>
+		<string>https://github.com/yinanfang/Story2Movie.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Story2Movie.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EB387ACF7832712CB3B969727856AC62E46A2D4F</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yinanfang/Story2Movie.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EB387ACF7832712CB3B969727856AC62E46A2D4F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EB387ACF7832712CB3B969727856AC62E46A2D4F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Story2Movie</string>
+		</dict>
+	</array>
+</dict>
+</plist>

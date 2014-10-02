@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88B20025426345CB8E942C0A"
+               BlueprintIdentifier = "A56F54D7302423C1C7F4AF6B"
                BuildableName = "libPods-Story2Movie-FlatUIKit.a"
                BlueprintName = "Pods-Story2Movie-FlatUIKit"
                ReferencedContainer = "container:Pods.xcodeproj">

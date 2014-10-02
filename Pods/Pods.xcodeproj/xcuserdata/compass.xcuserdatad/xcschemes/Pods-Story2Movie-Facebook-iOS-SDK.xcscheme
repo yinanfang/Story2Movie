@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04038BC672D6438EA2E21906"
+               BlueprintIdentifier = "D3914DC454E14875A325ACC3"
                BuildableName = "libPods-Story2Movie-Facebook-iOS-SDK.a"
                BlueprintName = "Pods-Story2Movie-Facebook-iOS-SDK"
                ReferencedContainer = "container:Pods.xcodeproj">
