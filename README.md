@@ -12,5 +12,6 @@ What I learned from this:
 
 ## Demo:
   - GIF
+
 ![alt tag](https://github.com/yinanfang/Story2Movie/blob/master/20141002.gif)
   - [Youtube](https://www.youtube.com/watch?v=aTkS1FNw_qg)
